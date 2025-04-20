@@ -1,0 +1,54 @@
+.nav {
+  border: 3px solid red;
+  padding: 1rem;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 40px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0;
+  padding-right: 40px;
+  max-width: 180px;
+  line-height: 0.9;
+}
+
+.navLink {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: var(--black);
+  font-size: 18px;
+  //   filter: drop-shadow(0 0 0 var(--black));
+
+  &:hover {
+    // border-bottom: 3px solid var(--black);
+    // filter: drop-shadow(10px 10px 0px var(--black));
+    // box-shadow: 3px 3px 0 var(--black);
+  }
+}
+
+.rsvpButtonContainer {
+}
+
+.rsvpLink {
+  background: var(--black);
+  padding: 15px 35px;
+  font-size: 20px;
+  border-radius: 50%;
+  //   transform: rotate(30deg);
+}

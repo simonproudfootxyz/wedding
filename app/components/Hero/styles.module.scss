@@ -1,0 +1,101 @@
+.hero {
+  padding: 90px 25px;
+  background: attr(databackground);
+  position: relative;
+  overflow: visible;
+
+  .hero__title {
+    max-width: var(--inner-max-width);
+    margin: 0 auto;
+    font-size: 112px;
+    font-weight: 100;
+    letter-spacing: -7px;
+    line-height: 1;
+  }
+
+  .wrapper {
+    position: relative;
+    max-width: 1100px;
+    // border: 3px solid red;
+    margin: 0 auto;
+  }
+}
+
+.topHero {
+  --offest: -125px;
+  background: var(--pink);
+  color: var(--black);
+  padding-top: 125px;
+
+  // FLOATING SHIT
+  // ========================
+  .planchette {
+    position: absolute;
+    left: -45px;
+    bottom: -185px;
+    animation: hover 7s ease-in-out infinite;
+  }
+
+  .ring {
+    position: absolute;
+    bottom: -126px;
+    left: 260px;
+    animation: spin 4s linear infinite;
+  }
+
+  .photo {
+    position: absolute;
+    top: -200px;
+    right: 38px;
+    animation: float 9s ease-in-out infinite;
+  }
+
+  // TITLE
+  // ========================
+  .hero__title {
+    padding-left: 175px;
+    text-indent: var(--offest);
+    margin-left: 125px;
+  }
+}
+
+// ===========
+// ANIMATIONS
+// ===========
+
+// HOVER
+
+@keyframes hover {
+  0% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+// SPINN
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+// FLOAT
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
