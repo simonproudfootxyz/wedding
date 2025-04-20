@@ -43,6 +43,7 @@ export default function Home() {
               <div className="half-height-item">First Half</div>
               <div className="half-height-item">Second Half</div>
             </div>
+            <div className="test"></div>
           </div>
         </Wrapper>
       </Section>
