@@ -34,9 +34,9 @@ export const StyledTopHero = styled(StyledHero)`
   // FLOATING SHIT
   // ========================
   .floating {
-  position: absolute;
+    position: absolute;
     z-index: 100;
-    }
+  }
 
   .planchette {
     left: -45px;
@@ -63,66 +63,5 @@ export const StyledTopHero = styled(StyledHero)`
     text-indent: var(--offest);
     margin-left: 125px;
   }
-
-    // ===========
-    // ANIMATIONS
-    // ===========
-
-    // HOVER
-
-    @keyframes hover {
-    0% {
-        transform: rotate(-3deg);
-    }
-    50% {
-        transform: rotate(3deg);
-    }
-    100% {
-        transform: rotate(-3deg);
-    }
-    }
-
-    // SPINN
-
-    @keyframes spin {
-        0% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-        25% {
-            transform: rotate(180deg) translatey(5px);
-            -webkit-transform: rotate(180deg) translatey(5px);
-        }
-        33% {
-            transform: rotate(270deg) translatey(-0px);
-            -webkit-transform: rotate(270deg) translatey(-5px);
-        }
-        50% {
-            -webkit-transform: rotate(360deg) translatey(-5px);
-            transform: rotate(360deg) translatey(-5px);
-        }
-        75% {
-            transform: rotate(540deg) translatey(0px);
-            -webkit-transform: rotate(540deg) translatey(0px);
-        }
-        100% {
-            -webkit-transform: rotate(720deg) translatey(5px);
-            transform: rotate(720deg) translatey(5px);
-        }
-    }
-
-    // FLOAT
-
-    @keyframes float {
-    0% {
-        transform: translatey(0px);
-    }
-    50% {
-        transform: translatey(-20px);
-    }
-    100% {
-        transform: translatey(0px);
-    }
-    }
-}
+  }
 `;

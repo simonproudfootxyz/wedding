@@ -194,6 +194,9 @@ font-style: italic; */
   --pink: #c792df;
   --orange: #f07d1f;
   --yellow: #d8cc34;
+  --spectral: "Spectral", serif;
+  --pp-editorial: "PPEditorialOld", "Old Standard TT", Arial, Helvetica,
+    sans-serif;
   --inner-max-width: 1000px;
   --max-width: 1100px;
 }
@@ -234,6 +237,13 @@ h5,
 h6 {
   font-family: "PPEditorialOld", "Old Standard TT", Arial, Helvetica, sans-serif;
   font-weight: 400;
+  line-height: 0.9;
+  font-weight: 200;
+}
+
+h1 {
+  font-size: 112px;
+  color: var(--black);
 }
 
 h2 {
@@ -247,6 +257,10 @@ p {
   font-size: 18px;
 }
 
+p + p {
+  padding-top: 20px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -255,12 +269,110 @@ a {
   font-size: 14px;
 }
 
+/* UTILITIES */
+/* ========== */
 .text-align-center {
   text-align: center;
 }
 
 .hidden {
   display: none;
+}
+
+.color--yellow {
+  color: var(--yellow);
+}
+.color--pink {
+  color: var(--pink);
+}
+.color--orange {
+  color: var(--orange);
+}
+.color--black {
+  color: var(--black);
+}
+.color--white {
+  color: var(--white);
+}
+.color--cream {
+  color: var(--cream);
+}
+
+.background--yellow {
+  background: var(--yellow);
+}
+.background--pink {
+  background: var(--pink);
+}
+.background--orange {
+  background: var(--orange);
+}
+.background--black {
+  background: var(--black);
+}
+.background--white {
+  background: var(--white);
+}
+
+/* // ===========
+  // ANIMATIONS
+  // ===========
+
+  // HOVER */
+
+@keyframes hover {
+  0% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+/* // SPINN */
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(180deg) translatey(5px);
+    -webkit-transform: rotate(180deg) translatey(5px);
+  }
+  33% {
+    transform: rotate(270deg) translatey(-0px);
+    -webkit-transform: rotate(270deg) translatey(-5px);
+  }
+  50% {
+    -webkit-transform: rotate(360deg) translatey(-5px);
+    transform: rotate(360deg) translatey(-5px);
+  }
+  75% {
+    transform: rotate(540deg) translatey(0px);
+    -webkit-transform: rotate(540deg) translatey(0px);
+  }
+  100% {
+    -webkit-transform: rotate(720deg) translatey(5px);
+    transform: rotate(720deg) translatey(5px);
+  }
+}
+
+/* // FLOAT */
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
 }
 
 @media (prefers-color-scheme: dark) {

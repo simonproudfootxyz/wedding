@@ -15,7 +15,6 @@ export const StyledSection = styled.section<StyledSectionProps>`
       : backgroundColor || "var(--black)";
   }};
   color: var(--white);
-  position: relative;
 
   .grid-container {
     padding-top: 100px;
