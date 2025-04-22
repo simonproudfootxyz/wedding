@@ -12,6 +12,7 @@ import { EventSchedule } from "./components/EventSchedule/EventSchedule";
 import EventInfo, {
   Column,
   EventInfoContainer,
+  TimeStamps,
 } from "./components/EventInfo/EventInfo";
 import FrequentlyAskedQuestion from "./components/FrequentlyAskedQuestion/FrequentlyAskedQuestion";
 import EventOverview from "./components/EventOverview/EventOverview";
@@ -42,18 +43,18 @@ export default function Home() {
           <Card imageSrc={Scrabble.src} />
         </Wrapper>
       </Section>
-      <Section>
+      <Section classNames="event-section">
         <Wrapper>
           <EventSchedule />
         </Wrapper>
       </Section>
-      <Section>
+      <Section classNames="event-section">
         <Wrapper classNames="event-wrapper">
           <EventInfo
             heading="the <em>mini</em>-party"
             date="Wednesday, Oct 29"
             time="7-9pm"
-            location="Get Well Bar 1181 Dundas St W, M6H 1Y3"
+            location="Get Well Bar <br />1181 Dundas St W, M6H 1Y3"
           >
             <p>
               Those in town are welcome to join us for a drink before the big
@@ -62,13 +63,15 @@ export default function Home() {
               want.
             </p>
             <p>
-              <strong>Very fun. Very, very optional</strong>{" "}
-              <strong>******</strong>
+              <small>
+                <strong>Very fun. Very, very optional</strong>{" "}
+                <strong className="color--pink">******</strong>
+              </small>
             </p>
           </EventInfo>
         </Wrapper>
       </Section>
-      <Section>
+      <Section classNames="event-section">
         <Wrapper classNames="event-wrapper">
           <EventInfo
             heading="the <strong>biiiiiiiiig</strong> party"
@@ -76,22 +79,29 @@ export default function Home() {
             time="7:30pm"
             location="Rainhard Brewing </br> 100 Symes Road,  M6N 0A8"
           >
-            <p>
-              Raise a glass, eat some snacks, and celebrate the fact that Mhairi
-              and Simon will be chillin’ like villains in this life and the
-              next. Wear a costume (or don’t) and get up to some good old
-              fashioned witching night mischief.{" "}
-            </p>
-            <p>7:30pm</p>
-            <p>
-              Party start time, but it’s cool, it’s chill, it’s casual. You can
-              come at 8, or 9, or whenever works best for your schedule.{" "}
-            </p>
-            <p>9:00pm</p>
-            <p>
-              Righteous snackitude. 1:30am Lastcall! Final opportunity for
-              drinks on us.
-            </p>
+            <div className="content-section">
+              <p>
+                Raise a glass, eat some snacks, and celebrate the fact that
+                Mhairi and Simon will be chillin’ like villains in this life and
+                the next. Wear a costume (or don’t) and get up to some good old
+                fashioned witching night mischief.{" "}
+              </p>
+            </div>
+            <div className="content-section">
+              <TimeStamps>7:30pm</TimeStamps>
+              <p>
+                Party start time, but it’s cool, it’s chill, it’s casual. You
+                can come at 8, or 9, or whenever works best for your schedule.{" "}
+              </p>
+            </div>
+            <div className="content-section">
+              <TimeStamps>9:00pm</TimeStamps>
+              <p>Righteous snackitude.</p>
+            </div>
+            <div className="content-section">
+              <TimeStamps>1:30am</TimeStamps>
+              <p> Lastcall! Final opportunity for drinks on us.</p>
+            </div>
           </EventInfo>
         </Wrapper>
       </Section>

@@ -8,9 +8,14 @@ const StyledWrapper = styled.div`
   position: relative;
   overflow: visible;
   flex-wrap: wrap;
+  padding: 0 25px;
 
   .flex-column {
     flex: 1;
+  }
+
+  &.ouija-wrapper {
+    justify-content: flex-end;
   }
 
   &.event-wrapper {

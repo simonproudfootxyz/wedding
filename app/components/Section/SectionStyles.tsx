@@ -14,5 +14,10 @@ export const StyledSection = styled.section<StyledSectionProps>`
       : backgroundColor || "var(--black)";
   }};
   color: var(--white);
+
+  &.event-section {
+    & + &.event-section {
+      border-top: 4px solid var(--transparent-white);
+    }
   }
 `;

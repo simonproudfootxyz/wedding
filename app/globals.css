@@ -1,7 +1,7 @@
 /* ============ */
 /* FONTS */
 /* ============ */
-
+@import url("https://use.typekit.net/ahp1egn.css");
 /* New Spirit Regular
 font-family: "new-spirit", serif;
 font-weight: 400;
@@ -190,6 +190,7 @@ font-style: italic; */
   --foreground: #171717;
   --white: #ffffff;
   --off-white: rgba(255, 255, 255, 0.5);
+  --transparent-white: rgba(255, 255, 255, 0.05);
   --cream: #dad6cf;
   --black: #202020;
   --pink: #c792df;
@@ -260,8 +261,9 @@ h3 {
 }
 
 p {
-  font-family: "Spectral", serif;
+  font-family: var(--new-spirit), serif;
   font-size: 18px;
+  line-height: 1;
 }
 
 p + p {
@@ -274,6 +276,7 @@ a {
   font-family: Spectral, serif;
   font-weight: 500;
   font-size: 14px;
+  border-bottom: 2px solid var(--orange);
 }
 
 /* UTILITIES */
