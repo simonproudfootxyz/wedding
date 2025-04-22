@@ -189,12 +189,14 @@ font-style: italic; */
   --background: #ffffff;
   --foreground: #171717;
   --white: #ffffff;
+  --off-white: rgba(255, 255, 255, 0.5);
   --cream: #dad6cf;
   --black: #202020;
   --pink: #c792df;
   --orange: #f07d1f;
   --yellow: #d8cc34;
   --spectral: "Spectral", serif;
+  --new-spirit: "new-spirit", serif;
   --pp-editorial: "PPEditorialOld", "Old Standard TT", Arial, Helvetica,
     sans-serif;
   --inner-max-width: 1000px;
@@ -248,7 +250,12 @@ h1 {
 
 h2 {
   font-size: 64px;
-  line-height: 0.9;
+  /* line-height: 0.9; */
+  color: var(--black);
+}
+
+h3 {
+  font-size: 40px;
   color: var(--black);
 }
 
@@ -294,6 +301,9 @@ a {
 .color--white {
   color: var(--white);
 }
+.color--off-white {
+  color: var(--off-white);
+}
 .color--cream {
   color: var(--cream);
 }
@@ -314,6 +324,16 @@ a {
   background: var(--white);
 }
 
+/* Display */
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
 /* // ===========
   // ANIMATIONS
   // ===========
@@ -329,6 +349,18 @@ a {
   }
   100% {
     transform: rotate(-3deg);
+  }
+}
+
+@keyframes reverse-hover {
+  0% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(3deg);
   }
 }
 

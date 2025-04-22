@@ -6,6 +6,7 @@ import Section from "./components/Section/Section";
 import Wrapper from "./components/Wrapper/Wrapper";
 import OuijaBackground from "@/public/images/OuijaBackground.jpg";
 import Scrabble from "@/public/images/Scrabble.jpg";
+import Misty from "@/public/images/Misty.jpg";
 import Card from "./components/Card/Card";
 import { EventSchedule } from "./components/EventSchedule/EventSchedule";
 import EventInfo, {
@@ -13,6 +14,8 @@ import EventInfo, {
   EventInfoContainer,
 } from "./components/EventInfo/EventInfo";
 import FrequentlyAskedQuestion from "./components/FrequentlyAskedQuestion/FrequentlyAskedQuestion";
+import EventOverview from "./components/EventOverview/EventOverview";
+import Callout from "./components/Callout/Callout";
 
 export default function Home() {
   return (
@@ -31,26 +34,7 @@ export default function Home() {
       </div>
       <Section backgroundColor="var(--cream)">
         <Wrapper>
-          <div className="text-align-center">
-            <Image
-              src="/images/SunandMoons 1.png"
-              alt="We are all made of stars"
-              width={68}
-              height={33}
-              priority
-            />
-            <h2>
-              Help celebrate our commitment to roaming this earthly plane
-              together
-            </h2>
-          </div>
-          <div className="grid-container">
-            <div className="full-height-item">Full Height Item</div>
-            <div className="split-column">
-              <div className="half-height-item">First Half</div>
-              <div className="half-height-item">Second Half</div>
-            </div>
-          </div>
+          <EventOverview />
         </Wrapper>
       </Section>
       <Section classNames="ouija-section" backgroundImage={OuijaBackground.src}>
@@ -64,7 +48,7 @@ export default function Home() {
         </Wrapper>
       </Section>
       <Section>
-        <Wrapper>
+        <Wrapper classNames="event-wrapper">
           <EventInfo
             heading="the <em>mini</em>-party"
             date="Wednesday, Oct 29"
@@ -75,13 +59,17 @@ export default function Home() {
               Those in town are welcome to join us for a drink before the big
               day at one of our favourite spots in the city. Play pinball and
               arcade games. Drink local beers. We don’t know what else you could
-              want. Very fun. Very, very optional ******
+              want.
+            </p>
+            <p>
+              <strong>Very fun. Very, very optional</strong>{" "}
+              <strong>******</strong>
             </p>
           </EventInfo>
         </Wrapper>
       </Section>
       <Section>
-        <Wrapper>
+        <Wrapper classNames="event-wrapper">
           <EventInfo
             heading="the <strong>biiiiiiiiig</strong> party"
             date="Friday, Oct 31"
@@ -156,6 +144,26 @@ export default function Home() {
               answer="Nope! :) <br /> <br />We both lived solo before we met and we had to consolidate two apartments worth of stuff when we moved in together. Then we moved across the country twice and boy did that kick our butt in the stuff department. Your earthly presence and support are all we need."
             />
           </div>
+        </Wrapper>
+      </Section>
+      <Section backgroundColor="var(--cream)">
+        <Wrapper classNames="event-wrapper">
+          <Callout backgroundImage={Misty.src} backgroundColor="var(--black)">
+            <h3>a note from mhairi, simon & sofia</h3>
+            <p>
+              Hi, we know that for our fellow millennials, Halloween is
+              considered one of the high holidays. It’s an occasion that’s
+              beloved by many, including us (I mean heck, we’re getting married
+              on it) but can be particularly special for many of our friends who
+              now have young families.
+            </p>
+            <p>
+              Please do not feel guilty prioritizing your own family traditions,
+              even if that means you’re unable to attend our celebration. It’s
+              all good! Seriously! We’ll happily catch you guys on the flippity
+              flip.
+            </p>
+          </Callout>
         </Wrapper>
       </Section>
       <Section backgroundColor="var(--cream)">

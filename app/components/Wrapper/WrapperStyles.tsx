@@ -7,13 +7,18 @@ const StyledWrapper = styled.div`
   margin: 0 auto;
   position: relative;
   overflow: visible;
+  flex-wrap: wrap;
 
   .flex-column {
     flex: 1;
   }
 
-  &.ouija-wrapper {
-    justify-content: flex-end;
+  &.event-wrapper {
+    color: var(--white);
+
+    h3 {
+      color: var(--white);
+    }
   }
 
   &.devil-wrapper {
