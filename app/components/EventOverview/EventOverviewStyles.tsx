@@ -26,7 +26,7 @@ export const StyledEventOverview = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 50px;
+    padding: 50px 30px;
     text-align: center;
     flex-wrap: wrap;
 

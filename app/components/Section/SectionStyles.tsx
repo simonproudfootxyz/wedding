@@ -20,4 +20,14 @@ export const StyledSection = styled.section<StyledSectionProps>`
       border-top: 4px solid var(--transparent-white);
     }
   }
+
+  &.cream-section {
+    & + &.cream-section {
+      border-top: 4px solid var(--70s-green);
+    }
+
+    h2 {
+      color: var(--70s-brown);
+    }
+  }
 `;

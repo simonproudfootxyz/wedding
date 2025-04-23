@@ -33,6 +33,11 @@ const StyledWrapper = styled.div`
       padding-top: 100px;
     }
 
+    h1 {
+      letter-spacing: -2px;
+      padding-bottom: 35px;
+    }
+
     .image-wrapper {
       position: relative;
     }

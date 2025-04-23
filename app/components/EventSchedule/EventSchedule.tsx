@@ -30,6 +30,7 @@ const StyledH3 = styled.h3`
   font-size: 64px;
   font-weight: 200;
   margin: 0;
+  letter-spacing: -2px;
 `;
 
 const VideoLink = styled.a`

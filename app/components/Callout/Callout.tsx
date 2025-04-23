@@ -38,6 +38,9 @@ const RightColumn = styled.div<CalloutProps>`
 
   p {
     font-family: var(--new-spirit);
+    font-size: 16px;
+    letter-spacing: -1px;
+    line-height: 1.25;
   }
 `;
 

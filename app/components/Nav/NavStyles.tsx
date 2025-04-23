@@ -50,13 +50,18 @@ export const NavLink = styled.a`
   text-decoration: none;
   transition: all 0.3s ease;
   color: var(--black);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
 
-  &:hover {
+  &:hover,
+  &:focus {
     // border-bottom: 3px solid var(--black);
     // filter: drop-shadow(10px 10px 0px var(--black));
     // box-shadow: 3px 3px 0 var(--black);
+  }
+
+  &::after {
+    display: none;
   }
 `;
 

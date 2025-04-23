@@ -36,7 +36,7 @@ export const Column = styled.div`
 
 const Heading = styled.h3`
   font-size: 48px;
-  padding-bottom: 90px;
+  padding-bottom: 40px;
 
   strong {
     font-weight: 900;
@@ -63,19 +63,19 @@ const InfoItem = styled.p<InfoItemProps>`
     backgroundColor || "transparent"};
   font-size: 16px;
   display: inline-block;
-  margin-right: 25px;
+  margin-right: 10px;
   padding: 10px;
   color: var(--black);
 
   &:nth-of-type(1) {
-    transform: skew(2deg);
+    clip-path: polygon(0% 0, 96% 0%, 100% 100%, 0 100%);
   }
   &:nth-of-type(2) {
-    transform: skew(-2deg);
+    clip-path: polygon(0% 0%, 100% 0%, 96% 100%, 0 100%);
   }
 `;
 
-const Location = styled.p`
+const Location = styled.div`
   padding: 25px;
   background: var(--transparent-white);
   margin-top: 30px;

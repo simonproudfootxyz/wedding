@@ -41,7 +41,6 @@ const Nav: React.FC = () => {
         <NavItem>
           <NavLink
             href="https://maps.app.goo.gl/fUR4PK6AuuRELQHo7"
-            // className={`spectral-medium`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -51,7 +50,6 @@ const Nav: React.FC = () => {
         <NavItem>
           <NavLink
             href="https://maps.app.goo.gl/fUR4PK6AuuRELQHo7"
-            // className={`spectral-medium`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -63,7 +61,7 @@ const Nav: React.FC = () => {
         <Logo>mhairi&nbsp;and&nbsp;simon are&nbsp;getting&nbsp;married.</Logo>
       </div>
       <RSVPLinkContainer>
-        <RSVPLink href="/rsvp" className={`button spectral-medium`}>
+        <RSVPLink href="/rsvp" className={`button`}>
           RSVP
         </RSVPLink>
       </RSVPLinkContainer>

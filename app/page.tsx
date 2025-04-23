@@ -54,7 +54,7 @@ export default function Home() {
             heading="the <em>mini</em>-party"
             date="Wednesday, Oct 29"
             time="7-9pm"
-            location="Get Well Bar <br />1181 Dundas St W, M6H 1Y3"
+            location="<a href='https://maps.app.goo.gl/mF4WvGyWZXgzvHmV7'>Get Well Bar</a> <br />1181 Dundas St W, M6H 1Y3"
           >
             <p>
               Those in town are welcome to join us for a drink before the big
@@ -65,8 +65,8 @@ export default function Home() {
             <p>
               <small>
                 <strong>Very fun. Very, very optional</strong>{" "}
-                <strong className="color--pink">******</strong>
               </small>
+              <strong className="color--pink">******</strong>
             </p>
           </EventInfo>
         </Wrapper>
@@ -77,7 +77,7 @@ export default function Home() {
             heading="the <strong>biiiiiiiiig</strong> party"
             date="Friday, Oct 31"
             time="7:30pm"
-            location="Rainhard Brewing </br> 100 Symes Road,  M6N 0A8"
+            location="<a href='https://maps.app.goo.gl/fUR4PK6AuuRELQHo7'>Rainhard Brewing</a> </br> 100 Symes Road,  M6N 0A8"
           >
             <div className="content-section">
               <p>
@@ -85,6 +85,11 @@ export default function Home() {
                 Mhairi and Simon will be chillin’ like villains in this life and
                 the next. Wear a costume (or don’t) and get up to some good old
                 fashioned witching night mischief.{" "}
+              </p>
+              <p>
+                Note: While we will have snacks later on (see below), we
+                recommend you have dinner beforehand. Nobody wants to be the
+                friend that couldn't handle their soda
               </p>
             </div>
             <div className="content-section">
@@ -96,7 +101,7 @@ export default function Home() {
             </div>
             <div className="content-section">
               <TimeStamps>9:00pm</TimeStamps>
-              <p>Righteous snackitude.</p>
+              <p>Snack drop. Time to get radical.</p>
             </div>
             <div className="content-section">
               <TimeStamps>1:30am</TimeStamps>
@@ -105,11 +110,14 @@ export default function Home() {
           </EventInfo>
         </Wrapper>
       </Section>
-      <Section backgroundColor="var(--cream)">
+      <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper classNames="devil-wrapper">
           <div className="flex-column title-wrapper">
             <h1>the devilish details</h1>
-            <p>Frequently asked questions ******</p>
+            <p>
+              <small>frequently asked questions</small>{" "}
+              <strong className="color--orange">******</strong>
+            </p>
           </div>
           <div className="flex-column image-wrapper">
             <Image
@@ -131,7 +139,7 @@ export default function Home() {
           </div>
         </Wrapper>
       </Section>
-      <Section backgroundColor="var(--cream)">
+      <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper>
           <div className="flex-column">
             <h2>the vibes</h2>
@@ -143,20 +151,20 @@ export default function Home() {
             />
             <FrequentlyAskedQuestion
               question="is this a costume party?"
-              answer="It sure can be!  Costumes are encouraged but most definitely optional.  Wear whatever you feel most comfortable in. Feel free to go ham-town on a costume. Feel free to channel your inner goth. Feel free to wear jeans (we mean it). It’s a night of drinking beer at a brewery on Halloween, there’s no need for a dress code lol."
+              answer="It sure can be! <span class='highlight--transparent-red'>Costumes are encouraged but most definitely optional.</span> Wear whatever you feel most comfortable in. Feel free to go ham-town on a costume. Feel free to channel your inner goth. Feel free to wear jeans (we mean it). It’s a night of drinking beer at a brewery on Halloween, there’s no need for a dress code lol."
             />
             <FrequentlyAskedQuestion
               question="is this a kid-friendly event?"
-              answer="Your kinders are cute and we love them but this is an evening event with no real entertainment planned other than yapping. I’m sure they would much rather be watching Hocus Pocus and indulging in the sweet results of their trick or treating. We kindly ask that the little ones stay home for this one. <br /> <br />TL;DR No :("
+              answer="Your kinders are cute and we love them but this is an evening event with no real entertainment planned other than yapping. I’m sure they would much rather be watching Hocus Pocus and indulging in the sweet results of their trick or treating. We kindly ask that the little ones stay home for this one. <br /> <br /><span class='highlight--transparent-red'>TL;DR No :(<span>"
             />
             <FrequentlyAskedQuestion
               question="do you have a gift registry?"
-              answer="Nope! :) <br /> <br />We both lived solo before we met and we had to consolidate two apartments worth of stuff when we moved in together. Then we moved across the country twice and boy did that kick our butt in the stuff department. Your earthly presence and support are all we need."
+              answer="Nope! :) <br /> <br />We both lived solo before we met and we had to consolidate two apartments worth of stuff when we moved in together. Then we moved across the country twice and boy did that kick our butt in the stuff department. <span class='highlight--transparent-red'>Your earthly presence and support are all we need.</span>"
             />
           </div>
         </Wrapper>
       </Section>
-      <Section backgroundColor="var(--cream)">
+      <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper classNames="event-wrapper">
           <Callout backgroundImage={Misty.src} backgroundColor="var(--black)">
             <h3>a note from mhairi, simon & sofia</h3>
@@ -168,15 +176,18 @@ export default function Home() {
               now have young families.
             </p>
             <p>
-              Please do not feel guilty prioritizing your own family traditions,
-              even if that means you’re unable to attend our celebration. It’s
-              all good! Seriously! We’ll happily catch you guys on the flippity
-              flip.
+              <span className="color--black highlight--yellow">
+                Please do not feel guilty prioritizing your own family
+                traditions, even if that means you’re unable to attend our
+                celebration.
+              </span>{" "}
+              It’s all good! Seriously! We’ll happily catch you guys on the
+              flippity flip.
             </p>
           </Callout>
         </Wrapper>
       </Section>
-      <Section backgroundColor="var(--cream)">
+      <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper>
           <div className="flex-column">
             <h2>the venue</h2>
@@ -203,18 +214,32 @@ export default function Home() {
                 </li>
               </ul>
               <p>
-                Sonder hotels have multiple locations in the city. Sonder Artesa
-                is the closest to the venue and within walking distance to
-                Ossington, Parkdale and West Queen West neighbourhoods. Sonder
-                Slate is closest to Union Station if you are taking the train.
-                Please don’t stay at the Liberty, Liberty Village is a garbage
-                place.
+                <small>
+                  Sonder hotels have multiple locations in the city.{" "}
+                  <a
+                    href="https://www.sonder.com/en-ca/destinations/toronto/TOR-BRIX6-712/c35785?sleeps=1"
+                    target="_blank"
+                  >
+                    Sonder Artesa
+                  </a>{" "}
+                  is the closest to the venue and within walking distance to
+                  Ossington, Parkdale and West Queen West neighbourhoods.{" "}
+                  <a
+                    href="https://www.sonder.com/en-ca/destinations/toronto/Sonder-The-Slate-Sun-Filled-Room/c31127?sleeps=1"
+                    target="_blank"
+                  >
+                    Sonder Slate
+                  </a>{" "}
+                  is closest to Union Station if you are taking the train.
+                  Please don’t stay at the Liberty, Liberty Village is a garbage
+                  place.
+                </small>
               </p>
             </FrequentlyAskedQuestion>
           </div>
         </Wrapper>
       </Section>
-      <Section backgroundColor="var(--cream)">
+      <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper>
           <div className="flex-column">
             <h2>the libations</h2>
@@ -222,15 +247,15 @@ export default function Home() {
           <div className="flex-column">
             <FrequentlyAskedQuestion
               question="will there be food?"
-              answer="Snacks, yes! Dinner, no. We highly encourage everyone to eat prior to arriving at the venue as we will not be serving dinner.  There will be some spooky snacks at 9:30pm."
+              answer="<span class='highlight--transparent-red'>Snacks, yes! Dinner, no.</span> We highly encourage everyone to eat prior to arriving at the venue as we will not be serving dinner.  There will be some spooky snacks at 9:30pm."
             />
             <FrequentlyAskedQuestion
               question="should I bring cash for the bar?"
-              answer="Please leave your wallets at home and prepare to party,  this is an open bar event. 🎉"
+              answer="Please leave your wallets at home and prepare to party, <span class='highlight--transparent-red'>this is an open bar event. 🎉</span>"
             />
             <FrequentlyAskedQuestion
               question="I don’t like beer!"
-              answer="Unfortunate, but Rainhard has you covered. There will be wine, spirits, and non-alcoholic options available for those who prefer. "
+              answer="Unfortunate, but Rainhard has you covered. There will be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options</span> available for those who prefer. "
             />
           </div>
         </Wrapper>
