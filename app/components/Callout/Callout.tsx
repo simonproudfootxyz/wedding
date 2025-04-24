@@ -14,7 +14,6 @@ const CalloutContainer = styled.div<CalloutProps>`
   width: 100%;
   height: 100%;
   background-color: ${({ backgroundColor }) => {
-    console.log("Background color:", backgroundColor);
     return backgroundColor || "transparent";
   }};
 `;

@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import Skeleton from "@/public/images/skeleton-ezgif.gif";
 import Image from "next/image";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const EventScheduleContainer = styled.div`
   display: flex;
@@ -20,9 +21,8 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   flex: 0.33; /* 25% of the width */
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  background-color: var(--pink); /* Example background color */
 `;
 
 const StyledH3 = styled.h3`
@@ -31,14 +31,6 @@ const StyledH3 = styled.h3`
   font-weight: 200;
   margin: 0;
   letter-spacing: -2px;
-`;
-
-const VideoLink = styled.a`
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  width: 100%;
-  height: 100%;
 `;
 
 interface EventScheduleProps {

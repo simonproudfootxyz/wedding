@@ -31,3 +31,12 @@ export const StyledSection = styled.section<StyledSectionProps>`
     }
   }
 `;
+
+export const FooterSection = styled(StyledSection)`
+  padding: 30px 0;
+  border-top: 4px solid var(--transparent-white);
+
+  .ballsack {
+    border: 10px solid red;
+  }
+`;

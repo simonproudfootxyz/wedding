@@ -7,6 +7,8 @@ import Wrapper from "./components/Wrapper/Wrapper";
 import OuijaBackground from "@/public/images/OuijaBackground.jpg";
 import Scrabble from "@/public/images/Scrabble.jpg";
 import Misty from "@/public/images/Misty.jpg";
+import RSVPImage from "@/public/images/RSVP.jpg";
+import FooterSkkull from "@/public/images/Footer Skull.png";
 import Card from "./components/Card/Card";
 import { EventSchedule } from "./components/EventSchedule/EventSchedule";
 import EventInfo, {
@@ -17,6 +19,8 @@ import EventInfo, {
 import FrequentlyAskedQuestion from "./components/FrequentlyAskedQuestion/FrequentlyAskedQuestion";
 import EventOverview from "./components/EventOverview/EventOverview";
 import Callout from "./components/Callout/Callout";
+import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
+import { FooterSection } from "./components/Section/SectionStyles";
 
 export default function Home() {
   return (
@@ -87,9 +91,9 @@ export default function Home() {
                 fashioned witching night mischief.{" "}
               </p>
               <p>
-                Note: While we will have snacks later on (see below), we
-                recommend you have dinner beforehand. Nobody wants to be the
-                friend that couldn't handle their soda
+                <span className="highlight--yellow color--black">Note</span>:
+                While we will have snacks later on (see below), we recommend you
+                have dinner beforehand.
               </p>
             </div>
             <div className="content-section">
@@ -105,7 +109,7 @@ export default function Home() {
             </div>
             <div className="content-section">
               <TimeStamps>1:30am</TimeStamps>
-              <p> Lastcall! Final opportunity for drinks on us.</p>
+              <p> Last call! Final opportunity for drinks on us.</p>
             </div>
           </EventInfo>
         </Wrapper>
@@ -260,50 +264,28 @@ export default function Home() {
           </div>
         </Wrapper>
       </Section>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Section backgroundImage={RSVPImage.src}>
+        <StyledRSVPWrapper>
+          <h1 className="rsvp-title">
+            <span className="floating-letter floating-R">R</span>
+            <strong className="floating-letter floating-S">S</strong>
+            <span className="floating-letter floating-V">V</span>
+            <strong className="floating-letter floating-P">P</strong>
+          </h1>
+          <div className="rsvp-content text-align-center">
+            <p>Let us know if you will be joining us in the flesh.</p>
+            <p>We kindly ask you RSVP by October 1st.</p>
+          </div>
+        </StyledRSVPWrapper>
+      </Section>
+
+      <FooterSection>
+        <Wrapper justifyContent="center">
+          <p>
+            <small>Designed by mhairi. ✨ Brought to life by simon. 👽</small>
+          </p>
+        </Wrapper>
+      </FooterSection>
     </div>
   );
 }
