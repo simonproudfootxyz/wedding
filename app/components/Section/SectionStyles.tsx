@@ -14,6 +14,7 @@ export const StyledSection = styled.section<StyledSectionProps>`
       : backgroundColor || "var(--black)";
   }};
   color: var(--white);
+  background-size: cover;
 
   &.event-section {
     & + &.event-section {

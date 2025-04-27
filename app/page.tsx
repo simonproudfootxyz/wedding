@@ -273,7 +273,10 @@ export default function Home() {
             <strong className="floating-letter floating-P">P</strong>
           </h1>
           <div className="rsvp-content text-align-center">
-            <p>Let us know if you will be joining us in the flesh.</p>
+            <p>
+              Let us know if you will be joining us{" "}
+              <span className="highlight--transparent-red">in the flesh.</span>
+            </p>
             <p>We kindly ask you RSVP by October 1st.</p>
           </div>
         </StyledRSVPWrapper>
