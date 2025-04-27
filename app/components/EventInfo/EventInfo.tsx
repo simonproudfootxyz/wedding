@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 interface EventInfoProps {
   heading?: string;
-  description?: string;
   date?: string;
   time?: string;
   location?: string;
@@ -51,12 +50,6 @@ const Content = styled.div`
   }
 `;
 
-const Description = styled.p`
-  font-family: "new-spirit", serif;
-  font-size: 16px;
-  line-height: 1.5;
-`;
-
 const InfoItem = styled.p<InfoItemProps>`
   font-family: "new-spirit", serif;
   background-color: ${({ backgroundColor }) =>
@@ -90,7 +83,6 @@ export const TimeStamps = styled.p`
 
 export const EventInfo: React.FC<EventInfoProps> = ({
   heading,
-  description,
   date,
   time,
   location,
@@ -115,7 +107,7 @@ export const EventInfo: React.FC<EventInfoProps> = ({
           <InfoItem backgroundColor="var(--yellow)">{time}</InfoItem>
         </div>
         <Location>
-          <p dangerouslySetInnerHTML={{ __html: location }}></p>
+          <p dangerouslySetInnerHTML={{ __html: location || "" }}></p>
         </Location>
       </Column>
     </EventInfoContainer>

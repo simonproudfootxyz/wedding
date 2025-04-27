@@ -1,23 +1,14 @@
 import Image from "next/image";
-import styles from "./styles.module.scss";
 import { StyledHero, StyledTopHero } from "./HeroStyles";
 
 const Hero = ({
-  backgroundColor,
-  title,
   classNames,
   children,
-  backgroundImage,
-  aspectRatio = 16 / 9,
 }: {
-  backgroundColor?: string;
-  title?: string;
   classNames?: string;
-  children?: any;
-  backgroundImage?: string;
-  aspectRatio?: number;
+  children?: React.ReactNode;
 }) => {
-  return <StyledHero classNames={`${classNames}`}>{children}</StyledHero>;
+  return <StyledHero className={`${classNames}`}>{children}</StyledHero>;
 };
 
 const TopHero = ({ title }: { title?: string }) => {

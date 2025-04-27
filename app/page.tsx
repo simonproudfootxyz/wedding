@@ -8,14 +8,10 @@ import OuijaBackground from "@/public/images/OuijaBackground.jpg";
 import Scrabble from "@/public/images/Scrabble.jpg";
 import Misty from "@/public/images/Misty.jpg";
 import RSVPImage from "@/public/images/RSVP.jpg";
-import FooterSkkull from "@/public/images/Footer Skull.png";
+// import FooterSkkull from "@/public/images/Footer Skull.png";
 import Card from "./components/Card/Card";
 import { EventSchedule } from "./components/EventSchedule/EventSchedule";
-import EventInfo, {
-  Column,
-  EventInfoContainer,
-  TimeStamps,
-} from "./components/EventInfo/EventInfo";
+import EventInfo, { TimeStamps } from "./components/EventInfo/EventInfo";
 import FrequentlyAskedQuestion from "./components/FrequentlyAskedQuestion/FrequentlyAskedQuestion";
 import EventOverview from "./components/EventOverview/EventOverview";
 import Callout from "./components/Callout/Callout";

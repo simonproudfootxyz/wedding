@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-import styles from "./styles.module.scss";
-import Link from "next/link";
 import {
   NavList,
   StyledNav,

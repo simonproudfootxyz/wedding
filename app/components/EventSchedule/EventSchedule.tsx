@@ -1,9 +1,8 @@
 "use client";
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import Skeleton from "@/public/images/skeleton-ezgif.gif";
 import Image from "next/image";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const EventScheduleContainer = styled.div`
   display: flex;
