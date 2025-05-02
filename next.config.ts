@@ -2,9 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: "export",
+  // output: "export",
+  reactStrictMode: true,
   compiler: {
-    styledComponents: true,
+    styledComponents: true, // Enables styled-components support
   },
 };
 
