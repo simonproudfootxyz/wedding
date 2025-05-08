@@ -229,6 +229,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  color: var(--black);
+  background: var(--yellow);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -299,6 +304,18 @@ li a::after {
   background: var(--orange);
   height: 4px;
   z-index: -1;
+  transition: 0.3s all ease;
+}
+
+p a:hover::after,
+p a:focus::after,
+li a:hover::after,
+li a:focus::after {
+  bottom: -3px;
+  transform: rotate(1deg);
+  /* background: var(--black); */
+  /* background: var(--yellow); */
+  background: var(--orange);
 }
 
 ul {
