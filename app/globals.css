@@ -286,6 +286,11 @@ a {
   font-size: inherit;
 }
 
+a::selection {
+  background: var(--pink);
+  text-decoration: underline;
+}
+
 p a,
 li a {
   display: inline-block;
@@ -305,6 +310,17 @@ li a::after {
   height: 4px;
   z-index: -1;
   transition: 0.3s all ease;
+}
+
+p a:hover,
+p a:focus,
+li a:hover,
+li a:focus {
+  /* TODO: come up with hover/focus state */
+  /* background: var(--black); */
+  /* background: var(--yellow); */
+  /* background: var(--orange); */
+  /* color: var(--black); */
 }
 
 p a:hover::after,
@@ -329,10 +345,18 @@ p span.highlight--transparent-red {
   font-weight: 500;
 }
 
+p span.highlight--transparent-red::selection {
+  background: var(--transparent-red);
+}
+
 p span.highlight--yellow {
   background: var(--yellow);
   padding: 0 5px;
   line-height: 1.4;
+}
+
+p span.highlight--yellow::selection {
+  background: var(--orange);
 }
 
 /* UTILITIES */
