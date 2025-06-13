@@ -13,6 +13,7 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease;
 
   h2 {
     color: transparent;

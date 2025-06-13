@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.scss";
 import { TopHero } from "./components/Hero/Hero";
@@ -17,8 +19,19 @@ import EventOverview from "./components/EventOverview/EventOverview";
 import Callout from "./components/Callout/Callout";
 import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
 import { FooterSection } from "./components/Section/SectionStyles";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    // Ensure this runs only on the client side
+    const urlParams = new URLSearchParams(window.location.search);
+    const reservationId = urlParams.get("reservationId");
+
+    if (reservationId) {
+      // Save the reservationId to local storage
+      localStorage.setItem("reservationId", reservationId as string);
+    }
+  }, []);
   return (
     <div className={styles.page}>
       <Nav />
