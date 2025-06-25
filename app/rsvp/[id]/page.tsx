@@ -20,8 +20,10 @@ import Image from "next/image";
 // import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
 // import { FooterSection } from "./components/Section/SectionStyles";
 import { useEffect, useState } from "react";
-import { getAirtableRecords } from "../utilities/airtable";
 import { TopHero } from "@/app/components/Hero/Hero";
+import { get } from "http";
+import { useParams } from "next/navigation";
+// import { getAirtableRecords } from "@/app/utilities/airtable";
 
 export default function RSVP() {
   //   useEffect(() => {
@@ -34,30 +36,47 @@ export default function RSVP() {
   //       localStorage.setItem("reservationId", reservationId as string);
   //     }
   //   }, []);
-  const [records, setRecords] = useState([]);
+
+  type Reservation = { id: string; [key: string]: any };
+  const [reservation, setReservation] = useState<Reservation | null>(null);
+  const [guests, setGuests] = useState(null);
+  const params = useParams();
+  const slug = params?.id;
+  console.log("Slug:", slug);
 
   useEffect(() => {
-    console.log("hey");
-    fetch("/api/airtable?tableName=Reservations&identifier=mhairiandsimon")
+    // fetch("/api/airtable?tableName=Reservations&identifier=mhairiandsimon")
+    //   .then((res) => res.json())
+    //   .then((data) => setRecords(data))
+    //   .catch((error) =>
+    //     console.error("Error fetching Airtable records:", error)
+    //   );
+
+    fetch(`/api/getGuestsByReservation?slug=${slug}`)
       .then((res) => res.json())
-      .then((data) => setRecords(data))
+      .then((data) => {
+        setGuests(data);
+      })
       .catch((error) =>
         console.error("Error fetching Airtable records:", error)
       );
   }, []);
-  console.log({ records });
+  console.log({ reservation });
   const pageTitle = `RSVP - !`;
-  if (!records) {
+  if (!guests) {
     return <div>Loading...</div>;
   }
   return (
     <div className="page">
       <TopHero title={pageTitle} />
-      <ul>
-        {records.map((record) => (
-          <li key={record.id}>{JSON.stringify(record.fields)}</li>
-        ))}
-      </ul>
+      {/* <p>{reservation}</p> */}
+      {guests && (
+        <ul>
+          {guests.map((record) => (
+            <li key={record.id}>{JSON.stringify(record.fields)}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

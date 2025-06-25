@@ -31,3 +31,24 @@ export const getAirtableRecords = async (
     throw error;
   }
 };
+
+export const getGuestsByIds = async (assignees: string[]) => {
+  console.error(`Fetching guests for reservation ID: ${assignees}`);
+  try {
+    const records = await Promise.all(
+      assignees.map(async (id) => {
+        try {
+          return await base("Guests").find(id);
+        } catch (err) {
+          console.error(`Error fetching guest with ID ${id}:`, err);
+          return null;
+        }
+      })
+    );
+    // Filter out any nulls in case some IDs were not found
+    return records.filter((record) => record !== null);
+  } catch (error) {
+    console.error("Error fetching guests by reservation:", error);
+    throw error;
+  }
+};
