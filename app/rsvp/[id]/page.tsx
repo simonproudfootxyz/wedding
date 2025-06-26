@@ -62,6 +62,7 @@ export default function RSVP() {
       );
   }, []);
   console.log({ reservation });
+  console.log({ guests });
   const pageTitle = `RSVP - !`;
   if (!guests) {
     return <div>Loading...</div>;
@@ -73,7 +74,7 @@ export default function RSVP() {
       {guests && (
         <ul>
           {guests.map((record) => (
-            <li key={record.id}>{JSON.stringify(record.fields)}</li>
+            <li key={record.id}>{JSON.stringify(record)}</li>
           ))}
         </ul>
       )}

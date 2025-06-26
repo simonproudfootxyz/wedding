@@ -15,7 +15,7 @@ export default async function handler(
   try {
     // Extract table name from query parameters
     const { slug } = req.query;
-    console.log("Slug:", slug);
+    // console.log("Slug:", slug);
 
     if (!slug || typeof slug !== "string") {
       return res

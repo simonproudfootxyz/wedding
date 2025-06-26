@@ -1,4 +1,13 @@
 import Airtable from "airtable";
+import {
+  AIRTABLE_ATTENDING,
+  AIRTABLE_DIETARY_RESTRICTIONS,
+  AIRTABLE_EMAIL,
+  AIRTABLE_FIRST_NAME,
+  AIRTABLE_GUEST_INVITE_TYPE,
+  AIRTABLE_LAST_NAME,
+  AIRTABLE_OTHER_DIETARY_NOTES,
+} from "./consts";
 
 // Initialize Airtable base
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
@@ -33,12 +42,34 @@ export const getAirtableRecords = async (
 };
 
 export const getGuestsByIds = async (assignees: string[]) => {
-  console.error(`Fetching guests for reservation ID: ${assignees}`);
+  console.error(`Fetching guests for assignees: ${assignees}`);
   try {
     const records = await Promise.all(
       assignees.map(async (id) => {
         try {
-          return await base("Guests").find(id);
+          // Use select to only fetch the specific field by its ID
+          const records = await base("Guests")
+            .select({
+              filterByFormula: `RECORD_ID() = '${id}'`,
+              returnFieldsByFieldId: true,
+              fields: [
+                AIRTABLE_FIRST_NAME,
+                AIRTABLE_LAST_NAME,
+                AIRTABLE_EMAIL,
+                AIRTABLE_ATTENDING,
+                AIRTABLE_GUEST_INVITE_TYPE,
+                AIRTABLE_DIETARY_RESTRICTIONS,
+                AIRTABLE_OTHER_DIETARY_NOTES,
+              ],
+              pageSize: 1,
+            })
+            .firstPage();
+          if (records.length === 0) {
+            console.error(`No guest found with ID ${id}`);
+            return null;
+          }
+          // Return just the value of the specific field
+          return records[0];
         } catch (err) {
           console.error(`Error fetching guest with ID ${id}:`, err);
           return null;
