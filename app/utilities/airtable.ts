@@ -7,7 +7,9 @@ import {
   AIRTABLE_GUEST_INVITE_TYPE,
   AIRTABLE_LAST_NAME,
   AIRTABLE_OTHER_DIETARY_NOTES,
+  AIRTABLE_RSVP_RESPONDED,
 } from "./consts";
+import { Guest } from "./types";
 
 // Initialize Airtable base
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
@@ -47,29 +49,7 @@ export const getGuestsByIds = async (assignees: string[]) => {
     const records = await Promise.all(
       assignees.map(async (id) => {
         try {
-          // Use select to only fetch the specific field by its ID
-          const records = await base("Guests")
-            .select({
-              filterByFormula: `RECORD_ID() = '${id}'`,
-              returnFieldsByFieldId: true,
-              fields: [
-                AIRTABLE_FIRST_NAME,
-                AIRTABLE_LAST_NAME,
-                AIRTABLE_EMAIL,
-                AIRTABLE_ATTENDING,
-                AIRTABLE_GUEST_INVITE_TYPE,
-                AIRTABLE_DIETARY_RESTRICTIONS,
-                AIRTABLE_OTHER_DIETARY_NOTES,
-              ],
-              pageSize: 1,
-            })
-            .firstPage();
-          if (records.length === 0) {
-            console.error(`No guest found with ID ${id}`);
-            return null;
-          }
-          // Return just the value of the specific field
-          return records[0];
+          return base("Guests").find(id);
         } catch (err) {
           console.error(`Error fetching guest with ID ${id}:`, err);
           return null;
@@ -78,6 +58,35 @@ export const getGuestsByIds = async (assignees: string[]) => {
     );
     // Filter out any nulls in case some IDs were not found
     return records.filter((record) => record !== null);
+  } catch (error) {
+    console.error("Error fetching guests by reservation:", error);
+    throw error;
+  }
+};
+
+export const updateGuests = async (guests: Guest[]) => {
+  console.error(`Fetching guests for assignees: ${guests}`);
+  try {
+    const records = guests.map((guest) => {
+      return {
+        id: guest.id,
+        fields: {
+          [AIRTABLE_FIRST_NAME]: guest.fields[AIRTABLE_FIRST_NAME],
+          [AIRTABLE_LAST_NAME]: guest.fields[AIRTABLE_LAST_NAME],
+          [AIRTABLE_EMAIL]: guest.fields[AIRTABLE_EMAIL],
+          [AIRTABLE_ATTENDING]: guest.fields[AIRTABLE_ATTENDING],
+          // [AIRTABLE_ATTENDING]: "Yes", // Assuming you want to set this to true
+          // [AIRTABLE_DIETARY_RESTRICTIONS]: [`Vegan`, `Vegetarian`], // Example dietary restrictions
+          [AIRTABLE_OTHER_DIETARY_NOTES]:
+            guest.fields[AIRTABLE_OTHER_DIETARY_NOTES],
+          [AIRTABLE_GUEST_INVITE_TYPE]:
+            guest.fields[AIRTABLE_GUEST_INVITE_TYPE],
+        },
+      };
+    });
+    // Filter out any nulls in case some IDs were not found
+    const updatedRecords = await base("Guests").update(records);
+    return updatedRecords;
   } catch (error) {
     console.error("Error fetching guests by reservation:", error);
     throw error;

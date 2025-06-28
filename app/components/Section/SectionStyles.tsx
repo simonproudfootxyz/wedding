@@ -1,9 +1,11 @@
 "use client";
+import { text } from "stream/consumers";
 import styled from "styled-components";
 
 interface StyledSectionProps {
   backgroundColor?: string;
   backgroundImage?: string;
+  textColor?: string;
 }
 
 export const StyledSection = styled.section<StyledSectionProps>`
@@ -13,7 +15,9 @@ export const StyledSection = styled.section<StyledSectionProps>`
       ? `url(${backgroundImage})`
       : backgroundColor || "var(--black)";
   }};
-  color: var(--white);
+  color: ${({ textColor }) => {
+    return textColor ? textColor : "var(--white)";
+  }};
   background-size: cover;
 
   &.event-section {
