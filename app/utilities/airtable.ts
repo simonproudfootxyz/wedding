@@ -1,13 +1,11 @@
 import Airtable from "airtable";
 import {
   AIRTABLE_ATTENDING,
-  AIRTABLE_DIETARY_RESTRICTIONS,
   AIRTABLE_EMAIL,
   AIRTABLE_FIRST_NAME,
   AIRTABLE_GUEST_INVITE_TYPE,
   AIRTABLE_LAST_NAME,
   AIRTABLE_OTHER_DIETARY_NOTES,
-  AIRTABLE_RSVP_RESPONDED,
 } from "./consts";
 import { Guest } from "./types";
 
@@ -75,8 +73,6 @@ export const updateGuests = async (guests: Guest[]) => {
           [AIRTABLE_LAST_NAME]: guest.fields[AIRTABLE_LAST_NAME],
           [AIRTABLE_EMAIL]: guest.fields[AIRTABLE_EMAIL],
           [AIRTABLE_ATTENDING]: guest.fields[AIRTABLE_ATTENDING],
-          // [AIRTABLE_ATTENDING]: "Yes", // Assuming you want to set this to true
-          // [AIRTABLE_DIETARY_RESTRICTIONS]: [`Vegan`, `Vegetarian`], // Example dietary restrictions
           [AIRTABLE_OTHER_DIETARY_NOTES]:
             guest.fields[AIRTABLE_OTHER_DIETARY_NOTES],
           [AIRTABLE_GUEST_INVITE_TYPE]:

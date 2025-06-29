@@ -1,5 +1,4 @@
 "use client";
-import { text } from "stream/consumers";
 import styled from "styled-components";
 
 interface StyledSectionProps {

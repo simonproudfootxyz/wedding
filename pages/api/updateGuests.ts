@@ -1,6 +1,6 @@
 // This API route returns a Reservation record and its Guests from Airtable
 
-import { getGuestsByIds, updateGuests } from "@/app/utilities/airtable";
+import { updateGuests } from "@/app/utilities/airtable";
 import { Guest } from "@/app/utilities/types";
 import { NextApiRequest, NextApiResponse } from "next";
 

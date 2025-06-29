@@ -37,7 +37,7 @@ const RSVPForm = ({ guests }) => {
     });
   };
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<RSVPFormData>();
 
   return (
     <form action="" onSubmit={handleSubmit(handleFormSubmit)}>
@@ -74,15 +74,20 @@ const RSVPForm = ({ guests }) => {
                   No
                 </label>
               </fieldset>
-              <br />
-              <label>
-                Other Dietary Notes:
-                <input
-                  type="text"
-                  {...register(`guests.${record.id}.fields.OtherDietaryNotes`)}
-                  defaultValue={record.fields.OtherDietaryNotes || ""}
-                />
-              </label>
+              {record.fields.InviteType === "Ceremony" && (
+                <div>
+                  <label>
+                    Other Dietary Notes:
+                    <input
+                      type="text"
+                      {...register(
+                        `guests.${record.id}.fields.OtherDietaryNotes`
+                      )}
+                      defaultValue={record.fields.OtherDietaryNotes || ""}
+                    />
+                  </label>
+                </div>
+              )}
               <hr />
             </li>
           );
@@ -123,6 +128,7 @@ export default function RSVP() {
       </div>
     );
   }
+  console.log({ guests });
 
   return (
     <div className="page">
