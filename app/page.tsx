@@ -19,22 +19,60 @@ import EventOverview from "./components/EventOverview/EventOverview";
 import Callout from "./components/Callout/Callout";
 import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
 import { FooterSection } from "./components/Section/SectionStyles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const [reservationType, setReservationType] = useState<string | null>(null);
   useEffect(() => {
     // Ensure this runs only on the client side
     const urlParams = new URLSearchParams(window.location.search);
-    const reservationId = urlParams.get("reservationId");
-
+    const reservationId =
+      urlParams.get("reservationId") || localStorage.getItem("reservationId");
     if (reservationId) {
       // Save the reservationId to local storage
       localStorage.setItem("reservationId", reservationId as string);
+      // Fetch the reservation record based on the slug
+      fetch(`/api/getReservationBySlug?slug=${reservationId}`)
+        .then((res) => res.json())
+        .then((reservation) => {
+          // Save the reservation type to state
+          setReservationType(reservation.fields.ReservationType);
+        })
+        .catch((error) =>
+          console.error("Error fetching Airtable records:", error)
+        );
+    } else {
+      router.push("/rsvp");
     }
-  }, []);
+  }, [router]);
+
+  const reservationId = localStorage.getItem("reservationId");
+  const isCeremony = reservationType === "Ceremony";
+
+  if (!reservationType) {
+    return (
+      <div className={styles.page}>
+        <Nav />
+        <TopHero title="mhairi and simon are&nbsp;getting married." />
+        <div>
+          <Image
+            src="/images/M+S_CreativeEngagementSession_Toronto_2025-10 1.jpg"
+            alt="Creative Engagement Session in Toronto"
+            width={1152} // Replace with the actual width of the image
+            height={768} // Replace with the actual height of the image
+            layout="responsive" // Ensures the image is responsive
+            priority // Optional: Preloads the image for better performance
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.page}>
-      <Nav />
+      <Nav slug={reservationId} />
       <TopHero title="mhairi and simon are&nbsp;getting married." />
       <div>
         <Image

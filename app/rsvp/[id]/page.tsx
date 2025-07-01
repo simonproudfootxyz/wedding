@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { TopHero } from "@/app/components/Hero/Hero";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Section from "@/app/components/Section/Section";
 import Wrapper from "@/app/components/Wrapper/Wrapper";
 import { Guest } from "@/app/utilities/types";
@@ -22,19 +22,33 @@ type RSVPFormData = {
 };
 
 const RSVPForm = ({ guests }) => {
-  const handleFormSubmit = (formData: RSVPFormData) => {
+  const router = useRouter();
+  const handleFormSubmit = async (formData: RSVPFormData) => {
     const guestKeys = Object.keys(formData.guests);
-    const formattedGuests = guestKeys.map((key) => {
-      return formData.guests[key];
-    });
-    console.log({ formattedGuests });
-    fetch("/api/updateGuests", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ payload: formattedGuests }),
-    });
+    const formattedGuests = guestKeys.map((key) => formData.guests[key]);
+    try {
+      const response = await fetch("/api/updateGuests", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ payload: formattedGuests }),
+      });
+
+      if (!response.ok) {
+        alert("There was an error submitting your RSVP. Please try again.");
+        return null;
+      }
+
+      const data = await response.json();
+      alert("RSVP submitted successfully! \nThank you!");
+      router.push(window.location.origin);
+      return data;
+    } catch (error) {
+      console.error("Error submitting RSVP:", error);
+      alert("There was an error submitting your RSVP. Please try again.");
+      return null;
+    }
   };
 
   const { register, handleSubmit } = useForm<RSVPFormData>();
@@ -104,7 +118,7 @@ export default function RSVP() {
   const slug = params?.id;
 
   useEffect(() => {
-    // Fetch the reservation record based on the slug
+    // Fetch the guests based on the slug
     fetch(`/api/getGuestsByReservation?slug=${slug}`)
       .then((res) => res.json())
       .then((data) => {
@@ -113,6 +127,7 @@ export default function RSVP() {
           fields: guest.fields,
         }));
         setGuests(formattedGuests);
+        localStorage.setItem("reservationId", slug);
       })
       .catch((error) =>
         console.error("Error fetching Airtable records:", error)
@@ -132,13 +147,15 @@ export default function RSVP() {
 
   return (
     <div className="page">
-      <TopHero title={guests ? pageTitle : ""} />
+      <TopHero title={pageTitle} />
       <Section
         classNames="cream-section"
         backgroundColor="var(--cream)"
         textColor="var(--black)"
       >
-        <Wrapper>{guests && <RSVPForm guests={guests} />}</Wrapper>
+        <Wrapper>
+          <RSVPForm guests={guests} />
+        </Wrapper>
       </Section>
     </div>
   );

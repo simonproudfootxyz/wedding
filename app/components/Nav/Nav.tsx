@@ -26,8 +26,11 @@ const handleScroll = () => {
     }
   }
 };
+interface NavProps {
+  slug?: string;
+}
 
-const Nav: React.FC = () => {
+const Nav: React.FC<NavProps> = ({ slug }) => {
   useEffect(() => {
     handleScroll();
     window.addEventListener("scroll", debounce(handleScroll, 50));
@@ -59,7 +62,7 @@ const Nav: React.FC = () => {
         <Logo>mhairi&nbsp;and&nbsp;simon are&nbsp;getting&nbsp;married.</Logo>
       </div>
       <RSVPLinkContainer>
-        <RSVPLink href="/rsvp" className={`button`}>
+        <RSVPLink href={slug ? `/rsvp/${slug}` : "/rsvp"} className={`button`}>
           RSVP
         </RSVPLink>
       </RSVPLinkContainer>
