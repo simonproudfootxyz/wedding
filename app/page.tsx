@@ -49,7 +49,7 @@ export default function Home() {
   }, [router]);
 
   const reservationId = localStorage.getItem("reservationId");
-  const isCeremony = reservationType === "Ceremony";
+  // const isCeremony = reservationType === "Ceremony";
 
   if (!reservationType) {
     return (

@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { TopHero } from "@/app/components/Hero/Hero";
-import { useParams } from "next/navigation";
 import Section from "@/app/components/Section/Section";
 import Wrapper from "@/app/components/Wrapper/Wrapper";
 import { Guest, Reservation } from "@/app/utilities/types";
