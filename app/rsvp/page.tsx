@@ -6,8 +6,6 @@ import { TopHero } from "@/app/components/Hero/Hero";
 import Section from "@/app/components/Section/Section";
 import Wrapper from "@/app/components/Wrapper/Wrapper";
 import { Guest, Reservation } from "@/app/utilities/types";
-import { useFormState } from "react-hook-form";
-// import { getAirtableRecords } from "@/app/utilities/airtable";
 
 type RSVPLookupFormData = {
   FirstName: string;
@@ -25,7 +23,6 @@ const RSVPLookupForm = ({
     register,
     handleSubmit,
     reset,
-    control,
     formState: { errors },
   } = useForm<RSVPLookupFormData>();
 
@@ -113,6 +110,37 @@ const RSVPLookupForm = ({
           </button>
         </div>
       </div>
+      {hasExactGuest && (
+        <>
+          <p>
+            <a
+              href={`${window.location.origin}/?reservationId=${reservationLookup?.fields.Invite_Code}`}
+            >
+              {guestLookup.fields.FirstName} {guestLookup.fields.LastName} -
+              RSVP
+            </a>
+          </p>
+        </>
+      )}
+      {requiresFuzzyLookup && (
+        <div>
+          <h3>Fuzzy Matches:</h3>
+          <ul>
+            {fuzzyLookups.map((lookup) => {
+              return (
+                <li key={lookup.guest.id}>
+                  <a
+                    href={`${window.location.origin}/reservationId?=${lookup.reservation.fields.Invite_Code}`}
+                  >
+                    {lookup.guest.fields.FirstName}{" "}
+                    {lookup.guest.fields.LastName}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
     </form>
   );
 };
