@@ -132,7 +132,7 @@ export default function RSVP() {
       .catch((error) =>
         console.error("Error fetching Airtable records:", error)
       );
-  }, []);
+  }, [slug]);
   const pageTitle = `RSVP - ${guests
     ?.map((guest) => guest.fields.FirstName)
     .join(" & ")}!`;

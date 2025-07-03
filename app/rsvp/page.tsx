@@ -6,6 +6,7 @@ import { TopHero } from "@/app/components/Hero/Hero";
 import Section from "@/app/components/Section/Section";
 import Wrapper from "@/app/components/Wrapper/Wrapper";
 import { Guest, Reservation } from "@/app/utilities/types";
+import { useFormState } from "react-hook-form";
 // import { getAirtableRecords } from "@/app/utilities/airtable";
 
 type RSVPLookupFormData = {
@@ -24,14 +25,17 @@ const RSVPLookupForm = ({
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<RSVPLookupFormData>();
 
+  //   set up state
   const [fuzzyLookups, setFuzzyLookups] = useState<[] | null>(null);
   const [guestLookup, setGuestLookup] = useState<Guest | null>(null);
   const [reservationLookup, setReservationLookup] =
     useState<Reservation | null>(null);
 
+  // Form submission
   const handleFormSubmit = async (formData: RSVPLookupFormData) => {
     const { FirstName, LastName } = formData;
     const format = (s: string) => s.trim().toLowerCase();
@@ -67,14 +71,18 @@ const RSVPLookupForm = ({
   const handleResetClick = () => {
     setGuestLookup(null);
     setReservationLookup(null);
+    setFuzzyLookups(null);
     reset();
   };
+
+  const hasExactGuest = guestLookup && reservationLookup;
+  const requiresFuzzyLookup = !guestLookup && fuzzyLookups;
 
   return (
     <form action="" onSubmit={handleSubmit(handleFormSubmit)}>
       <div style={{ marginBottom: "1rem" }}>
         <div>
-          <label htmlFor="search">First Name:</label>
+          <label htmlFor="FirstName">First Name:</label>
           <input
             id="FirstName"
             type="text"
@@ -84,7 +92,7 @@ const RSVPLookupForm = ({
           {errors.FirstName && <p>{errors.FirstName.message}</p>}
         </div>
         <div>
-          <label htmlFor="search">Last Name:</label>
+          <label htmlFor="LastName">Last Name:</label>
           <input
             id="LastName"
             type="text"
@@ -94,46 +102,17 @@ const RSVPLookupForm = ({
           {errors.LastName && <p>{errors.LastName.message}</p>}
         </div>
       </div>
-
-      <button type="submit">Look up</button>
-      {guestLookup && reservationLookup && (
-        <>
-          <button
-            type="button"
-            onClick={() => handleResetClick()}
-            style={{ marginLeft: "1rem" }}
-          >
+      <div>
+        <div>
+          <button type="submit">Look up</button>
+        </div>
+        {}
+        <div>
+          <button type="button" onClick={() => handleResetClick()}>
             Clear
           </button>
-          <p>
-            <a
-              href={`${window.location.origin}/?reservationId=${reservationLookup?.fields.Invite_Code}`}
-            >
-              {guestLookup.fields.FirstName} {guestLookup.fields.LastName} -
-              RSVP
-            </a>
-          </p>
-        </>
-      )}
-      {!guestLookup && fuzzyLookups && fuzzyLookups.length > 0 && (
-        <div>
-          <h3>Fuzzy Matches:</h3>
-          <ul>
-            {fuzzyLookups.map((lookup) => {
-              return (
-                <li key={lookup.guest.id}>
-                  <a
-                    href={`${window.location.origin}/reservationId?=${lookup.reservation.fields.Invite_Code}`}
-                  >
-                    {lookup.guest.fields.FirstName}{" "}
-                    {lookup.guest.fields.LastName}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
         </div>
-      )}
+      </div>
     </form>
   );
 };
