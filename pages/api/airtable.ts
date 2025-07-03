@@ -8,8 +8,6 @@ export default async function handler(
   try {
     // Extract table name from query parameters
     const { tableName, searchByField, searchByIdentifier } = req.query;
-    console.log("Table name:", tableName);
-    console.log("Identifier:", searchByIdentifier);
 
     if (!tableName || typeof tableName !== "string") {
       return res

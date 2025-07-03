@@ -39,6 +39,7 @@ export default function Home() {
         .then((reservation) => {
           // Save the reservation type to state
           setReservationType(reservation.fields.ReservationType);
+          router.push(window.location.origin);
         })
         .catch((error) =>
           console.error("Error fetching Airtable records:", error)

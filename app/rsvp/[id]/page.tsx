@@ -143,7 +143,6 @@ export default function RSVP() {
       </div>
     );
   }
-  console.log({ guests });
 
   return (
     <div className="page">

@@ -27,32 +27,41 @@ const RSVPLookupForm = ({
     formState: { errors },
   } = useForm<RSVPLookupFormData>();
 
+  const [fuzzyLookups, setFuzzyLookups] = useState<[] | null>(null);
   const [guestLookup, setGuestLookup] = useState<Guest | null>(null);
   const [reservationLookup, setReservationLookup] =
     useState<Reservation | null>(null);
 
   const handleFormSubmit = async (formData: RSVPLookupFormData) => {
-    console.log({ formData });
     const { FirstName, LastName } = formData;
-    const formattedFirstName = FirstName.trim().toLowerCase();
-    const formattedLastName = LastName.trim().toLowerCase();
-    const guestLookup = guests.find((guest) => {
-      const guestFirstName = guest.fields.FirstName.trim().toLowerCase();
-      const guestLastName = guest.fields.LastName.trim().toLowerCase();
-      return (
-        guestFirstName === formattedFirstName.toLowerCase() &&
-        guestLastName === formattedLastName.toLowerCase()
-      );
-    });
-    const reservationLookup = reservations.find((reservation) => {
-      return (
-        reservation.fields.Assignee &&
-        reservation.fields.Assignee.includes(guestLookup?.id)
-      );
-    });
-    console.log({ guestLookup, reservationLookup });
-    setGuestLookup(guestLookup);
-    setReservationLookup(reservationLookup);
+    const format = (s: string) => s.trim().toLowerCase();
+
+    const exactGuest = guests.find(
+      (g) =>
+        format(g.fields.FirstName) === format(FirstName) &&
+        format(g.fields.LastName) === format(LastName)
+    );
+
+    const exactReservation = exactGuest
+      ? reservations.find((r) => r.fields.Assignee?.includes(exactGuest.id))
+      : null;
+
+    const fuzzyLookups = guests
+      .filter(
+        (g) =>
+          format(g.fields.FirstName).includes(format(FirstName)) ||
+          format(g.fields.LastName).includes(format(LastName))
+      )
+      .map((guest) => ({
+        guest,
+        reservation:
+          reservations.find((r) => r.fields.Assignee?.includes(guest.id)) ||
+          null,
+      }));
+
+    setFuzzyLookups(fuzzyLookups);
+    setGuestLookup(exactGuest);
+    setReservationLookup(exactReservation);
   };
 
   const handleResetClick = () => {
@@ -60,11 +69,6 @@ const RSVPLookupForm = ({
     setReservationLookup(null);
     reset();
   };
-
-  useEffect(() => {
-    // This effect can be used to handle any side effects after form submission
-    console.log({ errors });
-  }, [errors]);
 
   return (
     <form action="" onSubmit={handleSubmit(handleFormSubmit)}>
@@ -101,15 +105,34 @@ const RSVPLookupForm = ({
           >
             Clear
           </button>
-          <div>
+          <p>
             <a
               href={`${window.location.origin}/?reservationId=${reservationLookup?.fields.Invite_Code}`}
             >
               {guestLookup.fields.FirstName} {guestLookup.fields.LastName} -
               RSVP
             </a>
-          </div>
+          </p>
         </>
+      )}
+      {!guestLookup && fuzzyLookups && fuzzyLookups.length > 0 && (
+        <div>
+          <h3>Fuzzy Matches:</h3>
+          <ul>
+            {fuzzyLookups.map((lookup) => {
+              return (
+                <li key={lookup.guest.id}>
+                  <a
+                    href={`${window.location.origin}/reservationId?=${lookup.reservation.fields.Invite_Code}`}
+                  >
+                    {lookup.guest.fields.FirstName}{" "}
+                    {lookup.guest.fields.LastName}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       )}
     </form>
   );
