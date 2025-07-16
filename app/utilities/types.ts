@@ -7,6 +7,7 @@ export type Guest = {
     OtherDietaryNotes?: string;
     Attending?: boolean;
     Reservation?: string[];
+    InviteCode?: string[];
     [key: string]: string;
   };
 };
@@ -14,7 +15,7 @@ export type Guest = {
 export type Reservation = {
   id: string;
   fields: {
-    Invite_Code: string;
+    InviteCode: string;
     ReservationType: string;
     Assignee: string[];
     [key: string]: string | string[];

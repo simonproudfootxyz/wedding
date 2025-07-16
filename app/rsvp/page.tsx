@@ -6,6 +6,7 @@ import { TopHero } from "@/app/components/Hero/Hero";
 import Section from "@/app/components/Section/Section";
 import Wrapper from "@/app/components/Wrapper/Wrapper";
 import { Guest, Reservation } from "@/app/utilities/types";
+import RSVPLayout from "../layouts/rsvp/RSVPLayout";
 
 type RSVPLookupFormData = {
   FirstName: string;
@@ -114,7 +115,7 @@ const RSVPLookupForm = ({
         <>
           <p>
             <a
-              href={`${window.location.origin}/?reservationId=${reservationLookup?.fields.Invite_Code}`}
+              href={`${window.location.origin}/?reservationId=${reservationLookup?.fields.InviteCode}`}
             >
               {guestLookup.fields.FirstName} {guestLookup.fields.LastName} -
               RSVP
@@ -130,7 +131,7 @@ const RSVPLookupForm = ({
               return (
                 <li key={lookup.guest.id}>
                   <a
-                    href={`${window.location.origin}/reservationId?=${lookup.reservation.fields.Invite_Code}`}
+                    href={`${window.location.origin}/reservationId?=${lookup.reservation.fields.InviteCode}`}
                   >
                     {lookup.guest.fields.FirstName}{" "}
                     {lookup.guest.fields.LastName}
@@ -180,14 +181,13 @@ export default function RSVP() {
   if (!guests || !reservations) {
     return (
       <div className="page">
-        <TopHero title="Loading..." />
+        <RSVPLayout />
       </div>
     );
   }
 
   return (
-    <div className="page">
-      <TopHero title={"RSVP"} />
+    <RSVPLayout loading={false}>
       <Section
         classNames="cream-section"
         backgroundColor="var(--cream)"
@@ -199,6 +199,6 @@ export default function RSVP() {
           )}
         </Wrapper>
       </Section>
-    </div>
+    </RSVPLayout>
   );
 }

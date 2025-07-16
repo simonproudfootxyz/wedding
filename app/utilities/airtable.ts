@@ -19,7 +19,7 @@ export const getAirtableRecords = async (
   tableName: string,
   view = "Grid view",
   searchByIdentifier?: string,
-  searchByField: string = "Invite_Code" // Default field to search by
+  searchByField: string = "InviteCode" // Default field to search by
 ) => {
   console.error(`Fetching records from table: ${tableName} with view: ${view}`);
   try {
