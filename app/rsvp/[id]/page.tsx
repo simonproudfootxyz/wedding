@@ -7,6 +7,7 @@ import { useParams, useRouter } from "next/navigation";
 import Section from "@/app/components/Section/Section";
 import Wrapper from "@/app/components/Wrapper/Wrapper";
 import { Guest } from "@/app/utilities/types";
+import RSVPLayout from "@/app/layouts/rsvp/RSVPLayout";
 // import { getAirtableRecords } from "@/app/utilities/airtable";
 
 type RSVPFormData = {
@@ -133,29 +134,18 @@ export default function RSVP() {
         console.error("Error fetching Airtable records:", error)
       );
   }, [slug]);
-  const pageTitle = `RSVP - ${guests
-    ?.map((guest) => guest.fields.FirstName)
-    .join(" & ")}!`;
+
+  const hasPluralGuests = guests?.length > 1;
+  const spiritText = hasPluralGuests ? "spirits" : "spirit";
+  const guestText = guests?.map((guest) => guest.fields.FirstName).join(" & ");
+  const pageTitle = `Welcome, ${spiritText} of ${guestText}!`;
   if (!guests) {
-    return (
-      <div className="page">
-        <TopHero title="Loading..." />
-      </div>
-    );
+    return <RSVPLayout loading={true} />;
   }
 
   return (
-    <div className="page">
-      <TopHero title={pageTitle} />
-      <Section
-        classNames="cream-section"
-        backgroundColor="var(--cream)"
-        textColor="var(--black)"
-      >
-        <Wrapper>
-          <RSVPForm guests={guests} />
-        </Wrapper>
-      </Section>
-    </div>
+    <RSVPLayout loading={false} titleText={pageTitle}>
+      <RSVPForm guests={guests} />
+    </RSVPLayout>
   );
 }

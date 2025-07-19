@@ -188,17 +188,7 @@ export default function RSVP() {
 
   return (
     <RSVPLayout loading={false}>
-      <Section
-        classNames="cream-section"
-        backgroundColor="var(--cream)"
-        textColor="var(--black)"
-      >
-        <Wrapper>
-          {guests && (
-            <RSVPLookupForm guests={guests} reservations={reservations} />
-          )}
-        </Wrapper>
-      </Section>
+      {guests && <RSVPLookupForm guests={guests} reservations={reservations} />}
     </RSVPLayout>
   );
 }
