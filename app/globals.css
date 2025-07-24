@@ -191,6 +191,7 @@ font-style: italic; */
   --white: #ffffff;
   --off-white: rgba(255, 255, 255, 0.5);
   --transparent-white: rgba(255, 255, 255, 0.05);
+  --transparent-white-2: rgba(255, 255, 255, 0.2);
   --cream: #dad6cf;
   --black: #202020;
   --pink: #c792df;
@@ -298,6 +299,7 @@ a {
   font-family: var(--new-spirit), serif;
   font-weight: 500;
   font-size: inherit;
+  transition: all 0.3s ease;
 }
 
 a::selection {
@@ -305,6 +307,7 @@ a::selection {
   text-decoration: underline;
 }
 
+div a,
 p a,
 li a {
   display: inline-block;
@@ -312,6 +315,7 @@ li a {
   z-index: 0;
 }
 
+div a::after,
 p a::after,
 li a::after {
   display: block;
@@ -326,6 +330,8 @@ li a::after {
   transition: 0.3s all ease;
 }
 
+div a:hover,
+div a:focus,
 p a:hover,
 p a:focus,
 li a:hover,
@@ -337,6 +343,8 @@ li a:focus {
   /* color: var(--black); */
 }
 
+div a:hover::after,
+div a:focus::after,
 p a:hover::after,
 p a:focus::after,
 li a:hover::after,
@@ -371,6 +379,18 @@ p span.highlight--yellow {
 
 p span.highlight--yellow::selection {
   background: var(--orange);
+}
+
+button {
+  font-family: var(--new-spirit), serif;
+  font-weight: 500;
+  font-size: inherit;
+  color: var(--black);
+  background: var(--yellow);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 /* UTILITIES */

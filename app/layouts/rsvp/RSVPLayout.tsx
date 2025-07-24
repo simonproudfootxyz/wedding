@@ -1,51 +1,24 @@
-import Wrapper from "@/app/components/Wrapper/Wrapper";
-import { Layout } from "antd";
 import Image from "next/image";
-import { title } from "process";
 import React, { ReactNode } from "react";
+import { StyledRSVPLayout } from "./StyledRSVPLayout";
+import Link from "next/link";
 import styled from "styled-components";
 
 interface RSVPLayoutProps {
   children?: ReactNode;
   loading?: boolean;
   titleText?: string;
+  showRSVPLink?: boolean;
+  RSVPLinkText?: string;
 }
 
-const LayoutComponent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  padding: 8rem 2rem 6rem;
-
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  ul,
-  li {
-    color: var(--white);
+export const RSVPLink = styled(Link)`
+  &::after {
+    background: var(--yellow);
   }
 
-  .background {
-    background: var(--black);
-    width: 100%;
-    position: relative;
-    padding-top: 12rem;
-    padding-bottom: 6rem;
-  }
-
-  h1 {
-    max-width: var(--inner-max-width);
-    text-align: center;
-    margin-bottom: 8rem;
-  }
-
-  .floating {
-    top: -90px;
-    left: calc(50% - (398px / 4));
-    animation: float 7.1s ease-in-out infinite;
+  &:hover::after {
+    background: var(--yellow);
   }
 `;
 
@@ -55,8 +28,9 @@ const RSVPLayout: React.FC<RSVPLayoutProps> = ({
   titleText = "With which spirit are we speaking?",
 }) => {
   const title = loading ? "Loading..." : titleText;
+
   return (
-    <LayoutComponent>
+    <StyledRSVPLayout>
       <div className="background">
         <div className="wrapper--tight">
           <Image
@@ -67,11 +41,13 @@ const RSVPLayout: React.FC<RSVPLayoutProps> = ({
             height={566 / 2}
             priority
           />
-          <h1>{title}</h1>
+          <div className="heading-box">
+            <h1>{title}</h1>
+          </div>
           {children && <div className="page-content">{children}</div>}
         </div>
       </div>
-    </LayoutComponent>
+    </StyledRSVPLayout>
   );
 };
 

@@ -94,4 +94,8 @@ export const RSVPLink = styled(Link)`
   transform: rotate(-5deg);
   position: relative;
   z-index: 100;
+
+  &::after {
+    display: none;
+  }
 `;
