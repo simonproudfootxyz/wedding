@@ -1,0 +1,37 @@
+"use client";
+import styled from "styled-components";
+
+export const ButtonContainer = styled.div`
+  &:hover,
+  &:focus {
+    box-shadow: 5px 5px 0px #d8cc34;
+    transform: rotate(5deg) translate(2px, 2px);
+    transition: all 0.3s ease;
+  }
+`;
+
+export const StyledButton = styled.button`
+  display: block;
+  font-size: 20px;
+  padding: 20px 35px;
+  transform: rotate(5deg);
+  background: var(--yellow);
+  border-radius: 50%;
+  box-shadow: 2px 3px 0px var(--pink);
+
+  span {
+    display: inline-block;
+    rotate: -5deg;
+    color: var(--black);
+    transition: all 0.3s ease;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 4px 5px 0px var(--pink);
+
+    span {
+      transform: translate(1px, 1px);
+    }
+  }
+`;
