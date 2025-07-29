@@ -21,6 +21,8 @@ import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
 import { FooterSection } from "./components/Section/SectionStyles";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import RSVPLayout from "./layouts/rsvp/RSVPLayout";
+import { RSVPLookupForm } from "./rsvp/RSVPLookupForm";
 
 export default function Home() {
   const router = useRouter();
@@ -54,20 +56,9 @@ export default function Home() {
 
   if (!reservationType) {
     return (
-      <div className={styles.page}>
-        <Nav />
-        <TopHero title="mhairi and simon are&nbsp;getting married." />
-        <div>
-          <Image
-            src="/images/M+S_CreativeEngagementSession_Toronto_2025-10 1.jpg"
-            alt="Creative Engagement Session in Toronto"
-            width={1152} // Replace with the actual width of the image
-            height={768} // Replace with the actual height of the image
-            layout="responsive" // Ensures the image is responsive
-            priority // Optional: Preloads the image for better performance
-          />
-        </div>
-      </div>
+      <RSVPLayout loading={false}>
+        <RSVPLookupForm />
+      </RSVPLayout>
     );
   }
 

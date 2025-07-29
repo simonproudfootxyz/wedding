@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { StyledRSVPLookupForm } from "./StyledRSVPLookupForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Guest, Reservation } from "../utilities/types";
 import { StylizedButton } from "../components/Button/Button";
 import { RSVPLink } from "../layouts/rsvp/RSVPLayout";
@@ -60,19 +60,44 @@ const RSVPLookupEntry = ({
   );
 };
 
-export const RSVPLookupForm = ({
-  guests,
-  reservations,
-}: {
-  guests: Guest[];
-  reservations: Reservation[];
-}) => {
+export const RSVPLookupForm = () => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<RSVPLookupFormData>();
+
+  const [guests, setGuests] = useState<Guest[] | null>(null);
+  const [reservations, setReservations] = useState<Reservation[] | null>(null); // Adjust type as needed
+
+  useEffect(() => {
+    // Fetch all guests from Airtable
+    if (guests && reservations) return; // Prevent refetching if already loaded
+
+    Promise.all([
+      fetch(`/api/airtable?tableName=Guests`).then((res) => res.json()),
+      fetch(`/api/airtable?tableName=Reservations`).then((res) => res.json()),
+    ])
+      .then(([guestsData, reservationsData]) => {
+        const formattedGuests: Guest[] = guestsData.map((guest) => ({
+          id: guest.id,
+          fields: guest.fields,
+        }));
+        setGuests(formattedGuests);
+
+        const formattedReservations: Reservation[] = reservationsData.map(
+          (reservation) => ({
+            id: reservation.id,
+            fields: reservation.fields,
+          })
+        );
+        setReservations(formattedReservations);
+      })
+      .catch((error) =>
+        console.error("Error fetching Airtable records:", error)
+      );
+  }, [guests, reservations]);
 
   //   set up state
   const [fuzzyLookups, setFuzzyLookups] = useState<[] | null>(null);
@@ -176,7 +201,9 @@ export const RSVPLookupForm = ({
       {!requiresFuzzyLookup && !hasExactGuest && (
         <div className="buttons-container">
           <div>
-            <StylizedButton type="submit">submit</StylizedButton>
+            <StylizedButton type="submit" disabled={!guests && !reservations}>
+              submit
+            </StylizedButton>
           </div>
         </div>
       )}

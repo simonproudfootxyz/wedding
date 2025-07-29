@@ -34,4 +34,15 @@ export const StyledButton = styled.button`
       transform: translate(1px, 1px);
     }
   }
+
+  &:disabled {
+    background: var(--off-white);
+    color: var(--black);
+    cursor: not-allowed;
+    box-shadow: none;
+
+    span {
+      color: var(--grey);
+    }
+  }
 `;

@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { Guest } from "@/app/utilities/types";
 import RSVPLayout from "@/app/layouts/rsvp/RSVPLayout";
 import { RSVPForm } from "@/app/components/RSVPForm/RSVPForm";
+import { StylizedButton } from "@/app/components/Button/Button";
 // import { getAirtableRecords } from "@/app/utilities/airtable";
 
 export default function RSVP() {
@@ -33,6 +34,10 @@ export default function RSVP() {
     return <RSVPLayout loading={true} />;
   }
 
+  const handleClick = () => {
+    console.log("handleClick");
+  };
+
   const hasPluralGuests = guests?.length > 1;
   const spiritText = hasPluralGuests ? "spirits" : "spirit";
   const guestText = guests?.map((guest) => guest.fields.FirstName).join(" & ");
@@ -40,6 +45,11 @@ export default function RSVP() {
   return (
     <RSVPLayout loading={false} titleText={pageTitle}>
       <RSVPForm guests={guests} />
+      <div>
+        <StylizedButton type="button" onClick={() => handleClick()}>
+          Do
+        </StylizedButton>
+      </div>
     </RSVPLayout>
   );
 }

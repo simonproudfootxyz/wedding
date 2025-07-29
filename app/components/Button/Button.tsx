@@ -4,13 +4,15 @@ export const StylizedButton = ({
   children,
   type,
   onClick,
+  disabled = false,
 }: {
   children: React.ReactNode;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
+  disabled?: boolean;
 }) => {
   return (
-    <StyledButton type={type} onClick={onClick}>
+    <StyledButton type={type} onClick={onClick} disabled={disabled}>
       <span>{children}</span>
     </StyledButton>
   );
