@@ -207,6 +207,9 @@ font-style: italic; */
   --tight-max-width: calc(900px + 4rem);
   --inner-max-width: 1000px;
   --max-width: 1100px;
+  --standard-clip: polygon(0% 0, 96% 0%, 100% 100%, 0 100%);
+  --secondary-clip: polygon(0% 0%, 100% 0%, 96% 100%, 0 100%);
+  --modal-clip: polygon(0% 0%, 100% 0%, 100% 96%, 0% 100%);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -61,10 +61,10 @@ const InfoItem = styled.p<InfoItemProps>`
   color: var(--black);
 
   &:nth-of-type(1) {
-    clip-path: polygon(0% 0, 96% 0%, 100% 100%, 0 100%);
+    clip-path: var(--standard-clip);
   }
   &:nth-of-type(2) {
-    clip-path: polygon(0% 0%, 100% 0%, 96% 100%, 0 100%);
+    clip-path: var(--secondary-clip);
   }
 `;
 

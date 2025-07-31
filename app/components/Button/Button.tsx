@@ -13,7 +13,7 @@ export const StylizedButton = ({
 }) => {
   return (
     <StyledButton type={type} onClick={onClick} disabled={disabled}>
-      <span>{children}</span>
+      <span className="button__text">{children}</span>
     </StyledButton>
   );
 };

@@ -11,7 +11,6 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  display: block;
   font-size: 20px;
   padding: 20px 35px;
   transform: rotate(5deg);
@@ -19,7 +18,7 @@ export const StyledButton = styled.button`
   border-radius: 50%;
   box-shadow: 2px 3px 0px var(--pink);
 
-  span {
+  .button__text {
     display: inline-block;
     rotate: -5deg;
     color: var(--black);
