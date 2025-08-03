@@ -19,28 +19,28 @@ import EventOverview from "./components/EventOverview/EventOverview";
 import Callout from "./components/Callout/Callout";
 import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
 import { FooterSection } from "./components/Section/SectionStyles";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import RSVPLayout from "./layouts/rsvp/RSVPLayout";
 import { RSVPLookupForm } from "./rsvp/RSVPLookupForm";
 
 export default function Home() {
   const router = useRouter();
-  const [reservationType, setReservationType] = useState<string | null>(null);
   useEffect(() => {
     // Ensure this runs only on the client side
     const urlParams = new URLSearchParams(window.location.search);
-    const reservationId =
-      urlParams.get("reservationId") || localStorage.getItem("reservationId");
-    if (reservationId) {
+    const URLParam = urlParams.get("reservationId");
+    if (URLParam) {
       // Save the reservationId to local storage
       localStorage.setItem("reservationId", reservationId as string);
       // Fetch the reservation record based on the slug
       fetch(`/api/getReservationBySlug?slug=${reservationId}`)
         .then((res) => res.json())
         .then((reservation) => {
-          // Save the reservation type to state
-          setReservationType(reservation.fields.ReservationType);
+          localStorage.setItem(
+            "reservationType",
+            reservation.fields.ReservationType
+          );
           router.push(window.location.origin);
         })
         .catch((error) =>
@@ -49,9 +49,10 @@ export default function Home() {
     } else {
       router.push("/rsvp");
     }
-  }, [router]);
+  }, [router, reservationId]);
 
   const reservationId = localStorage.getItem("reservationId");
+  const reservationType = localStorage.getItem("reservationType");
   // const isCeremony = reservationType === "Ceremony";
 
   if (!reservationType) {

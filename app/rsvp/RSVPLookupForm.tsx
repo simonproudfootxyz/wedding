@@ -5,6 +5,9 @@ import { Guest, Reservation } from "../utilities/types";
 import { StylizedButton } from "../components/Button/Button";
 import { RSVPLink } from "../layouts/rsvp/RSVPLayout";
 import styled from "styled-components";
+import { RESERVATION_ID } from "../constants/params";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 type RSVPLookupFormData = {
   FirstName: string;
   LastName: string;
@@ -45,17 +48,25 @@ const RSVPLookupEntry = ({
   guest: Guest;
   reservation: Reservation | null;
 }) => {
+  const router = useRouter();
+  console.log(reservation?.fields.InviteCode);
+  console.log(reservation?.fields);
   return (
     <StyledRSVPLookupEntry>
       <p className="lookup-name">
         {guest.fields.FirstName} {guest.fields.LastName}
       </p>
-      <a
-        href={`${window.location.origin}?reservationId=${reservation?.fields.InviteCode}`}
+      <Link
+        href={`/?${RESERVATION_ID}=${reservation?.fields?.InviteCode}`}
+        onClick={(e) => {
+          e.preventDefault();
+          localStorage.setItem(RESERVATION_ID, reservation?.fields?.InviteCode);
+          router.push(`/?${RESERVATION_ID}=${reservation?.fields?.InviteCode}`);
+        }}
         className="lookup-link"
       >
         Continue
-      </a>
+      </Link>
     </StyledRSVPLookupEntry>
   );
 };
@@ -188,7 +199,6 @@ export const RSVPLookupForm = () => {
               className="heading-box__link"
               onClick={(e) => {
                 e.preventDefault();
-                console.log("yo");
                 handleResetClick();
               }}
               href={"/rsvp"}

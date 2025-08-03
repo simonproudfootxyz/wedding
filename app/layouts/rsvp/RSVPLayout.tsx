@@ -31,16 +31,16 @@ const RSVPLayout: React.FC<RSVPLayoutProps> = ({
 
   return (
     <StyledRSVPLayout>
+      <Image
+        src="/images/Upright_Scan_Planchette.png"
+        className={`floating planchette`}
+        alt="Next.js logo"
+        width={398 / 2}
+        height={566 / 2}
+        priority
+      />
       <div className="background">
         <div className="wrapper--tight">
-          <Image
-            src="/images/Upright_Scan_Planchette.png"
-            className={`floating planchette`}
-            alt="Next.js logo"
-            width={398 / 2}
-            height={566 / 2}
-            priority
-          />
           <div className="heading-box">
             <h1>{title}</h1>
           </div>

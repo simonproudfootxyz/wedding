@@ -7,6 +7,8 @@ import { StylizedButton } from "../Button/Button";
 import Image from "next/image";
 import ButtonLink from "../ButtonLink/ButtonLink";
 import Modal from "../Modal/Modal";
+import { useRouter } from "next/navigation";
+import { RESERVATION_ID } from "@/app/constants/params";
 
 type RSVPFormData = {
   guests: {
@@ -21,6 +23,8 @@ type RSVPFormData = {
 };
 
 export const RSVPForm = ({ guests }) => {
+  const rsvpId = localStorage.getItem("reservationId");
+  const router = useRouter();
   const handleFormSubmit = async (formData: RSVPFormData) => {
     const guestKeys = Object.keys(formData.guests);
     const formattedGuests = guestKeys.map((key) => formData.guests[key]);
@@ -66,14 +70,16 @@ export const RSVPForm = ({ guests }) => {
   );
 
   const [modalConfirmOpen, setModalConfirmOpen] = useState(false);
-
-  const handleConfirm = () => setModalConfirmOpen(true);
-  const handleConfirmClose = () => setModalConfirmOpen(false);
-
   const [modalDeclineOpen, setModalDeclineOpen] = useState(false);
 
+  const handleConfirm = () => setModalConfirmOpen(true);
   const handleDecline = () => setModalDeclineOpen(true);
-  const handleDeclineClose = () => setModalDeclineOpen(false);
+
+  const handleModalClose = () => {
+    setModalConfirmOpen(false);
+    setModalDeclineOpen(false);
+    router.push(`/?${RESERVATION_ID}=${rsvpId}`);
+  };
 
   return (
     <>
@@ -179,7 +185,7 @@ export const RSVPForm = ({ guests }) => {
       <Modal
         classNames="confirm-modal"
         open={modalConfirmOpen}
-        onClose={handleConfirmClose}
+        onClose={handleModalClose}
       >
         <div className="modal__heading-container">
           <h2 className="modal__heading">party on, people!</h2>
@@ -196,12 +202,12 @@ export const RSVPForm = ({ guests }) => {
           Thanks for your RSVP, we look forward to sharing our special day with
           you this halloween.{" "}
         </p>
-        <ButtonLink href="/">back to site</ButtonLink>
+        <ButtonLink href={`/?reservationId=${rsvpId}`}>back to site</ButtonLink>
       </Modal>
       <Modal
         classNames="decline-modal"
         open={modalDeclineOpen}
-        onClose={handleDeclineClose}
+        onClose={handleModalClose}
       >
         <div className="modal__heading-container">
           <Image
@@ -220,7 +226,7 @@ export const RSVPForm = ({ guests }) => {
           Thanks for letting us know. We’re sorry to miss you but we’ll see you
           next time!
         </p>
-        <ButtonLink href="/">back to site</ButtonLink>
+        <ButtonLink href={`/?reservationId=${rsvpId}`}>back to site</ButtonLink>
       </Modal>
     </>
   );

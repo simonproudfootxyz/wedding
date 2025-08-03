@@ -38,7 +38,7 @@ export const StyledRSVPLayout = styled.div`
   }
 
   .floating {
-    top: -90px;
+    top: 30px;
     left: calc(50% - (398px / 4));
     animation: float 7.1s ease-in-out infinite;
   }
