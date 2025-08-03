@@ -49,7 +49,7 @@ export default function Home() {
     } else {
       router.push("/rsvp");
     }
-  }, [router, reservationId]);
+  }, [router]);
 
   const reservationId = localStorage.getItem("reservationId");
   const reservationType = localStorage.getItem("reservationType");
