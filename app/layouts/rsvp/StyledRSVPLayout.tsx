@@ -23,6 +23,7 @@ export const StyledRSVPLayout = styled.div`
     position: relative;
     padding-top: 12rem;
     padding-bottom: 6rem;
+    max-width: var(--max-width);
   }
 
   .heading-box {

@@ -94,29 +94,6 @@ export default function Home() {
       <Section classNames="event-section">
         <Wrapper classNames="event-wrapper">
           <EventInfo
-            heading="the <em>mini</em>-party"
-            date="Wednesday, Oct 29"
-            time="7-9pm"
-            location="<a href='https://maps.app.goo.gl/mF4WvGyWZXgzvHmV7'>Get Well Bar</a> <br />1181 Dundas St W, M6H 1Y3"
-          >
-            <p>
-              Those in town are welcome to join us for a drink before the big
-              day at one of our favourite spots in the city. Play pinball and
-              arcade games. Drink local beers. We don’t know what else you could
-              want.
-            </p>
-            <p>
-              <small>
-                <strong>Very fun. Very, very optional</strong>{" "}
-              </small>
-              <strong className="color--pink">******</strong>
-            </p>
-          </EventInfo>
-        </Wrapper>
-      </Section>
-      <Section classNames="event-section">
-        <Wrapper classNames="event-wrapper">
-          <EventInfo
             heading="the <strong>biiiiiiiiig</strong> party"
             date="Friday, Oct 31"
             time="7:30pm"

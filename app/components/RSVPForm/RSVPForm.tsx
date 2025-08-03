@@ -1,10 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { StyledRSVPForm } from "./StyledRSVPForm";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { RSVPLink } from "@/app/layouts/rsvp/RSVPLayout";
 import { StylizedButton } from "../Button/Button";
+import Image from "next/image";
+import ButtonLink from "../ButtonLink/ButtonLink";
+import Modal from "../Modal/Modal";
 
 type RSVPFormData = {
   guests: {
@@ -19,10 +21,12 @@ type RSVPFormData = {
 };
 
 export const RSVPForm = ({ guests }) => {
-  const router = useRouter();
   const handleFormSubmit = async (formData: RSVPFormData) => {
     const guestKeys = Object.keys(formData.guests);
     const formattedGuests = guestKeys.map((key) => formData.guests[key]);
+    const guestsConfirmation = formattedGuests.some(
+      (guest) => guest.fields.Attending === "Yes"
+    );
     try {
       const response = await fetch("/api/updateGuests", {
         method: "POST",
@@ -38,8 +42,11 @@ export const RSVPForm = ({ guests }) => {
       }
 
       const data = await response.json();
-      alert("RSVP submitted successfully! \nThank you!");
-      router.push(window.location.origin);
+      if (guestsConfirmation) {
+        handleConfirm();
+      } else {
+        handleDecline();
+      }
       return data;
     } catch (error) {
       console.error("Error submitting RSVP:", error);
@@ -58,99 +65,163 @@ export const RSVPForm = ({ guests }) => {
     (guest) => guest.fields.InviteType === "Ceremony"
   );
 
+  const [modalConfirmOpen, setModalConfirmOpen] = useState(false);
+
+  const handleConfirm = () => setModalConfirmOpen(true);
+  const handleConfirmClose = () => setModalConfirmOpen(false);
+
+  const [modalDeclineOpen, setModalDeclineOpen] = useState(false);
+
+  const handleDecline = () => setModalDeclineOpen(true);
+  const handleDeclineClose = () => setModalDeclineOpen(false);
+
   return (
-    <StyledRSVPForm action="" onSubmit={handleSubmit(handleFormSubmit)}>
-      <div className="reset-link__container">
-        <p>
-          Not you?{" "}
-          <RSVPLink className="heading-box__link" href={"/rsvp"}>
-            Search again
-          </RSVPLink>
-        </p>
-      </div>
-      <ul className="guest-record__list">
-        {guests.map((record) => {
-          const { FirstName, LastName } = record.fields;
-          const FullName = `${FirstName} ${LastName}`;
-          return (
-            <li key={record.id} className="guest-record__item">
-              <h3 className="guest-record__name">{FullName}</h3>
-
-              <div className="guest-record__inputs-container">
-                <div className="guest-record__input-container">
-                  <div className="guest-record__input">
-                    <input
-                      id={`guests.${record.id}.fields.Attending.Yes`}
-                      type="radio"
-                      {...register(`guests.${record.id}.fields.Attending`, {
-                        required: "Please select Accept or Decline",
-                      })}
-                      value="Yes"
-                      defaultChecked={record.fields.Attending === "Yes"}
-                    />{" "}
-                    <label htmlFor={`guests.${record.id}.fields.Attending.Yes`}>
-                      Accept
-                    </label>
-                  </div>
-                  <div className="guest_record__input">
-                    <input
-                      type="radio"
-                      id={`guests.${record.id}.fields.Attending.No`}
-                      {...register(`guests.${record.id}.fields.Attending`, {
-                        required: "Please select Accept or Decline",
-                      })}
-                      value="No"
-                      defaultChecked={record.fields.Attending === "No"}
-                    />{" "}
-                    <label htmlFor={`guests.${record.id}.fields.Attending.No`}>
-                      Decline
-                    </label>
-                  </div>
-                </div>
-                {errors?.guests?.[record.id]?.fields?.Attending && (
-                  <p className="error">
-                    {errors.guests[record.id].fields.Attending.message}
-                  </p>
-                )}
-              </div>
-
-              <input
-                type="hidden"
-                {...register(`guests.${record.id}.id`)}
-                value={record.id}
-              />
-            </li>
-          );
-        })}
-      </ul>
-      {hasCeremonyGuests && (
-        <div className="guest-record__dietary">
-          <h3 className="guest-record__dietary-heading">
-            Any dietary restrictions?
-          </h3>
+    <>
+      <StyledRSVPForm action="" onSubmit={handleSubmit(handleFormSubmit)}>
+        <div className="reset-link__container">
+          <p>
+            Not you?{" "}
+            <RSVPLink className="heading-box__link" href={"/rsvp"}>
+              Search again
+            </RSVPLink>
+          </p>
+        </div>
+        <ul className="guest-record__list">
           {guests.map((record) => {
+            const { FirstName, LastName } = record.fields;
+            const FullName = `${FirstName} ${LastName}`;
             return (
-              <div
-                key={`dietary-${record.id}`}
-                className="guest-record__dietary-item"
-              >
+              <li key={record.id} className="guest-record__item">
+                <h3 className="guest-record__name">{FullName}</h3>
+
+                <div className="guest-record__inputs-container">
+                  <div className="guest-record__input-container">
+                    <div className="guest-record__input">
+                      <input
+                        id={`guests.${record.id}.fields.Attending.Yes`}
+                        type="radio"
+                        {...register(`guests.${record.id}.fields.Attending`, {
+                          required: "Please select Accept or Decline",
+                        })}
+                        value="Yes"
+                        defaultChecked={record.fields.Attending === "Yes"}
+                      />{" "}
+                      <label
+                        htmlFor={`guests.${record.id}.fields.Attending.Yes`}
+                      >
+                        Accept
+                      </label>
+                    </div>
+                    <div className="guest_record__input">
+                      <input
+                        type="radio"
+                        id={`guests.${record.id}.fields.Attending.No`}
+                        {...register(`guests.${record.id}.fields.Attending`, {
+                          required: "Please select Accept or Decline",
+                        })}
+                        value="No"
+                        defaultChecked={record.fields.Attending === "No"}
+                      />{" "}
+                      <label
+                        htmlFor={`guests.${record.id}.fields.Attending.No`}
+                      >
+                        Decline
+                      </label>
+                    </div>
+                  </div>
+                  {errors?.guests?.[record.id]?.fields?.Attending && (
+                    <p className="error">
+                      {errors.guests[record.id].fields.Attending.message}
+                    </p>
+                  )}
+                </div>
+
                 <input
-                  className="guest-record__dietary-input"
-                  id={`guests.${record.id}.fields.OtherDietaryNotes`}
-                  type="text"
-                  placeholder={`Add a note for ${record.fields.FirstName}`}
-                  {...register(`guests.${record.id}.fields.OtherDietaryNotes`)}
-                  defaultValue={record.fields.OtherDietaryNotes || ""}
+                  type="hidden"
+                  {...register(`guests.${record.id}.id`)}
+                  value={record.id}
                 />
-              </div>
+              </li>
             );
           })}
-        </div>
-      )}
+        </ul>
+        {hasCeremonyGuests && (
+          <div className="guest-record__dietary">
+            <h3 className="guest-record__dietary-heading">
+              Any dietary restrictions?
+            </h3>
+            {guests.map((record) => {
+              return (
+                <div
+                  key={`dietary-${record.id}`}
+                  className="guest-record__dietary-item"
+                >
+                  <input
+                    className="guest-record__dietary-input"
+                    id={`guests.${record.id}.fields.OtherDietaryNotes`}
+                    type="text"
+                    placeholder={`Add a note for ${record.fields.FirstName}`}
+                    {...register(
+                      `guests.${record.id}.fields.OtherDietaryNotes`
+                    )}
+                    defaultValue={record.fields.OtherDietaryNotes || ""}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )}
 
-      <div className="buttons-container">
-        <StylizedButton type="submit">submit</StylizedButton>
-      </div>
-    </StyledRSVPForm>
+        <div className="buttons-container">
+          <StylizedButton type="submit">submit</StylizedButton>
+        </div>
+      </StyledRSVPForm>
+      <Modal
+        classNames="confirm-modal"
+        open={modalConfirmOpen}
+        onClose={handleConfirmClose}
+      >
+        <div className="modal__heading-container">
+          <h2 className="modal__heading">party on, people!</h2>
+          <Image
+            className="modal__image"
+            src="/images/CheersAnimation.png"
+            alt="Cheers"
+            width={407}
+            height={342}
+            priority
+          />
+        </div>
+        <p className="modal__content">
+          Thanks for your RSVP, we look forward to sharing our special day with
+          you this halloween.{" "}
+        </p>
+        <ButtonLink href="/">back to site</ButtonLink>
+      </Modal>
+      <Modal
+        classNames="decline-modal"
+        open={modalDeclineOpen}
+        onClose={handleDeclineClose}
+      >
+        <div className="modal__heading-container">
+          <Image
+            className="modal__image"
+            src="/images/DogAnimation.png"
+            alt="Cheers"
+            width={365}
+            height={295}
+            priority
+          />
+          <h2 className="modal__heading">
+            catch you on the flippity flip, people!
+          </h2>
+        </div>
+        <p className="modal__content">
+          Thanks for letting us know. We’re sorry to miss you but we’ll see you
+          next time!
+        </p>
+        <ButtonLink href="/">back to site</ButtonLink>
+      </Modal>
+    </>
   );
 };
