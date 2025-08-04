@@ -8,6 +8,7 @@ import {
   RSVPLink,
   RSVPLinkContainer,
   Logo,
+  InnerNavLink,
 } from "./NavStyles";
 import { debounce } from "@/app/utilities/utilities";
 import { CEREMONY } from "@/app/utilities/consts";
@@ -44,29 +45,41 @@ const Nav: React.FC<NavProps> = ({ slug }) => {
 
   return (
     <StyledNav id="nav">
-      <NavList>
+      <NavList className="navigation--non-fixed">
         <NavItem>
-          <NavLink
-            href="https://maps.app.goo.gl/fUR4PK6AuuRELQHo7"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <NavLink href="#schedule" rel="noopener noreferrer">
             october&nbsp;31&nbsp;2025 {date}
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink
-            href="https://maps.app.goo.gl/fUR4PK6AuuRELQHo7"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <NavLink href="#summary" rel="noopener noreferrer">
             rainhard&nbsp;brewing 100&nbsp;symes&nbsp;road
           </NavLink>
         </NavItem>
       </NavList>
       <div>
-        <Logo>mhairi&nbsp;and&nbsp;simon are&nbsp;getting&nbsp;married.</Logo>
+        <Logo>m+s get married</Logo>
       </div>
+      <NavList>
+        <NavList className="navigation--fixed">
+          <NavItem>
+            <InnerNavLink href="#summary" rel="noopener noreferrer">
+              Summary
+            </InnerNavLink>
+          </NavItem>
+          <NavItem>
+            <InnerNavLink href="#schedule" rel="noopener noreferrer">
+              Schedule
+            </InnerNavLink>
+          </NavItem>
+          <NavItem>
+            <InnerNavLink href="#FAQ" rel="noopener noreferrer">
+              FAQs
+            </InnerNavLink>
+          </NavItem>
+        </NavList>
+      </NavList>
+
       <RSVPLinkContainer>
         <RSVPLink href={slug ? `/rsvp/${slug}` : "/rsvp"} className={`button`}>
           rsvp

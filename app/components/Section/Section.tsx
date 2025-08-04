@@ -7,6 +7,7 @@ interface SectionProps {
   classNames?: string;
   children?: ReactNode;
   textColor?: string;
+  id?: string;
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -15,6 +16,7 @@ export const Section: React.FC<SectionProps> = ({
   classNames,
   children,
   textColor,
+  id,
 }) => {
   return (
     <StyledSection
@@ -22,6 +24,7 @@ export const Section: React.FC<SectionProps> = ({
       backgroundColor={backgroundColor}
       backgroundImage={backgroundImage}
       textColor={textColor}
+      id={id}
     >
       {children}
     </StyledSection>

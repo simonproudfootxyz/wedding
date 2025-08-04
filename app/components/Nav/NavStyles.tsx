@@ -16,6 +16,10 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   transition: all 0.3s ease;
   border-bottom: 2px solid transparent;
 
+  .navigation--fixed {
+    display: none;
+  }
+
   h2 {
     color: transparent;
     transition: all 0.3s ease;
@@ -29,6 +33,14 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
 
     h2 {
       color: var(--black);
+    }
+
+    .navigation--non-fixed {
+      display: none;
+    }
+
+    .navigation--fixed {
+      display: flex;
     }
   }
 `;
@@ -66,23 +78,39 @@ export const NavLink = styled.a`
   }
 `;
 
+export const InnerNavLink = styled.a`
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: var(--black);
+  font-size: 20px;
+
+  &:hover,
+  &:focus {
+    &::after {
+      background: var(--orange);
+    }
+  }
+
+  &::after {
+    background: transparent;
+  }
+`;
+
 export const Logo = styled.h2`
-  max-width: 250px;
-  margin-left: -50px;
-  text-indent: -50px;
   line-height: 0.9;
-  font-size: 24px;
+  font-size: 2.4rem;
+  letter-spacing: -2px;
 `;
 
 export const RSVPLinkContainer = styled.div`
   transform: rotate(5deg);
   background: var(--black);
   border-radius: 50%;
-  box-shadow: 2px 2px 0px #d8cc34;
+  box-shadow: 2px 2px 0px var(--pink);
 
   &:hover,
   &:focus {
-    box-shadow: 5px 5px 0px #d8cc34;
+    box-shadow: 5px 5px 0px var(--pink);
     transform: rotate(5deg) translate(2px, 2px);
     transition: all 0.3s ease;
   }

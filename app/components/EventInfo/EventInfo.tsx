@@ -34,6 +34,10 @@ const Heading = styled.h3`
   strong {
     font-weight: 900;
   }
+
+  .ceremony-highlight {
+    display: inline-block;
+  }
 `;
 
 const Content = styled.div`

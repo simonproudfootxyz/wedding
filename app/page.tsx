@@ -56,8 +56,8 @@ export default function Home() {
     }
   }, [router]);
 
-  const reservationId = localStorage.getItem("reservationId");
-  const reservationType = localStorage.getItem("reservationType");
+  const reservationId: string = localStorage.getItem("reservationId");
+  const reservationType: string = localStorage.getItem("reservationType");
 
   if (!reservationType) {
     return (
@@ -83,7 +83,7 @@ export default function Home() {
           priority // Optional: Preloads the image for better performance
         />
       </div>
-      <Section backgroundColor="var(--cream)">
+      <Section id="summary" backgroundColor="var(--cream)">
         <Wrapper>
           {isCeremonyInvite ? <CeremonyEventOverview /> : <EventOverview />}
         </Wrapper>
@@ -93,7 +93,7 @@ export default function Home() {
           <Card imageSrc={Scrabble.src} />
         </Wrapper>
       </Section>
-      <Section classNames="event-section">
+      <Section id="schedule" classNames="event-section">
         <Wrapper>
           <EventSchedule />
         </Wrapper>
@@ -102,7 +102,7 @@ export default function Home() {
         <Section classNames="event-section">
           <Wrapper classNames="event-wrapper">
             <EventInfo
-              heading="the ceremony"
+              heading={`the <span class="ceremony-highlight">ceremony</span>`}
               description="As our nearest and dearest, nothing would make us happier than
                   having your support in the room with us when we say I do.
                   Please join us for a short ceremony and meal before we kick
@@ -183,7 +183,11 @@ export default function Home() {
           </EventInfo>
         </Wrapper>
       </Section>
-      <Section classNames="cream-section" backgroundColor="var(--cream)">
+      <Section
+        id="FAQ"
+        classNames="cream-section"
+        backgroundColor="var(--cream)"
+      >
         <Wrapper classNames="devil-wrapper">
           <div className="flex-column title-wrapper">
             <h1>the devilish details</h1>

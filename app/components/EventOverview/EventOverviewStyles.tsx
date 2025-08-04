@@ -74,8 +74,8 @@ export const StyledEventOverview = styled.div`
     }
   }
 
-  // PARTY EVENT
-  &.party-event {
+  // CEREMONY EVENT
+  &.ceremony-event {
     .horn-hand {
       animation: hover 5s ease-in-out infinite;
     }

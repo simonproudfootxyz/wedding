@@ -7,7 +7,6 @@ import Image from "next/image";
 const EventScheduleContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 500px; /* Adjust height as needed */
 `;
 
 const LeftContainer = styled.div`
