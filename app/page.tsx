@@ -36,18 +36,28 @@ export default function Home() {
     // Ensure this runs only on the client side
     const urlParams = new URLSearchParams(window.location.search);
     const URLParam = urlParams.get("reservationId");
-    const localVar = localStorage.getItem(RESERVATION_ID);
+    let localVar;
+    if (typeof window !== "undefined") {
+      localVar = localStorage.getItem(RESERVATION_ID);
+    }
     if (URLParam || localVar) {
       // Save the reservationId to local storage
-      localStorage.setItem("reservationId", reservationId as string);
+      if (typeof window !== "undefined") {
+        // Safe to use localStorage here
+        localStorage.setItem("reservationId", reservationId as string);
+      }
+
       // Fetch the reservation record based on the slug
       fetch(`/api/getReservationBySlug?slug=${reservationId}`)
         .then((res) => res.json())
         .then((reservation) => {
-          localStorage.setItem(
-            "reservationType",
-            reservation.fields.ReservationType
-          );
+          if (typeof window !== "undefined") {
+            // Safe to use localStorage here
+            localStorage.setItem(
+              "reservationType",
+              reservation.fields.ReservationType
+            );
+          }
         })
         .catch((error) =>
           console.error("Error fetching Airtable records:", error)
@@ -57,8 +67,11 @@ export default function Home() {
     }
   }, [router]);
 
-  const reservationId: string = localStorage.getItem("reservationId");
-  const reservationType: string = localStorage.getItem("reservationType");
+  let reservationId: any, reservationType: any;
+  if (typeof window !== "undefined") {
+    reservationId = localStorage.getItem("reservationId");
+    reservationType = localStorage.getItem("reservationType");
+  }
 
   if (!reservationType) {
     return (
@@ -72,7 +85,7 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <Nav slug={reservationId} />
+      <Nav slug={reservationId ?? undefined} />
       <TopHero title="mhairi and simon are&nbsp;getting married." />
       <div>
         <Image
@@ -123,9 +136,6 @@ export default function Home() {
                   having your support in the room with us when we say I do.
                   Please join us for a short ceremony and meal before we kick
                   the party into high gear."
-              date="Friday, Oct 31"
-              time="3:00pm"
-              location="<a href='https://maps.app.goo.gl/fUR4PK6AuuRELQHo7'>Rainhard Brewing</a> </br> 100 Symes Road,  M6N 0A8"
             >
               <div className="content-section">
                 <p>
@@ -173,9 +183,6 @@ export default function Home() {
                 Mhairi and Simon will be chillin’ like villains in this life and
                 the next. Wear a costume (or don’t) and get up to some good old
                 fashioned witching night mischief."
-            date="Friday, Oct 31"
-            time="7:30pm"
-            location="<a href='https://maps.app.goo.gl/fUR4PK6AuuRELQHo7'>Rainhard Brewing</a> </br> 100 Symes Road,  M6N 0A8"
           >
             <div className="content-section">
               <p>

@@ -11,7 +11,7 @@ export default async function handler(
     const { ids }: { ids: string } = req.body;
     const formattedIds: string[] =
       typeof ids === "string" ? ids.split(",") : Array.isArray(ids) ? ids : [];
-    const guests = await getGuestsByIds(formattedIds);
+    const guests: any = await getGuestsByIds(formattedIds);
     const updates = await updateGuests(guests);
 
     // Return the records as JSON

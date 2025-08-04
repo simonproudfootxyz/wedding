@@ -9,6 +9,7 @@ import ButtonLink from "../ButtonLink/ButtonLink";
 import Modal from "../Modal/Modal";
 import { useRouter } from "next/navigation";
 import { RESERVATION_ID } from "@/app/constants/params";
+import { Guest } from "@/app/utilities/types";
 
 type RSVPFormData = {
   guests: {
@@ -22,7 +23,11 @@ type RSVPFormData = {
   };
 };
 
-export const RSVPForm = ({ guests }) => {
+interface RSVPFormProps {
+  guests: Guest[];
+}
+
+export const RSVPForm = ({ guests }: RSVPFormProps) => {
   const rsvpId = localStorage.getItem("reservationId");
   const router = useRouter();
   const handleFormSubmit = async (formData: RSVPFormData) => {
@@ -110,7 +115,9 @@ export const RSVPForm = ({ guests }) => {
                           required: "Please select Accept or Decline",
                         })}
                         value="Yes"
-                        defaultChecked={record.fields.Attending === "Yes"}
+                        defaultChecked={
+                          String(record.fields.Attending) === "Yes"
+                        }
                       />{" "}
                       <label
                         htmlFor={`guests.${record.id}.fields.Attending.Yes`}
@@ -126,7 +133,9 @@ export const RSVPForm = ({ guests }) => {
                           required: "Please select Accept or Decline",
                         })}
                         value="No"
-                        defaultChecked={record.fields.Attending === "No"}
+                        defaultChecked={
+                          String(record.fields.Attending) === "No"
+                        }
                       />{" "}
                       <label
                         htmlFor={`guests.${record.id}.fields.Attending.No`}
@@ -137,7 +146,7 @@ export const RSVPForm = ({ guests }) => {
                   </div>
                   {errors?.guests?.[record.id]?.fields?.Attending && (
                     <p className="error">
-                      {errors.guests[record.id].fields.Attending.message}
+                      {errors.guests?.[record.id]?.fields?.Attending?.message}
                     </p>
                   )}
                 </div>

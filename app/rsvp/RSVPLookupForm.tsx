@@ -58,7 +58,10 @@ const RSVPLookupEntry = ({
         href={`/?${RESERVATION_ID}=${reservation?.fields?.InviteCode}`}
         onClick={(e) => {
           e.preventDefault();
-          localStorage.setItem(RESERVATION_ID, reservation?.fields?.InviteCode);
+          localStorage.setItem(
+            RESERVATION_ID,
+            reservation?.fields?.InviteCode ?? ""
+          );
           router.push(`/?${RESERVATION_ID}=${reservation?.fields?.InviteCode}`);
         }}
         className="lookup-link"
@@ -89,14 +92,14 @@ export const RSVPLookupForm = () => {
       fetch(`/api/airtable?tableName=Reservations`).then((res) => res.json()),
     ])
       .then(([guestsData, reservationsData]) => {
-        const formattedGuests: Guest[] = guestsData.map((guest) => ({
+        const formattedGuests: Guest[] = guestsData.map((guest: any) => ({
           id: guest.id,
           fields: guest.fields,
         }));
         setGuests(formattedGuests);
 
         const formattedReservations: Reservation[] = reservationsData.map(
-          (reservation) => ({
+          (reservation: any) => ({
             id: reservation.id,
             fields: reservation.fields,
           })
@@ -109,7 +112,9 @@ export const RSVPLookupForm = () => {
   }, [guests, reservations]);
 
   //   set up state
-  const [fuzzyLookups, setFuzzyLookups] = useState<[] | null>(null);
+  const [fuzzyLookups, setFuzzyLookups] = useState<
+    { guest: Guest; reservation: Reservation | null }[] | null
+  >(null);
   const [guestLookup, setGuestLookup] = useState<Guest | null>(null);
   const [reservationLookup, setReservationLookup] =
     useState<Reservation | null>(null);
@@ -119,32 +124,38 @@ export const RSVPLookupForm = () => {
     const { FirstName, LastName } = formData;
     const format = (s: string) => s.trim().toLowerCase();
 
-    const exactGuest = guests.find(
-      (g) =>
-        format(g.fields.FirstName) === format(FirstName) &&
-        format(g.fields.LastName) === format(LastName)
-    );
-
-    const exactReservation = exactGuest
-      ? reservations.find((r) => r.fields.Assignee?.includes(exactGuest.id))
+    const exactGuest = guests
+      ? guests.find(
+          (g) =>
+            format(g.fields.FirstName) === format(FirstName) &&
+            format(g.fields.LastName) === format(LastName)
+        )
       : null;
 
+    const exactReservation =
+      exactGuest && reservations
+        ? reservations.find((r) => r.fields.Assignee?.includes(exactGuest.id))
+        : null;
+
     const fuzzyLookups = guests
-      .filter(
-        (g) =>
-          format(g.fields.FirstName).includes(format(FirstName)) ||
-          format(g.fields.LastName).includes(format(LastName))
-      )
-      .map((guest) => ({
-        guest,
-        reservation:
-          reservations.find((r) => r.fields.Assignee?.includes(guest.id)) ||
-          null,
-      }));
+      ? guests
+          .filter(
+            (g) =>
+              format(g.fields.FirstName).includes(format(FirstName)) ||
+              format(g.fields.LastName).includes(format(LastName))
+          )
+          .map((guest) => ({
+            guest,
+            reservation:
+              reservations?.find((r) =>
+                r.fields.Assignee?.includes(guest.id)
+              ) || null,
+          }))
+      : [];
 
     setFuzzyLookups(fuzzyLookups);
-    setGuestLookup(exactGuest);
-    setReservationLookup(exactReservation);
+    setGuestLookup(exactGuest ?? null);
+    setReservationLookup(exactReservation ?? null);
   };
 
   const handleResetClick = () => {

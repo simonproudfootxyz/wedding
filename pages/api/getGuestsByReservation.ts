@@ -18,12 +18,12 @@ export default async function handler(
     }
 
     // Fetch records from Airtable
-    const reservation = await getAirtableRecords(
+    const reservation: any = await getAirtableRecords(
       "Reservations",
       "Grid view",
       slug
     );
-    const assignees = reservation.fields.Assignee;
+    const assignees: any[] = reservation.fields.Assignee;
 
     const guests = await getGuestsByIds(assignees);
 

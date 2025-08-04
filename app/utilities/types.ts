@@ -5,10 +5,10 @@ export type Guest = {
     LastName: string;
     Email: string;
     OtherDietaryNotes?: string;
-    Attending?: boolean;
+    Attending?: string | undefined;
     Reservation?: string[];
     InviteCode?: string[];
-    [key: string]: string;
+    [key: string]: string | string[] | undefined;
   };
 };
 
