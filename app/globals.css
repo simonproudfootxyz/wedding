@@ -190,6 +190,7 @@ font-style: italic; */
   --foreground: #171717;
   --white: #ffffff;
   --off-white: rgba(255, 255, 255, 0.5);
+  --canvas: #d9d9d9;
   --grey: rgba(32, 32, 32, 0.2);
   --transparent-white: rgba(255, 255, 255, 0.05);
   --transparent-white-2: rgba(255, 255, 255, 0.2);
@@ -375,7 +376,8 @@ p span.highlight--transparent-red::selection {
   background: var(--transparent-red);
 }
 
-p span.highlight--yellow {
+span.highlight--yellow {
+  display: inline-block;
   background: var(--yellow);
   padding: 0 5px;
   line-height: 1.4;
@@ -383,6 +385,19 @@ p span.highlight--yellow {
 
 p span.highlight--yellow::selection {
   background: var(--orange);
+}
+
+span.highlight--confetti {
+  display: inline-block;
+  background: var(--yellow);
+  padding: 0 5px;
+  line-height: 1.4;
+  animation: bg-color-cycle 2s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+.bg-animated {
+  animation: bg-color-cycle 6s linear infinite;
 }
 
 button {
@@ -466,7 +481,9 @@ button {
   // ANIMATIONS
   // ===========
 
-  // HOVER */
+  /* ====================== */
+/* // HOVER */
+/* ====================== */
 
 @keyframes hover {
   0% {
@@ -480,6 +497,10 @@ button {
   }
 }
 
+/* ====================== */
+/* // REVERSE HOVER */
+/* ====================== */
+
 @keyframes reverse-hover {
   0% {
     transform: rotate(3deg);
@@ -492,7 +513,9 @@ button {
   }
 }
 
+/* ====================== */
 /* // SPINN */
+/* ====================== */
 
 @keyframes spin {
   0% {
@@ -521,7 +544,9 @@ button {
   }
 }
 
+/* ====================== */
 /* // FLOAT */
+/* ====================== */
 
 @keyframes float {
   0% {
@@ -538,5 +563,24 @@ button {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* ====================== */
+/* BACKGROUND COLOR CYCLE */
+/* ====================== */
+
+@keyframes bg-color-cycle {
+  0% {
+    background: var(--yellow);
+    transform: rotate(0deg);
+  }
+  33% {
+    background: var(--pink);
+    transform: rotate(-3deg);
+  }
+  66% {
+    background: var(--orange);
+    transform: rotate(3deg);
   }
 }

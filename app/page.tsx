@@ -15,7 +15,9 @@ import Card from "./components/Card/Card";
 import { EventSchedule } from "./components/EventSchedule/EventSchedule";
 import EventInfo, { TimeStamps } from "./components/EventInfo/EventInfo";
 import FrequentlyAskedQuestion from "./components/FrequentlyAskedQuestion/FrequentlyAskedQuestion";
-import EventOverview from "./components/EventOverview/EventOverview";
+import EventOverview, {
+  CeremonyEventOverview,
+} from "./components/EventOverview/EventOverview";
 import Callout from "./components/Callout/Callout";
 import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
 import { FooterSection } from "./components/Section/SectionStyles";
@@ -23,6 +25,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import RSVPLayout from "./layouts/rsvp/RSVPLayout";
 import { RSVPLookupForm } from "./rsvp/RSVPLookupForm";
+import { CEREMONY } from "./utilities/consts";
+import { RESERVATION_ID } from "./constants/params";
 
 export default function Home() {
   const router = useRouter();
@@ -30,7 +34,8 @@ export default function Home() {
     // Ensure this runs only on the client side
     const urlParams = new URLSearchParams(window.location.search);
     const URLParam = urlParams.get("reservationId");
-    if (URLParam) {
+    const localVar = localStorage.getItem(RESERVATION_ID);
+    if (URLParam || localVar) {
       // Save the reservationId to local storage
       localStorage.setItem("reservationId", reservationId as string);
       // Fetch the reservation record based on the slug
@@ -53,7 +58,6 @@ export default function Home() {
 
   const reservationId = localStorage.getItem("reservationId");
   const reservationType = localStorage.getItem("reservationType");
-  // const isCeremony = reservationType === "Ceremony";
 
   if (!reservationType) {
     return (
@@ -62,6 +66,8 @@ export default function Home() {
       </RSVPLayout>
     );
   }
+
+  const isCeremonyInvite = reservationType === CEREMONY;
 
   return (
     <div className={styles.page}>
@@ -79,7 +85,7 @@ export default function Home() {
       </div>
       <Section backgroundColor="var(--cream)">
         <Wrapper>
-          <EventOverview />
+          {isCeremonyInvite ? <CeremonyEventOverview /> : <EventOverview />}
         </Wrapper>
       </Section>
       <Section classNames="ouija-section" backgroundImage={OuijaBackground.src}>
@@ -92,10 +98,63 @@ export default function Home() {
           <EventSchedule />
         </Wrapper>
       </Section>
+      {isCeremonyInvite && (
+        <Section classNames="event-section">
+          <Wrapper classNames="event-wrapper">
+            <EventInfo
+              heading="the ceremony"
+              date="Friday, Oct 31"
+              time="3:00pm"
+              location="<a href='https://maps.app.goo.gl/fUR4PK6AuuRELQHo7'>Rainhard Brewing</a> </br> 100 Symes Road,  M6N 0A8"
+            >
+              <div className="content-section">
+                <p>
+                  As our nearest and dearest, nothing would make us happier than
+                  having your support in the room with us when we say I do.
+                  Please join us for a short ceremony and meal before we kick
+                  the party into high gear.
+                </p>
+              </div>
+              <div className="content-section">
+                <p>
+                  <TimeStamps>3:00pm</TimeStamps>
+                </p>
+                <p>Arrive at the brewery and grab a drink before the vows.</p>
+              </div>
+              <div className="content-section">
+                <p>
+                  <TimeStamps>3:30pm</TimeStamps>
+                  <span className="color--black highlight--confetti">
+                    Ceremony
+                  </span>
+                </p>
+                <p>
+                  Sick nuptials! Don’t worry—they’ll be short and sweet. Start
+                  time is firm, don’t be late, and yes we know that’s rich
+                  coming from us.
+                </p>
+                <p>
+                  <strong>
+                    Start time is firm, ya&apos;ll{" "}
+                    <span className="color--pink">******</span>
+                  </strong>
+                </p>
+              </div>
+              <div className="content-section">
+                <TimeStamps>5:00pm</TimeStamps>
+                <p>
+                  Dinner for the recently deceased. Family style meal with asian
+                  flair.
+                </p>
+              </div>
+            </EventInfo>
+          </Wrapper>
+        </Section>
+      )}
       <Section classNames="event-section">
         <Wrapper classNames="event-wrapper">
           <EventInfo
-            heading="the <strong>biiiiiiiiig</strong> party"
+            heading="our <strong>biiiiiiiiig</strong> party"
             date="Friday, Oct 31"
             time="7:30pm"
             location="<a href='https://maps.app.goo.gl/fUR4PK6AuuRELQHo7'>Rainhard Brewing</a> </br> 100 Symes Road,  M6N 0A8"
@@ -125,7 +184,7 @@ export default function Home() {
               <p>Snack drop. Time to get radical.</p>
             </div>
             <div className="content-section">
-              <TimeStamps>1:30am</TimeStamps>
+              <TimeStamps>12:00am</TimeStamps>
               <p> Last call! Final opportunity for drinks on us.</p>
             </div>
           </EventInfo>

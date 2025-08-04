@@ -20,3 +20,7 @@ export const AIRTABLE_INVITE_TYPE_ID = "fld1VmsVFitdRYNQc";
 export const AIRTABLE_GUEST_INVITE_TYPE_ID = "fld1VmsVFitdRYNQc";
 export const AIRTABLE_DIETARY_RESTRICTIONS_ID = "fldRvN4NS0Qm4uNn3";
 export const AIRTABLE_OTHER_DIETARY_NOTES_ID = "fldiZfCGyzsYnkXu6";
+
+// RESERVATTION TYPE
+export const CEREMONY = "Ceremony";
+export const PARTY = "Party";

@@ -23,7 +23,7 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   // BACKGROUND-FILLED
   // ========================
   &.background-filled {
-    background: var(--pink);
+    background: var(--canvas);
     box-shadow: 0 0 5px var(--black);
 
     h2 {

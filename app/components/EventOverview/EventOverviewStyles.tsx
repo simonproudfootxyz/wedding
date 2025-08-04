@@ -73,4 +73,11 @@ export const StyledEventOverview = styled.div`
       animation: float 9.5s ease-in-out infinite;
     }
   }
+
+  // PARTY EVENT
+  &.party-event {
+    .horn-hand {
+      animation: hover 5s ease-in-out infinite;
+    }
+  }
 `;

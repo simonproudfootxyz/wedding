@@ -10,6 +10,7 @@ import {
   Logo,
 } from "./NavStyles";
 import { debounce } from "@/app/utilities/utilities";
+import { CEREMONY } from "@/app/utilities/consts";
 
 const handleScroll = () => {
   const nav = document.getElementById("nav");
@@ -36,6 +37,11 @@ const Nav: React.FC<NavProps> = ({ slug }) => {
     window.addEventListener("scroll", debounce(handleScroll, 50));
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const reservationType = localStorage.getItem("reservationType");
+  const isCeremonyInvite = reservationType === CEREMONY;
+  const date = isCeremonyInvite ? "three pm" : "seven thirty pm";
+
   return (
     <StyledNav id="nav">
       <NavList>
@@ -45,7 +51,7 @@ const Nav: React.FC<NavProps> = ({ slug }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            october&nbsp;31&nbsp;2025 seven&nbsp;thirty&nbsp;pm
+            october&nbsp;31&nbsp;2025 {date}
           </NavLink>
         </NavItem>
         <NavItem>
@@ -63,7 +69,7 @@ const Nav: React.FC<NavProps> = ({ slug }) => {
       </div>
       <RSVPLinkContainer>
         <RSVPLink href={slug ? `/rsvp/${slug}` : "/rsvp"} className={`button`}>
-          RSVP
+          rsvp
         </RSVPLink>
       </RSVPLinkContainer>
     </StyledNav>

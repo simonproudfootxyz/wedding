@@ -49,8 +49,6 @@ const RSVPLookupEntry = ({
   reservation: Reservation | null;
 }) => {
   const router = useRouter();
-  console.log(reservation?.fields.InviteCode);
-  console.log(reservation?.fields);
   return (
     <StyledRSVPLookupEntry>
       <p className="lookup-name">

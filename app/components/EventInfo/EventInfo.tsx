@@ -79,6 +79,7 @@ export const TimeStamps = styled.p`
   background: var(--transparent-white);
   color: var(--yellow);
   padding: 10px;
+  margin-right: 1rem;
 `;
 
 export const EventInfo: React.FC<EventInfoProps> = ({
