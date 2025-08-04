@@ -6,7 +6,6 @@ import {
   NavItem,
   NavLink,
   RSVPLink,
-  RSVPLinkContainer,
   Logo,
   InnerNavLink,
 } from "./NavStyles";
@@ -80,11 +79,11 @@ const Nav: React.FC<NavProps> = ({ slug }) => {
         </NavList>
       </NavList>
 
-      <RSVPLinkContainer>
+      <div>
         <RSVPLink href={slug ? `/rsvp/${slug}` : "/rsvp"} className={`button`}>
-          rsvp
+          <span>rsvp</span>
         </RSVPLink>
-      </RSVPLinkContainer>
+      </div>
     </StyledNav>
   );
 };

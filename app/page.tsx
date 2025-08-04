@@ -8,17 +8,15 @@ import Section from "./components/Section/Section";
 import Wrapper from "./components/Wrapper/Wrapper";
 import OuijaBackground from "@/public/images/OuijaBackground.jpg";
 import Scrabble from "@/public/images/Scrabble.jpg";
-import Misty from "@/public/images/Misty.jpg";
+import ChairPhoto from "@/public/images/ChairPhoto.jpg";
 import RSVPImage from "@/public/images/RSVP.jpg";
 // import FooterSkkull from "@/public/images/Footer Skull.png";
-import Card from "./components/Card/Card";
 import { EventSchedule } from "./components/EventSchedule/EventSchedule";
 import EventInfo, { TimeStamps } from "./components/EventInfo/EventInfo";
 import FrequentlyAskedQuestion from "./components/FrequentlyAskedQuestion/FrequentlyAskedQuestion";
 import EventOverview, {
   CeremonyEventOverview,
 } from "./components/EventOverview/EventOverview";
-import Callout from "./components/Callout/Callout";
 import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
 import { FooterSection } from "./components/Section/SectionStyles";
 import { useEffect } from "react";
@@ -46,7 +44,6 @@ export default function Home() {
             "reservationType",
             reservation.fields.ReservationType
           );
-          router.push(window.location.origin);
         })
         .catch((error) =>
           console.error("Error fetching Airtable records:", error)
@@ -90,7 +87,22 @@ export default function Home() {
       </Section>
       <Section classNames="ouija-section" backgroundImage={OuijaBackground.src}>
         <Wrapper classNames="ouija-wrapper">
-          <Card imageSrc={Scrabble.src} />
+          <Image
+            className="chair-photo"
+            src={ChairPhoto.src}
+            alt="Devil"
+            width={2048 / 6}
+            height={3072 / 6}
+            priority
+          />
+          <Image
+            className=""
+            src={Scrabble.src}
+            alt="Devil"
+            width={231}
+            height={288}
+            priority
+          />
         </Wrapper>
       </Section>
       <Section id="schedule" classNames="event-section">
@@ -137,9 +149,11 @@ export default function Home() {
                 </p>
               </div>
               <div className="content-section">
-                <TimeStamps>5:00pm</TimeStamps>
                 <p>
-                  Dinner for the recently deceased. Family style meal with asian
+                  <TimeStamps>5:00pm</TimeStamps>
+                </p>
+                <p>
+                  Dinner for the recently deceased. Family style meal with Asian
                   flair.
                 </p>
               </div>
@@ -216,32 +230,84 @@ export default function Home() {
           </div>
         </Wrapper>
       </Section>
+      {isCeremonyInvite && (
+        <Section classNames="cream-section" backgroundColor="var(--cream)">
+          <Wrapper>
+            <div className="flex-column">
+              <h2>the ceremony</h2>
+            </div>
+            <div className="flex-column">
+              <FrequentlyAskedQuestion
+                question="what time should we arrive for the ceremony?"
+                answer="Please <span class='highlight--transparent-red'>begin arriving at 3:00pm, the ceremony will take place at 3:30pm.</span> The bar will be open if you’d like to grab a drink while you wait."
+              />
+              <FrequentlyAskedQuestion
+                question="what should we expect from the ceremony?"
+                answer="Heads up that we will not be doing traditional seated aisles and are opting for a standing ceremony. <span class='highlight--transparent-red'>The ceremony itself will be short and sweet</span> but we will have some stools set up in the back for those who may need them."
+              />
+              <FrequentlyAskedQuestion
+                question="can I take photos?"
+                answer="We kindly ask that you don’t take your own photos or have your phone out during the ceremony. We’d love for everyone to be fully present with us. Our amazing photographer will be there to capture the moment."
+              />
+            </div>
+          </Wrapper>
+        </Section>
+      )}
       <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper>
           <div className="flex-column">
             <h2>the vibes</h2>
           </div>
           <div className="flex-column">
-            <FrequentlyAskedQuestion
-              question="wait, so like, when are guys actually getting married?"
-              answer="Great question! Simon and Mhairi will be having an intimate ceremony earlier in the day but cannot wait to party with you all in the evening."
-            />
-            <FrequentlyAskedQuestion
-              question="is this a costume party?"
-              answer="It sure can be! <span class='highlight--transparent-red'>Costumes are encouraged but most definitely optional.</span> Wear whatever you feel most comfortable in. Feel free to go ham-town on a costume. Feel free to channel your inner goth. Feel free to wear jeans (we mean it). It’s a night of drinking beer at a brewery on Halloween, there’s no need for a dress code lol."
-            />
+            {!isCeremonyInvite && (
+              <FrequentlyAskedQuestion
+                question="wait, so like, when are guys actually getting married?"
+                answer="Great question! Simon and Mhairi will be having a small ceremony earlier in the day but cannot wait to <span class='highlight--transparent-red'>party with you all in the evening.</span>"
+              />
+            )}
             <FrequentlyAskedQuestion
               question="is this a kid-friendly event?"
-              answer="Your kinders are cute and we love them but this is an evening event with no real entertainment planned other than yapping. I’m sure they would much rather be watching Hocus Pocus and indulging in the sweet results of their trick or treating. We kindly ask that the little ones stay home for this one. <br /> <br /><span class='highlight--transparent-red'>TL;DR No :(<span>"
+              answer="<span class='highlight--transparent-red'>TL;DR No :(</span> <br /> <br /> Your kinders are cute and we love them but this is an evening event with no real entertainment planned other than yapping. I’m sure they would much rather be watching Hocus Pocus and indulging in the sweet results of their trick or treating. We kindly ask that the little ones stay home for this one."
+            />
+            <FrequentlyAskedQuestion
+              question="can I bring a plus one?"
+              answer="It’s casual, but it’s not that casual. <span class='highlight--transparent-red'>We kindly ask that you don’t bring anyone other than the named invitees with you on the day.</span> The name of every guest included in your party will be listed in your email invitation and when you click to RSVP."
             />
             <FrequentlyAskedQuestion
               question="do you have a gift registry?"
-              answer="Nope! :) <br /> <br />We both lived solo before we met and we had to consolidate two apartments worth of stuff when we moved in together. Then we moved across the country twice and boy did that kick our butt in the stuff department. <span class='highlight--transparent-red'>Your earthly presence and support are all we need.</span>"
+              answer="Nope! <br /> <br /> We both lived solo before we met and we had to consolidate two apartments worth of stuff when we moved in together. Then we moved across the country twice and boy did that kick our butt in the stuff department. <span class='highlight--transparent-red'>Your earthly presence and support are all we need.</span>"
+            />
+            {isCeremonyInvite ? (
+              <FrequentlyAskedQuestion
+                question="is this a costume party? what’s the dress code?"
+                answer="Truly our most frequently asked question. The answer: it sure can be! <br /> <br /> <span class='highlight--transparent-red'>Costumes are encouraged but most definitely optional.</span>  Wear whatever you feel most comfortable in. Feel free to go ham-town on a costume. Feel free to channel your inner goth. Feel free to wear jeans (we mean it). It’s a night of drinking beer at a brewery on Halloween, there’s no need for a dress code lol."
+              />
+            ) : (
+              <FrequentlyAskedQuestion
+                question="is this a costume party? what’s the dress code?"
+                answer="Truly our most frequently asked question. The answer: it sure can be! <br /> <br /> <span class='highlight--transparent-red'>Costumes are encouraged but most definitely optional.</span>  Wear whatever you feel most comfortable in. Feel free to go ham-town on a costume. Feel free to channel your inner goth. Feel free to wear jeans (we mean it). It’s a night of drinking beer at a brewery on Halloween, there’s no need for a dress code lol. <br /> <br /> <span class='highlight--transparent-red'>Will we be in costume? Yes, of course.</span>"
+              />
+            )}
+            {isCeremonyInvite && (
+              <>
+                <FrequentlyAskedQuestion
+                  question="wait, so are you guys wearing costumes?"
+                  answer="Not for the ceremony. Getting married in costume would be really fun, but we’ve opted to dress like cute ordinary humans for the ceremony and dinner portion of the event. <span class='highlight--transparent-red'>We will be changing into costumes before the party guests arrive.</span><br /><br /> Mhairi & Simon costume hint: you can summon him by saying his name three times in a row"
+                />
+                <FrequentlyAskedQuestion
+                  question="if I wanted to change into a costume after the dinner, can I do that?"
+                  answer="Totally! <span class='highlight--transparent-red'>There will be about an hour between dinner ending and the party guests arriving.</span> This is a great time to change into a costume, goth up your outfit, whatever you desire! We’ll be using this time to change as well. <br /> <br /> <span class='highlight--transparent-red'>Heads up:</span> there is one accessible washroom in the brewery, and additional stalls available in the building. If you want to change into a more complicated costume, and would prefer a little more space, you are also welcome to leave and come back for the party reception, <span class='highlight--transparent-red'>you don’t need to be there for 7:30pm exactly.</span> Just keep in mind that bao buns will be dropping at 9PM if you’re interested."
+                />
+              </>
+            )}
+            <FrequentlyAskedQuestion
+              question="when do you need my RSVP by?"
+              answer="We kindly ask that you RSVP by <span class='highlight--transparent-red'>October 1st.</span>"
             />
           </div>
         </Wrapper>
       </Section>
-      <Section classNames="cream-section" backgroundColor="var(--cream)">
+      {/* <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper classNames="event-wrapper">
           <Callout backgroundImage={Misty.src} backgroundColor="var(--black)">
             <h3>a note from mhairi, simon & sofia</h3>
@@ -263,7 +329,7 @@ export default function Home() {
             </p>
           </Callout>
         </Wrapper>
-      </Section>
+      </Section> */}
       <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper>
           <div className="flex-column">
@@ -272,7 +338,7 @@ export default function Home() {
           <div className="flex-column">
             <FrequentlyAskedQuestion
               question="where’s the venue?"
-              answer="The party’s at <a href='https://maps.app.goo.gl/5rZwWyGLvvM58WTu9'>Rainhard Brewing</a> (100 Symes Rd, Toronto, M6N 0A8), which is located in the Junction. You can get there via the TTC by taking the 189 bus from Keele station. Uber, Lyft, etc., also good options."
+              answer="The party’s at <a href='https://maps.app.goo.gl/5rZwWyGLvvM58WTu9'>Rainhard Brewing</a> (100 Symes Rd, Toronto, M6N 0A8), which is located in the Junction. You can get there via the TTC by taking the 189 bus from Keele station. Uber, Lyft, etc., also good options. <br /> <br /> Please note that there’s two breweries in the building. Rainhard is the one tucked further in from the road, look for our sign out front to make sure you’re in the right place."
             />
             <FrequentlyAskedQuestion
               question="what’s the parking situation?"
@@ -317,25 +383,51 @@ export default function Home() {
         </Wrapper>
       </Section>
       <Section classNames="cream-section" backgroundColor="var(--cream)">
-        <Wrapper>
-          <div className="flex-column">
-            <h2>the libations</h2>
-          </div>
-          <div className="flex-column">
-            <FrequentlyAskedQuestion
-              question="will there be food?"
-              answer="<span class='highlight--transparent-red'>Snacks, yes! Dinner, no.</span> We highly encourage everyone to eat prior to arriving at the venue as we will not be serving dinner.  There will be some spooky snacks at 9:30pm."
-            />
-            <FrequentlyAskedQuestion
-              question="should I bring cash for the bar?"
-              answer="Please leave your wallets at home and prepare to party, <span class='highlight--transparent-red'>this is an open bar event. 🎉</span>"
-            />
-            <FrequentlyAskedQuestion
-              question="I don’t like beer!"
-              answer="Unfortunate, but Rainhard has you covered. There will be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options</span> available for those who prefer. "
-            />
-          </div>
-        </Wrapper>
+        {isCeremonyInvite ? (
+          <Wrapper>
+            <div className="flex-column">
+              <h2>provisions and libations</h2>
+            </div>
+            <div className="flex-column">
+              <FrequentlyAskedQuestion
+                question="what kind of foods is it?"
+                answer="Dinner will be asian-ish, with lots of comfort classics. <span class='highlight--transparent-red'>Whatever your dietary needs, we’ve got you covered from carnivores to vegans.</span><br /><br /> Will there maybe be a cheeky sambal mac n’ cheese situation? There’s only one way to find out. 👀"
+              />
+              <FrequentlyAskedQuestion
+                question="do I get to pick a meal?"
+                answer="Dinner will be served family style, so there’s <span class='highlight--transparent-red'>no need to pick a specific meal when you RSVP.</span> This also means you’ll get to try everything available—the dream! <br /> <br /> <span class='highlight--transparent-red'>Please let us know of any dietary restrictions, allergies, etc. when you RSVP</span> so we can pass that information along to our caterers."
+              />
+              <FrequentlyAskedQuestion
+                question="should I bring cash for the bar?"
+                answer="Please leave your wallets at home and prepare to party, <span class='highlight--transparent-red'>this is an open bar event. 🎉</span>"
+              />
+              <FrequentlyAskedQuestion
+                question="I don’t like beer!"
+                answer="Unfortunate, but Rainhard has you covered. There will be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options</span> available for those who prefer. "
+              />
+            </div>
+          </Wrapper>
+        ) : (
+          <Wrapper>
+            <div className="flex-column">
+              <h2>the libations</h2>
+            </div>
+            <div className="flex-column">
+              <FrequentlyAskedQuestion
+                question="will there be food?"
+                answer="<span class='highlight--transparent-red'>Snacks, yes! Dinner, no.</span> We highly encourage everyone to eat prior to arriving at the venue as we will not be serving dinner.  There will be some spooky snacks at 9:00pm."
+              />
+              <FrequentlyAskedQuestion
+                question="should I bring cash for the bar?"
+                answer="Please leave your wallets at home and prepare to party, <span class='highlight--transparent-red'>this is an open bar event. 🎉</span>"
+              />
+              <FrequentlyAskedQuestion
+                question="I don’t like beer!"
+                answer="Unfortunate, but Rainhard has you covered. There will be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options</span> available for those who prefer. "
+              />
+            </div>
+          </Wrapper>
+        )}
       </Section>
       <Section backgroundImage={RSVPImage.src}>
         <StyledRSVPWrapper>

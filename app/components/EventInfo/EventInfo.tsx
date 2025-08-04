@@ -37,6 +37,19 @@ const Heading = styled.h3`
 
   .ceremony-highlight {
     display: inline-block;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--yellow);
+      animation: bg-color-cycle 3s ease-in-out infinite;
+    }
   }
 `;
 

@@ -18,7 +18,11 @@ const StyledWrapper = styled.div<WrapperProps>`
   }
 
   &.ouija-wrapper {
-    justify-content: flex-end;
+    justify-content: space-between;
+
+    .chair-photo {
+      margin-top: 150px;
+    }
   }
 
   &.event-wrapper {

@@ -23,30 +23,11 @@ const CardImage = styled.img`
   height: auto;
 `;
 
-const CardText = styled.div`
-  background-color: var(--yellow);
-  padding: 35px 25px;
-  font-family: "new-spirit", serif;
-  font-size: 17px;
-  line-height: 0.9;
-  color: var(--black);
-`;
-
 const Card: React.FC<CardProps> = ({ imageSrc, altText }) => {
   return (
     <CardContainer>
       <CardImage src={imageSrc} alt={altText} />
-      <CardText>
-        <p>
-          The internet, 2017. <br />
-          <br />
-          <strong>Simon,</strong> a self-proclaimed snack enthusiast. <br />
-          <strong>Mhairi,</strong> fearless enough to cook spaghetti in a white
-          shirt. <br />
-          <br />
-          It was kismet.
-        </p>
-      </CardText>
+      <CardImage src={imageSrc} alt={altText} />
     </CardContainer>
   );
 };

@@ -102,7 +102,7 @@ export const Logo = styled.h2`
   letter-spacing: -2px;
 `;
 
-export const RSVPLinkContainer = styled.div`
+export const RSVPLink = styled(Link)`
   transform: rotate(5deg);
   background: var(--black);
   border-radius: 50%;
@@ -114,15 +114,15 @@ export const RSVPLinkContainer = styled.div`
     transform: rotate(5deg) translate(2px, 2px);
     transition: all 0.3s ease;
   }
-`;
 
-export const RSVPLink = styled(Link)`
-  display: block;
-  font-size: 20px;
-  padding: 15px 35px;
-  transform: rotate(-5deg);
-  position: relative;
-  z-index: 100;
+  span {
+    display: block;
+    font-size: 20px;
+    padding: 15px 35px;
+    transform: rotate(-5deg);
+    position: relative;
+    z-index: 100;
+  }
 
   &::after {
     display: none;
