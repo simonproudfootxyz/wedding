@@ -4,14 +4,8 @@ import styled from "styled-components";
 
 interface EventInfoProps {
   heading?: string;
-  date?: string;
-  time?: string;
-  location?: string;
+  description?: string;
   children?: ReactNode;
-}
-
-interface InfoItemProps {
-  backgroundColor?: string;
 }
 
 export const EventInfoContainer = styled.div`
@@ -50,31 +44,7 @@ const Content = styled.div`
   }
 `;
 
-const InfoItem = styled.p<InfoItemProps>`
-  font-family: "new-spirit", serif;
-  background-color: ${({ backgroundColor }) =>
-    backgroundColor || "transparent"};
-  font-size: 16px;
-  display: inline-block;
-  margin-right: 10px;
-  padding: 10px;
-  color: var(--black);
-
-  &:nth-of-type(1) {
-    clip-path: var(--standard-clip);
-  }
-  &:nth-of-type(2) {
-    clip-path: var(--secondary-clip);
-  }
-`;
-
-const Location = styled.div`
-  padding: 25px;
-  background: var(--transparent-white);
-  margin-top: 30px;
-`;
-
-export const TimeStamps = styled.p`
+export const TimeStamps = styled.span`
   display: inline-block;
   background: var(--transparent-white);
   color: var(--yellow);
@@ -84,9 +54,7 @@ export const TimeStamps = styled.p`
 
 export const EventInfo: React.FC<EventInfoProps> = ({
   heading,
-  date,
-  time,
-  location,
+  description,
   children,
 }) => {
   return (
@@ -99,17 +67,10 @@ export const EventInfo: React.FC<EventInfoProps> = ({
             }}
           />
         )}
-
-        <Content>{children}</Content>
+        {description && <p>{description}</p>}
       </Column>
       <Column>
-        <div>
-          <InfoItem backgroundColor="var(--pink)">{date}</InfoItem>
-          <InfoItem backgroundColor="var(--yellow)">{time}</InfoItem>
-        </div>
-        <Location>
-          <p dangerouslySetInnerHTML={{ __html: location || "" }}></p>
-        </Location>
+        <Content>{children}</Content>
       </Column>
     </EventInfoContainer>
   );

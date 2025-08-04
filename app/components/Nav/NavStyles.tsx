@@ -14,6 +14,7 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
 
   h2 {
     color: transparent;
@@ -24,7 +25,7 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   // ========================
   &.background-filled {
     background: var(--canvas);
-    box-shadow: 0 0 5px var(--black);
+    border-bottom: 2px solid var(--70s-green);
 
     h2 {
       color: var(--black);

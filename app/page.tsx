@@ -103,18 +103,14 @@ export default function Home() {
           <Wrapper classNames="event-wrapper">
             <EventInfo
               heading="the ceremony"
+              description="As our nearest and dearest, nothing would make us happier than
+                  having your support in the room with us when we say I do.
+                  Please join us for a short ceremony and meal before we kick
+                  the party into high gear."
               date="Friday, Oct 31"
               time="3:00pm"
               location="<a href='https://maps.app.goo.gl/fUR4PK6AuuRELQHo7'>Rainhard Brewing</a> </br> 100 Symes Road,  M6N 0A8"
             >
-              <div className="content-section">
-                <p>
-                  As our nearest and dearest, nothing would make us happier than
-                  having your support in the room with us when we say I do.
-                  Please join us for a short ceremony and meal before we kick
-                  the party into high gear.
-                </p>
-              </div>
               <div className="content-section">
                 <p>
                   <TimeStamps>3:00pm</TimeStamps>
@@ -155,36 +151,33 @@ export default function Home() {
         <Wrapper classNames="event-wrapper">
           <EventInfo
             heading="our <strong>biiiiiiiiig</strong> party"
+            description="Raise a glass, eat some snacks, and celebrate the fact that
+                Mhairi and Simon will be chillin’ like villains in this life and
+                the next. Wear a costume (or don’t) and get up to some good old
+                fashioned witching night mischief."
             date="Friday, Oct 31"
             time="7:30pm"
             location="<a href='https://maps.app.goo.gl/fUR4PK6AuuRELQHo7'>Rainhard Brewing</a> </br> 100 Symes Road,  M6N 0A8"
           >
             <div className="content-section">
               <p>
-                Raise a glass, eat some snacks, and celebrate the fact that
-                Mhairi and Simon will be chillin’ like villains in this life and
-                the next. Wear a costume (or don’t) and get up to some good old
-                fashioned witching night mischief.{" "}
+                <TimeStamps>7:30pm</TimeStamps>
               </p>
-              <p>
-                <span className="highlight--yellow color--black">Note</span>:
-                While we will have snacks later on (see below), we recommend you
-                have dinner beforehand.
-              </p>
-            </div>
-            <div className="content-section">
-              <TimeStamps>7:30pm</TimeStamps>
               <p>
                 Party start time, but it’s cool, it’s chill, it’s casual. You
                 can come at 8, or 9, or whenever works best for your schedule.{" "}
               </p>
             </div>
             <div className="content-section">
-              <TimeStamps>9:00pm</TimeStamps>
+              <p>
+                <TimeStamps>9:00pm</TimeStamps>
+              </p>
               <p>Snack drop. Time to get radical.</p>
             </div>
             <div className="content-section">
-              <TimeStamps>12:00am</TimeStamps>
+              <p>
+                <TimeStamps>12:00am</TimeStamps>
+              </p>
               <p> Last call! Final opportunity for drinks on us.</p>
             </div>
           </EventInfo>
