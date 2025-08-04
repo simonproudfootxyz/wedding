@@ -18,13 +18,17 @@ import EventOverview, {
   CeremonyEventOverview,
 } from "./components/EventOverview/EventOverview";
 import { StyledRSVPWrapper } from "./components/Wrapper/WrapperStyles";
-import { FooterSection } from "./components/Section/SectionStyles";
+import {
+  BannerSection,
+  FooterSection,
+} from "./components/Section/SectionStyles";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import RSVPLayout from "./layouts/rsvp/RSVPLayout";
 import { RSVPLookupForm } from "./rsvp/RSVPLookupForm";
 import { CEREMONY } from "./utilities/consts";
 import { RESERVATION_ID } from "./constants/params";
+import { SeconaryButtonLink } from "./components/ButtonLink/ButtonLink";
 
 export default function Home() {
   const router = useRouter();
@@ -243,11 +247,11 @@ export default function Home() {
               />
               <FrequentlyAskedQuestion
                 question="what should we expect from the ceremony?"
-                answer="Heads up that we will not be doing traditional seated aisles and are opting for a standing ceremony. <span class='highlight--transparent-red'>The ceremony itself will be short and sweet</span> but we will have some stools set up in the back for those who may need them."
+                answer="We will not be doing traditional seated aisles and are <span class='highlight--transparent-red'>opting for a standing ceremony. The ceremony itself will be short and sweet</span> but we will have some stools set up in the back for those who may need them."
               />
               <FrequentlyAskedQuestion
                 question="can I take photos?"
-                answer="We kindly ask that you don’t take your own photos or have your phone out during the ceremony. We’d love for everyone to be fully present with us. Our amazing photographer will be there to capture the moment."
+                answer="We kindly ask that you <span class='highlight--transparent-red'>don’t take your own photos or have your phone out during the ceremony.</span> We’d love for everyone to be fully present with us. Our amazing photographer will be there to capture the moment."
               />
             </div>
           </Wrapper>
@@ -430,25 +434,79 @@ export default function Home() {
         )}
       </Section>
       <Section backgroundImage={RSVPImage.src}>
-        <StyledRSVPWrapper>
-          <h1 className="rsvp-title">
-            <span className="floating-letter floating-R">R</span>
-            <strong className="floating-letter floating-S">S</strong>
-            <span className="floating-letter floating-V">V</span>
-            <strong className="floating-letter floating-P">P</strong>
-          </h1>
-          <div className="rsvp-content text-align-center">
-            <p>
-              Let us know if you will be joining us{" "}
-              <span className="highlight--transparent-red">in the flesh.</span>
-            </p>
-            <p>We kindly ask you RSVP by October 1st.</p>
-          </div>
-        </StyledRSVPWrapper>
+        <StyledRSVPWrapper />
       </Section>
-
+      <BannerSection>
+        <p className="marquee-text">
+          <span>attend in the flesh</span>
+          <Image
+            src="/images/Bats.png"
+            alt="Creative Engagement Session in Toronto"
+            width={205} // Replace with the actual width of the image
+            height={144} // Replace with the actual height of the image
+            priority // Optional: Preloads the image for better performance
+          />
+          <span>rsvp by october 1</span>
+          <Image
+            src="/images/Bats.png"
+            alt="Creative Engagement Session in Toronto"
+            width={205} // Replace with the actual width of the image
+            height={144} // Replace with the actual height of the image
+            priority // Optional: Preloads the image for better performance
+          />
+          <span>attend in the flesh</span>
+          <Image
+            src="/images/Bats.png"
+            alt="Creative Engagement Session in Toronto"
+            width={205} // Replace with the actual width of the image
+            height={144} // Replace with the actual height of the image
+            priority // Optional: Preloads the image for better performance
+          />
+          <span>rsvp by october 1</span>
+          <Image
+            src="/images/Bats.png"
+            alt="Creative Engagement Session in Toronto"
+            width={205} // Replace with the actual width of the image
+            height={144} // Replace with the actual height of the image
+            priority // Optional: Preloads the image for better performance
+          />
+          <span>attend in the flesh</span>
+          <Image
+            src="/images/Bats.png"
+            alt="Creative Engagement Session in Toronto"
+            width={205} // Replace with the actual width of the image
+            height={144} // Replace with the actual height of the image
+            priority // Optional: Preloads the image for better performance
+          />
+          <span>rsvp by october 1</span>
+        </p>
+      </BannerSection>
       <FooterSection>
-        <Wrapper justifyContent="center">
+        <Wrapper justifyContent="space-between">
+          <div className="footer__content-box">
+            <Image
+              src="/images/FooterSkull.png"
+              alt="Creative Engagement Session in Toronto"
+              width={110} // Replace with the actual width of the image
+              height={108} // Replace with the actual height of the image
+              priority // Optional: Preloads the image for better performance
+            />
+            <h3>
+              mhairi and simon are getting married <br />
+              <span className="color--off-white">
+                can&apos;t wait to party with
+              </span>
+            </h3>
+          </div>
+          <p>
+            <SeconaryButtonLink href={`/rsvp/${reservationId}`}>
+              rsvp
+            </SeconaryButtonLink>
+          </p>
+        </Wrapper>
+      </FooterSection>
+      <FooterSection>
+        <Wrapper>
           <p>
             <small>Designed by mhairi. ✨ Brought to life by simon. 👽</small>
           </p>

@@ -68,45 +68,6 @@ const StyledWrapper = styled.div<WrapperProps>`
 `;
 
 export const StyledRSVPWrapper = styled(StyledWrapper)`
-  justify-content: center;
-
-  .rsvp-title {
-    color: var(--yellow);
-    font-size: 250px;
-    letter-spacing: 40px;
-    filter: drop-shadow(2px 4px 6px black);
-  }
-
-  .floating-letter {
-    display: inline-block;
-    filter: drop-shadow(0px 0px 5px var(--black));
-  }
-
-  .floating-R {
-    animation: hover 7.1s ease-in-out infinite;
-  }
-
-  .floating-S {
-    animation: reverse-hover 8.2s linear infinite;
-  }
-
-  .floating-V {
-    animation: hover 5.5s ease-in-out infinite;
-  }
-
-  .floating-P {
-    animation: reverse-hover 6.5s linear infinite;
-  }
-
-  .rsvp-content {
-    padding-top: 100px;
-    filter: drop-shadow(0px 0px 10px var(--black));
-  }
-
-  p {
-    filter: drop-shadow(2px 1px 2px var(--black))
-      drop-shadow(1px 1px 2px var(--black))
-      drop-shadow(-1px -1px 2px var(--black));
-  }
+  min-height: 500px;
 `;
 export default StyledWrapper;

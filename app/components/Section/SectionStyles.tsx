@@ -36,11 +36,43 @@ export const StyledSection = styled.section<StyledSectionProps>`
   }
 `;
 
+export const BannerSection = styled(StyledSection)`
+  padding: 30px 0;
+  background: var(--yellow);
+
+  p {
+    display: flex;
+    align-items: center;
+    font-size: 100px;
+    color: var(--black);
+    white-space: nowrap;
+    font-family: var(--pp-editorial);
+    font-weight: 100;
+    animation: marquee 15s infinite linear;
+  }
+
+  img {
+    margin: 0 20px;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+`;
+
 export const FooterSection = styled(StyledSection)`
   padding: 30px 0;
   border-top: 4px solid var(--transparent-white);
 
-  .ballsack {
-    border: 10px solid red;
+  h3 {
+    color: var(--white);
+    letter-spacing: -2px;
+  }
+
+  .footer__content-box {
+    display: flex;
+    align-items: center;
   }
 `;

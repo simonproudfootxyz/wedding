@@ -2,7 +2,7 @@ import React from "react";
 import StyledWrapper from "./WrapperStyles";
 
 export interface WrapperProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   classNames?: string;
   justifyContent?: string;
 }
