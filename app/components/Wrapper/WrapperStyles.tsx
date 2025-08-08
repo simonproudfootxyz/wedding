@@ -49,10 +49,6 @@ const StyledWrapper = styled.div<WrapperProps>`
       position: relative;
     }
 
-    .floating {
-      position: absolute;
-    }
-
     .devil {
       animation: hover 7s ease-in-out infinite;
       left: 0;

@@ -32,11 +32,6 @@ export const StyledTopHero = styled(StyledHero)`
 
   // FLOATING SHIT
   // ========================
-  .floating {
-    position: absolute;
-    z-index: 100;
-  }
-
   .planchette {
     left: -45px;
     bottom: -185px;

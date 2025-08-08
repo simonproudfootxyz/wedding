@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
-  padding: 25px 40px;
+  padding: 1rem 2rem;
   background: transparent;
   position: fixed;
   top: 0;

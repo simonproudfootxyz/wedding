@@ -70,9 +70,11 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
     formState: { errors },
   } = useForm<RSVPFormData>();
 
-  const hasCeremonyGuests = guests.some(
-    (guest) => guest.fields.InviteType === "Ceremony"
-  );
+  const hasCeremonyGuests = guests.some((guest) => {
+    const reservationTypes = guest.fields?.ReservationType;
+    const reservationType = reservationTypes && reservationTypes[0];
+    return reservationType === "Ceremony";
+  });
 
   const [modalConfirmOpen, setModalConfirmOpen] = useState(false);
   const [modalDeclineOpen, setModalDeclineOpen] = useState(false);

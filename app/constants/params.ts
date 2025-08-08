@@ -1,4 +1,5 @@
 export const RESERVATION_ID = "reservationId";
+export const RESERVTION_TYPE = "reservationType";
 
 interface ParamPairing {
   queryParam: string;

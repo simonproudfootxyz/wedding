@@ -43,7 +43,6 @@ export default function RSVP({ params }: any) {
   const spiritText = hasPluralGuests ? "spirits" : "spirit";
   const guestText = guests?.map((guest) => guest.fields.FirstName).join(" & ");
   const pageTitle = `Welcome, ${spiritText} of ${guestText}!`;
-  console.log({ guests });
   return (
     <RSVPLayout loading={false} titleText={pageTitle}>
       <RSVPForm guests={guests} />

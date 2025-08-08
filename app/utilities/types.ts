@@ -8,6 +8,7 @@ export type Guest = {
     Attending?: string | undefined;
     Reservation?: string[];
     InviteCode?: string[];
+    ReservationType?: string[];
     [key: string]: string | string[] | undefined;
   };
 };

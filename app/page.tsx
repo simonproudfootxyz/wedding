@@ -22,29 +22,35 @@ import {
   BannerSection,
   FooterSection,
 } from "./components/Section/SectionStyles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import RSVPLayout from "./layouts/rsvp/RSVPLayout";
 import { RSVPLookupForm } from "./rsvp/RSVPLookupForm";
 import { CEREMONY } from "./utilities/consts";
-import { RESERVATION_ID } from "./constants/params";
+import { RESERVATION_ID, RESERVTION_TYPE } from "./constants/params";
 import { SeconaryButtonLink } from "./components/ButtonLink/ButtonLink";
 
 export default function Home() {
   const router = useRouter();
+  const [reservationId, setReservationId] = useState<string | null>(null);
+  const [reservationType, setReservationType] = useState<string | null>(null);
   useEffect(() => {
     // Ensure this runs only on the client side
-    const urlParams = new URLSearchParams(window.location.search);
-    const URLParam = urlParams.get("reservationId");
-    let localVar;
+
     if (typeof window !== "undefined") {
-      localVar = localStorage.getItem(RESERVATION_ID);
+      const localReservationId = localStorage.getItem(RESERVATION_ID);
+      const localReservationType = localStorage.getItem(RESERVTION_TYPE);
+      setReservationId(localReservationId);
+      setReservationType(localReservationType);
     }
-    if (URLParam || localVar) {
+    const searchParams = new URLSearchParams(window.location.search);
+    const URLParam = searchParams.get("reservationId");
+    if (URLParam) {
+      console.log("has url param");
       // Save the reservationId to local storage
       if (typeof window !== "undefined") {
         // Safe to use localStorage here
-        localStorage.setItem("reservationId", reservationId as string);
+        localStorage.setItem(RESERVATION_ID, URLParam as string);
       }
 
       // Fetch the reservation record based on the slug
@@ -62,16 +68,8 @@ export default function Home() {
         .catch((error) =>
           console.error("Error fetching Airtable records:", error)
         );
-    } else {
-      router.push("/rsvp");
     }
   }, [router]);
-
-  let reservationId: any, reservationType: any;
-  if (typeof window !== "undefined") {
-    reservationId = localStorage.getItem("reservationId");
-    reservationType = localStorage.getItem("reservationType");
-  }
 
   if (!reservationType) {
     return (
@@ -272,7 +270,7 @@ export default function Home() {
           <div className="flex-column">
             {!isCeremonyInvite && (
               <FrequentlyAskedQuestion
-                question="wait, so like, when are guys actually getting married?"
+                question="when are guys <em>actually</em> getting married?"
                 answer="Great question! Simon and Mhairi will be having a small ceremony earlier in the day but cannot wait to <span class='highlight--transparent-red'>party with you all in the evening.</span>"
               />
             )}
@@ -318,29 +316,6 @@ export default function Home() {
           </div>
         </Wrapper>
       </Section>
-      {/* <Section classNames="cream-section" backgroundColor="var(--cream)">
-        <Wrapper classNames="event-wrapper">
-          <Callout backgroundImage={Misty.src} backgroundColor="var(--black)">
-            <h3>a note from mhairi, simon & sofia</h3>
-            <p>
-              Hi, we know that for our fellow millennials, Halloween is
-              considered one of the high holidays. It’s an occasion that’s
-              beloved by many, including us (I mean heck, we’re getting married
-              on it) but can be particularly special for many of our friends who
-              now have young families.
-            </p>
-            <p>
-              <span className="color--black highlight--yellow">
-                Please do not feel guilty prioritizing your own family
-                traditions, even if that means you’re unable to attend our
-                celebration.
-              </span>{" "}
-              It’s all good! Seriously! We’ll happily catch you guys on the
-              flippity flip.
-            </p>
-          </Callout>
-        </Wrapper>
-      </Section> */}
       <Section classNames="cream-section" backgroundColor="var(--cream)">
         <Wrapper>
           <div className="flex-column">
@@ -501,7 +476,7 @@ export default function Home() {
             <h3>
               mhairi and simon are getting married <br />
               <span className="color--off-white">
-                can&apos;t wait to party with
+                can&apos;t wait to party with you
               </span>
             </h3>
           </div>

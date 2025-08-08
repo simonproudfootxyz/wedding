@@ -5,9 +5,8 @@ import { Guest, Reservation } from "../utilities/types";
 import { StylizedButton } from "../components/Button/Button";
 import { RSVPLink } from "../layouts/rsvp/RSVPLayout";
 import styled from "styled-components";
-import { RESERVATION_ID } from "../constants/params";
+import { RESERVATION_ID, RESERVTION_TYPE } from "../constants/params";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 type RSVPLookupFormData = {
   FirstName: string;
   LastName: string;
@@ -41,28 +40,21 @@ const StyledRSVPLookupEntry = styled.div`
   }
 `;
 
-const RSVPLookupEntry = ({
-  guest,
-  reservation,
-}: {
-  guest: Guest;
-  reservation: Reservation | null;
-}) => {
-  const router = useRouter();
+const RSVPLookupEntry = ({ guest }: { guest: Guest }) => {
+  const [inviteCode] = guest?.fields?.InviteCode ?? [];
+  const [reservationType] = guest?.fields?.ReservationType ?? [];
   return (
     <StyledRSVPLookupEntry>
       <p className="lookup-name">
         {guest.fields.FirstName} {guest.fields.LastName}
       </p>
       <Link
-        href={`/?${RESERVATION_ID}=${reservation?.fields?.InviteCode}`}
+        href={`/?${RESERVATION_ID}=${inviteCode}`}
         onClick={(e) => {
           e.preventDefault();
-          localStorage.setItem(
-            RESERVATION_ID,
-            reservation?.fields?.InviteCode ?? ""
-          );
-          router.push(`/?${RESERVATION_ID}=${reservation?.fields?.InviteCode}`);
+          localStorage.setItem(RESERVATION_ID, inviteCode);
+          localStorage.setItem(RESERVTION_TYPE, reservationType);
+          window.location.reload();
         }}
         className="lookup-link"
       >
@@ -92,10 +84,12 @@ export const RSVPLookupForm = () => {
       fetch(`/api/airtable?tableName=Reservations`).then((res) => res.json()),
     ])
       .then(([guestsData, reservationsData]) => {
-        const formattedGuests: Guest[] = guestsData.map((guest: any) => ({
-          id: guest.id,
-          fields: guest.fields,
-        }));
+        const formattedGuests: Guest[] = guestsData.map((guest: any) => {
+          return {
+            id: guest.id,
+            fields: guest.fields,
+          };
+        });
         setGuests(formattedGuests);
 
         const formattedReservations: Reservation[] = reservationsData.map(
@@ -229,10 +223,7 @@ export const RSVPLookupForm = () => {
 
       {hasExactGuest && (
         <>
-          <RSVPLookupEntry
-            guest={guestLookup}
-            reservation={reservationLookup}
-          />
+          <RSVPLookupEntry guest={guestLookup} />
         </>
       )}
       {requiresFuzzyLookup && (
@@ -241,10 +232,7 @@ export const RSVPLookupForm = () => {
             {fuzzyLookups.map((lookup) => {
               return (
                 <li key={lookup.guest.id} className="lookup-list__item">
-                  <RSVPLookupEntry
-                    guest={lookup.guest}
-                    reservation={lookup.reservation}
-                  />
+                  <RSVPLookupEntry guest={lookup.guest} />
                 </li>
               );
             })}
