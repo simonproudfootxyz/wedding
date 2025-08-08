@@ -127,7 +127,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
                         Accept
                       </label>
                     </div>
-                    <div className="guest_record__input">
+                    <div className="guest-record__input">
                       <input
                         type="radio"
                         id={`guests.${record.id}.fields.Attending.No`}

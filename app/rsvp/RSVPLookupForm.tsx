@@ -18,14 +18,24 @@ const StyledRSVPLookupEntry = styled.div`
   padding: 1.5rem 0;
   align-items: center;
 
+  @media screen and (max-width: 780px) {
+    display: block;
+  }
+
   .lookup-name {
     font-size: 2rem;
+
+    @media screen and (max-width: 780px) {
+      font-size: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
   }
 
   .lookup-link {
     font-size: 1.2rem;
     border: 1px solid var(--off-white);
     padding: 0.75rem 2rem;
+    text-align: center;
 
     &::after {
       display: none;
@@ -36,6 +46,10 @@ const StyledRSVPLookupEntry = styled.div`
       background: var(--yellow);
       color: var(--black);
       border: 1px solid var(--yellow);
+    }
+
+    @media screen and (max-width: 780px) {
+      display: block;
     }
   }
 `;

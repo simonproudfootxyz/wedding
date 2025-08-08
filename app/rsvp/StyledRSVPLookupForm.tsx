@@ -4,10 +4,20 @@ export const StyledRSVPLookupForm = styled.form`
   .inputs {
     display: flex;
     gap: 4rem;
+
+    @media screen and (max-width: 780px) {
+      display: block;
+    }
   }
 
   .input-container {
     flex: 1;
+
+    &:first-of-type {
+      @media screen and (max-width: 780px) {
+        padding-bottom: 1.5rem;
+      }
+    }
 
     label {
       display: block;

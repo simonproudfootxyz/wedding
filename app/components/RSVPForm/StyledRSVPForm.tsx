@@ -10,6 +10,10 @@ export const StyledRSVPForm = styled.form`
     &:not(:first-child) {
       border-top: 2px solid var(--off-white);
     }
+
+    @media screen and (max-width: 780px) {
+      display: block;
+    }
   }
 
   .guest-record__inputs-container {
@@ -18,17 +22,28 @@ export const StyledRSVPForm = styled.form`
       color: var(--orange);
       text-align: right;
     }
+
+    @media screen and (max-width: 780px) {
+      padding-top: 1.5rem;
+    }
   }
 
   .guest-record__input-container {
     display: flex;
     gap: 1.5rem;
 
+    .guest-record__input {
+      @media screen and (max-width: 780px) {
+        width: 50%;
+      }
+    }
+
     label {
       display: block;
       font-size: 1.2rem;
       border: 1px solid var(--off-white);
       padding: 0.75rem 2rem;
+      text-align: center;
       transition: all 0.3s ease;
 
       &:hover,
