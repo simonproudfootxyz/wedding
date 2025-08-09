@@ -34,6 +34,10 @@ export const StyledSection = styled.section<StyledSectionProps>`
       color: var(--70s-brown);
     }
   }
+
+  &.ouija-section {
+    background-position-x: 40%;
+  }
 `;
 
 export const BannerSection = styled(StyledSection)`

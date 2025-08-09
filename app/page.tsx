@@ -103,7 +103,7 @@ export default function Home() {
       <Section classNames="ouija-section" backgroundImage={OuijaBackground.src}>
         <Wrapper classNames="ouija-wrapper">
           <Image
-            className="chair-photo"
+            className="ouija-wrapper__photo chair-photo"
             src={ChairPhoto.src}
             alt="Devil"
             width={2048 / 6}
@@ -111,7 +111,7 @@ export default function Home() {
             priority
           />
           <Image
-            className=""
+            className="ouija-wrapper__photo "
             src={Scrabble.src}
             alt="Devil"
             width={231}
