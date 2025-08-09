@@ -23,6 +23,23 @@ export const StyledEventOverview = styled.div`
       grid-template-columns: 1fr; /* Single column on smaller screens */
       padding-top: 50px;
     }
+
+    .event-overview__title {
+      @media screen and (max-width: 780px) {
+        font-size: 2rem;
+      }
+    }
+    .event-overview__image {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .event-overview__image--half {
+      width: auto;
+      max-width: 50%;
+      height: auto;
+    }
   }
 
   .full-height-item {
@@ -34,6 +51,11 @@ export const StyledEventOverview = styled.div`
     padding: 50px 30px;
     text-align: center;
     flex-wrap: wrap;
+    gap: 1.5rem;
+
+    @media screen and (max-width: 780px) {
+      padding: 1.5rem;
+    }
 
     .skeleton-dance {
       animation: hover 7s ease-in-out infinite;
@@ -56,6 +78,11 @@ export const StyledEventOverview = styled.div`
     display: flex;
     align-items: center;
     padding: 50px;
+    gap: 1.5rem;
+
+    @media screen and (max-width: 780px) {
+      padding: 1.5rem;
+    }
 
     &:first-of-type {
       background: var(--pink); /* Different color for the first half */
@@ -68,6 +95,7 @@ export const StyledEventOverview = styled.div`
     .column {
       flex: 1; /* Each column takes 50% width */
       height: 100%; /* Full height of the parent */
+      gap: 1.5rem;
     }
 
     .star {

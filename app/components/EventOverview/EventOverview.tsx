@@ -20,10 +20,10 @@ const EventOverview: React.FC = () => {
       </div>
       <div className="grid-container">
         <div className="full-height-item background-effect--slant">
-          <h3>what</h3>
+          <h3 className="event-overview__title">what</h3>
           <div>
             <Image
-              className="skeleton-dance"
+              className="event-overview__image--half skeleton-dance"
               src="/images/SkeletonDance_Clip.png"
               alt="Skeleton Dance Clip"
               width={202}
@@ -31,7 +31,7 @@ const EventOverview: React.FC = () => {
               priority
             />
             <Image
-              className="demon-dance"
+              className="event-overview__image--half demon-dance"
               src="/images/Demon.png"
               alt="Demon"
               width={183}
@@ -51,7 +51,7 @@ const EventOverview: React.FC = () => {
           <div className="half-height-item">
             <div className="column">
               <Image
-                className="star"
+                className="event-overview__image star"
                 src="/images/Star.png"
                 alt="Star"
                 width={178}
@@ -60,7 +60,7 @@ const EventOverview: React.FC = () => {
               />
             </div>
             <div className="column vertical space-between">
-              <h3>when</h3>
+              <h3 className="event-overview__title">when</h3>
               <p>
                 All Hallows Eve <br />
                 October 31<sup>st</sup>, 2025 <br />
@@ -71,7 +71,7 @@ const EventOverview: React.FC = () => {
           <div className="half-height-item background-effect--slant">
             <div className="column">
               <Image
-                className="chalice"
+                className="event-overview__image chalice"
                 src="/images/Chalice.png"
                 alt="Star"
                 width={178}
@@ -80,7 +80,7 @@ const EventOverview: React.FC = () => {
               />
             </div>
             <div className="column  vertical space-between">
-              <h3>where</h3>
+              <h3 className="event-overview__title">where</h3>
               <p>
                 Rainhard Brewing <br />
                 100 Symes Road, Toronto <br />
@@ -111,10 +111,10 @@ export const CeremonyEventOverview: React.FC = () => {
       </div>
       <div className="grid-container">
         <div className="full-height-item background-effect--slant">
-          <h3>what</h3>
+          <h3 className="event-overview__title">what</h3>
           <div>
             <Image
-              className="horn-hand"
+              className="event-overview__image horn-hand"
               src="/images/HornHand.png"
               alt="a hand doing the 'horns' gesture"
               width={290}
@@ -133,7 +133,7 @@ export const CeremonyEventOverview: React.FC = () => {
           <div className="half-height-item">
             <div className="column">
               <Image
-                className="star"
+                className="event-overview__image star"
                 src="/images/Star.png"
                 alt="Star"
                 width={178}
@@ -142,7 +142,7 @@ export const CeremonyEventOverview: React.FC = () => {
               />
             </div>
             <div className="column vertical space-between">
-              <h3>when</h3>
+              <h3 className="event-overview__title">when</h3>
               <p>
                 All Hallows Eve <br />
                 October 31<sup>st</sup>, 2025 <br />
@@ -153,7 +153,7 @@ export const CeremonyEventOverview: React.FC = () => {
           <div className="half-height-item background-effect--slant">
             <div className="column">
               <Image
-                className="chalice"
+                className="event-overview__image chalice"
                 src="/images/Chalice.png"
                 alt="Star"
                 width={178}
@@ -162,7 +162,7 @@ export const CeremonyEventOverview: React.FC = () => {
               />
             </div>
             <div className="column  vertical space-between">
-              <h3>where</h3>
+              <h3 className="event-overview__title">where</h3>
               <p>
                 Rainhard Brewing <br />
                 100 Symes Road, Toronto <br />
