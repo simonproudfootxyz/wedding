@@ -60,8 +60,7 @@ const RSVPLookupEntry = ({ guest }: { guest: Guest }) => {
   const [reservationType] = guest?.fields?.ReservationType ?? [];
   const router = useRouter();
 
-  const handleReservationConfirmation = (e) => {
-    e.preventDefault();
+  const handleReservationConfirmation = () => {
     localStorage.setItem(RESERVATION_ID, inviteCode);
     localStorage.setItem(RESERVTION_TYPE, reservationType);
     if (window.location.pathname === "/") {
@@ -78,7 +77,8 @@ const RSVPLookupEntry = ({ guest }: { guest: Guest }) => {
       <Link
         href={`/?${RESERVATION_ID}=${inviteCode}`}
         onClick={(e) => {
-          handleReservationConfirmation(e);
+          e.preventDefault();
+          handleReservationConfirmation();
         }}
         className="lookup-link"
       >
