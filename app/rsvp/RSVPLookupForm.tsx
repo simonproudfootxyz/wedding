@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 import { StyledRSVPLookupForm } from "./StyledRSVPLookupForm";
 import { useEffect, useState } from "react";
-import { Guest, Reservation } from "../utilities/types";
+import { Guest } from "../utilities/types";
 import { StylizedButton } from "../components/Button/Button";
 import { RSVPLink } from "../layouts/rsvp/RSVPLayout";
 import styled from "styled-components";
 import { RESERVATION_ID, RESERVTION_TYPE } from "../constants/params";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 type RSVPLookupFormData = {
   FirstName: string;
   LastName: string;
@@ -57,6 +58,18 @@ const StyledRSVPLookupEntry = styled.div`
 const RSVPLookupEntry = ({ guest }: { guest: Guest }) => {
   const [inviteCode] = guest?.fields?.InviteCode ?? [];
   const [reservationType] = guest?.fields?.ReservationType ?? [];
+  const router = useRouter();
+
+  const handleReservationConfirmation = (e) => {
+    e.preventDefault();
+    localStorage.setItem(RESERVATION_ID, inviteCode);
+    localStorage.setItem(RESERVTION_TYPE, reservationType);
+    if (window.location.pathname === "/") {
+      window.location.reload();
+    } else {
+      router.push("/");
+    }
+  };
   return (
     <StyledRSVPLookupEntry>
       <p className="lookup-name">
@@ -65,10 +78,7 @@ const RSVPLookupEntry = ({ guest }: { guest: Guest }) => {
       <Link
         href={`/?${RESERVATION_ID}=${inviteCode}`}
         onClick={(e) => {
-          e.preventDefault();
-          localStorage.setItem(RESERVATION_ID, inviteCode);
-          localStorage.setItem(RESERVTION_TYPE, reservationType);
-          window.location.reload();
+          handleReservationConfirmation(e);
         }}
         className="lookup-link"
       >
@@ -83,102 +93,63 @@ export const RSVPLookupForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitted, isSubmitting },
   } = useForm<RSVPLookupFormData>();
 
-  const [guests, setGuests] = useState<Guest[] | null>(null);
-  const [reservations, setReservations] = useState<Reservation[] | null>(null); // Adjust type as needed
+  const [allGuests, setAllGuests] = useState<Guest[] | null>(null);
+  // const [reservations, setReservations] = useState<Reservation[] | null>(null); // Adjust type as needed
 
   useEffect(() => {
     // Fetch all guests from Airtable
-    if (guests && reservations) return; // Prevent refetching if already loaded
+    if (allGuests) return; // Prevent refetching if already loaded
 
-    Promise.all([
-      fetch(`/api/airtable?tableName=Guests`).then((res) => res.json()),
-      fetch(`/api/airtable?tableName=Reservations`).then((res) => res.json()),
-    ])
-      .then(([guestsData, reservationsData]) => {
-        const formattedGuests: Guest[] = guestsData.map((guest: any) => {
-          return {
-            id: guest.id,
-            fields: guest.fields,
-          };
-        });
-        setGuests(formattedGuests);
-
-        const formattedReservations: Reservation[] = reservationsData.map(
-          (reservation: any) => ({
-            id: reservation.id,
-            fields: reservation.fields,
-          })
-        );
-        setReservations(formattedReservations);
+    fetch(`/api/airtable?tableName=Guests`)
+      .then((res) => res.json())
+      .then((guestsData) => {
+        const formattedGuests: Guest[] = guestsData.map((guest: any) => ({
+          id: guest.id,
+          fields: guest.fields,
+        }));
+        setAllGuests(formattedGuests);
       })
-      .catch((error) =>
-        console.error("Error fetching Airtable records:", error)
-      );
-  }, [guests, reservations]);
+      .catch((error) => {
+        console.error("Error fetching Airtable records:", error);
+      });
+  }, [allGuests]);
 
   //   set up state
-  const [fuzzyLookups, setFuzzyLookups] = useState<
-    { guest: Guest; reservation: Reservation | null }[] | null
+  const [possibleGuests, setPossibleGuests] = useState<
+    { guest: Guest }[] | null
   >(null);
-  const [guestLookup, setGuestLookup] = useState<Guest | null>(null);
-  const [reservationLookup, setReservationLookup] =
-    useState<Reservation | null>(null);
 
   // Form submission
   const handleFormSubmit = async (formData: RSVPLookupFormData) => {
     const { FirstName, LastName } = formData;
     const format = (s: string) => s.trim().toLowerCase();
 
-    const exactGuest = guests
-      ? guests.find(
-          (g) =>
-            format(g.fields.FirstName) === format(FirstName) &&
-            format(g.fields.LastName) === format(LastName)
-        )
-      : null;
-
-    const exactReservation =
-      exactGuest && reservations
-        ? reservations.find((r) => r.fields.Assignee?.includes(exactGuest.id))
-        : null;
-
-    const fuzzyLookups = guests
-      ? guests
+    const possibleGuests = allGuests
+      ? allGuests
           .filter(
             (g) =>
               format(g.fields.FirstName).includes(format(FirstName)) ||
               format(g.fields.LastName).includes(format(LastName))
           )
-          .map((guest) => ({
-            guest,
-            reservation:
-              reservations?.find((r) =>
-                r.fields.Assignee?.includes(guest.id)
-              ) || null,
-          }))
+          .map((g) => ({ guest: g }))
       : [];
 
-    setFuzzyLookups(fuzzyLookups);
-    setGuestLookup(exactGuest ?? null);
-    setReservationLookup(exactReservation ?? null);
+    setPossibleGuests(possibleGuests);
   };
+  const hasGuestMatches = possibleGuests && possibleGuests.length > 0;
 
+  // reset
   const handleResetClick = () => {
-    setGuestLookup(null);
-    setReservationLookup(null);
-    setFuzzyLookups(null);
+    setPossibleGuests(null);
     reset();
   };
 
-  const hasExactGuest = guestLookup && reservationLookup;
-  const requiresFuzzyLookup = !guestLookup && fuzzyLookups;
-
   return (
     <StyledRSVPLookupForm action="" onSubmit={handleSubmit(handleFormSubmit)}>
-      {!requiresFuzzyLookup && !hasExactGuest && (
+      {!isSubmitted && (
         <div className="inputs">
           <div className="input-container">
             <label htmlFor="FirstName">First Name:</label>
@@ -208,7 +179,7 @@ export const RSVPLookupForm = () => {
           </div>
         </div>
       )}
-      {(requiresFuzzyLookup || hasExactGuest) && (
+      {isSubmitted && hasGuestMatches && (
         <div className="reset-link__container">
           <p>
             Not you?{" "}
@@ -225,25 +196,19 @@ export const RSVPLookupForm = () => {
           </p>
         </div>
       )}
-      {!requiresFuzzyLookup && !hasExactGuest && (
+      {!isSubmitted && (
         <div className="buttons-container">
           <div>
-            <StylizedButton type="submit" disabled={!guests && !reservations}>
+            <StylizedButton type="submit" disabled={!allGuests || isSubmitting}>
               submit
             </StylizedButton>
           </div>
         </div>
       )}
-
-      {hasExactGuest && (
-        <>
-          <RSVPLookupEntry guest={guestLookup} />
-        </>
-      )}
-      {requiresFuzzyLookup && (
+      {isSubmitted && hasGuestMatches && (
         <div className="lookup-list__container">
           <ul className="lookup-list">
-            {fuzzyLookups.map((lookup) => {
+            {possibleGuests.map((lookup) => {
               return (
                 <li key={lookup.guest.id} className="lookup-list__item">
                   <RSVPLookupEntry guest={lookup.guest} />
@@ -251,6 +216,25 @@ export const RSVPLookupForm = () => {
               );
             })}
           </ul>
+        </div>
+      )}
+      {isSubmitted && !hasGuestMatches && (
+        <div className="reset-link__container">
+          <h3>We couldn&apos;t find any invites under that name</h3>
+          <h3>
+            Try{" "}
+            <Link
+              className="link--no-guests"
+              onClick={(e) => {
+                e.preventDefault();
+                handleResetClick();
+              }}
+              href={"/rsvp"}
+            >
+              searching again
+            </Link>
+            or contact us
+          </h3>
         </div>
       )}
     </StyledRSVPLookupForm>

@@ -39,9 +39,12 @@ export const StyledRSVPLookupForm = styled.form`
   }
 
   .reset-link__container {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     margin-bottom: 2rem;
+  }
+
+  .link--no-guests {
+    font-family: inherit;
   }
 
   .buttons-container {

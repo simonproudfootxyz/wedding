@@ -25,6 +25,11 @@ const ModalBox = styled.div`
   clip-path: var(--modal-clip);
   text-align: center;
 
+  @media screen and (max-width: 780px) {
+    padding: 1.5rem 1.5rem 3rem;
+    margin: 1.2rem;
+  }
+
   p,
   ul,
   li,
@@ -51,6 +56,10 @@ const ModalBox = styled.div`
     padding: 5rem 3rem 3rem;
     max-width: 600px;
     margin: 0 auto 2rem;
+
+    @media screen and (max-width: 780px) {
+      padding: 4rem 1.5rem 0;
+    }
   }
 
   .modal__heading {

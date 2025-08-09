@@ -18,6 +18,11 @@ export const StyledEventOverview = styled.div`
     gap: 16px; /* Optional: Add spacing between grid items */
     flex: 0 0 100%;
     color: var(--black);
+
+    @media screen and (max-width: 780px) {
+      grid-template-columns: 1fr; /* Single column on smaller screens */
+      padding-top: 50px;
+    }
   }
 
   .full-height-item {
