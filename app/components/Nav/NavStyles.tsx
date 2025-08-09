@@ -101,30 +101,3 @@ export const Logo = styled.h2`
   font-size: 2.4rem;
   letter-spacing: -2px;
 `;
-
-export const RSVPLink = styled(Link)`
-  transform: rotate(5deg);
-  background: var(--black);
-  border-radius: 50%;
-  box-shadow: 2px 2px 0px var(--pink);
-
-  &:hover,
-  &:focus {
-    box-shadow: 5px 5px 0px var(--pink);
-    transform: rotate(5deg) translate(2px, 2px);
-    transition: all 0.3s ease;
-  }
-
-  span {
-    display: block;
-    font-size: 20px;
-    padding: 15px 35px;
-    transform: rotate(-5deg);
-    position: relative;
-    z-index: 100;
-  }
-
-  &::after {
-    display: none;
-  }
-`;

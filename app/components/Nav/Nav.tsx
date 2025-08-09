@@ -5,12 +5,12 @@ import {
   StyledNav,
   NavItem,
   NavLink,
-  RSVPLink,
   Logo,
   InnerNavLink,
 } from "./NavStyles";
 import { debounce } from "@/app/utilities/utilities";
 import { CEREMONY } from "@/app/utilities/consts";
+import ButtonLink from "../ButtonLink/ButtonLink";
 
 const handleScroll = () => {
   const nav = document.getElementById("nav");
@@ -80,9 +80,7 @@ const Nav: React.FC<NavProps> = ({ slug }) => {
       </NavList>
 
       <div>
-        <RSVPLink href={slug ? `/rsvp/${slug}` : "/rsvp"} className={`button`}>
-          <span>rsvp</span>
-        </RSVPLink>
+        <ButtonLink href={slug ? `/rsvp/${slug}` : "/rsvp"}>rsvp</ButtonLink>
       </div>
     </StyledNav>
   );

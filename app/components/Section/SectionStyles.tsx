@@ -41,14 +41,15 @@ export const BannerSection = styled(StyledSection)`
   background: var(--yellow);
 
   p {
-    display: flex;
-    align-items: center;
-    font-size: 100px;
-    color: var(--black);
-    white-space: nowrap;
-    font-family: var(--pp-editorial);
-    font-weight: 100;
-    animation: marquee 15s infinite linear;
+    display: flex;/
+    align-items: ce/nter;
+    font-size: 100px/;
+    color: var(--blac/k);
+    white-space: nowra/p;
+    font-family: var(--/pp-editorial);
+    font-weight: 100;/
+    animation: marquee 15s infinite alternate repeat;/
+    // animation: marquee 15s infinite repeat;
   }
 
   img {
