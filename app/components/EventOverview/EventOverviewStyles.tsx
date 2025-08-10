@@ -71,6 +71,7 @@ export const StyledEventOverview = styled.div`
     flex-direction: column;
     justify-content: space-between; /* Evenly space the sub-components */
     gap: 20px;
+    grid-row: span 2; /* Spans the full height of the grid */
   }
 
   .half-height-item {
@@ -79,6 +80,7 @@ export const StyledEventOverview = styled.div`
     align-items: center;
     padding: 50px;
     gap: 1.5rem;
+    height: 100%;
 
     @media screen and (max-width: 780px) {
       padding: 1.5rem;
@@ -96,6 +98,24 @@ export const StyledEventOverview = styled.div`
       flex: 1; /* Each column takes 50% width */
       height: 100%; /* Full height of the parent */
       gap: 1.5rem;
+
+      &:nth-of-type(1) {
+        flex-direction: column;
+        justify-content: center;
+        display: flex;
+        @media screen and (max-width: 780px) {
+          flex: 2;
+        }
+      }
+
+      &:nth-of-type(2) {
+        justify-content: space-between; /* Space between items in the second column */
+
+        @media screen and (max-width: 780px) {
+          justify-content: space-evenly; /* Space between items in the second column */
+          flex: 3;
+        }
+      }
     }
 
     .star {

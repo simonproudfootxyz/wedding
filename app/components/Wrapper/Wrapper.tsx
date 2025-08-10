@@ -16,7 +16,7 @@ const Wrapper: React.FC<WrapperProps> = ({
 }) => {
   return (
     <StyledWrapper
-      className={classNames}
+      className={`wrapper ${classNames && classNames}`}
       justifyContent={justifyContent}
       alignItems={alignItems}
     >

@@ -91,13 +91,39 @@ export const FooterSection = styled(StyledSection)`
   padding: 30px 0;
   border-top: 4px solid var(--transparent-white);
 
+  .footer__wrapper {
+    align-items: center;
+
+    @media screen and (max-width: 780px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
   h3 {
     color: var(--white);
     letter-spacing: -2px;
+
+    @media screen and (max-width: 780px) {
+      text-align: center;
+      font-size: 2rem;
+    }
   }
 
   .footer__content-box {
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: 780px) {
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .footer-copyright__wrapper {
+    @media screen and (max-width: 780px) {
+      justify-content: center;
+    }
   }
 `;

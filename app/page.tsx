@@ -284,7 +284,7 @@ export default function Home() {
             />
             <FrequentlyAskedQuestion
               question="do you have a gift registry?"
-              answer="Nope! <br /> <br /> We both lived solo before we met and we had to consolidate two apartments worth of stuff when we moved in together. Then we moved across the country twice and boy did that kick our butt in the stuff department. <span class='highlight--transparent-red'>Your earthly presence and support are all we need.</span>"
+              answer="<span class='highlight--transparent-red'>Nope!</span> <br /> <br /> We both lived solo before we met and we had to consolidate two apartments worth of stuff when we moved in together. Then we moved across the country twice and boy did that kick our butt in the stuff department. <span class='highlight--transparent-red'>Your earthly presence and support are all we need.</span>"
             />
             {isCeremonyInvite ? (
               <FrequentlyAskedQuestion
@@ -301,11 +301,11 @@ export default function Home() {
               <>
                 <FrequentlyAskedQuestion
                   question="wait, so are you guys wearing costumes?"
-                  answer="Not for the ceremony. Getting married in costume would be really fun, but we’ve opted to dress like cute ordinary humans for the ceremony and dinner portion of the event. <span class='highlight--transparent-red'>We will be changing into costumes before the party guests arrive.</span><br /><br /> Mhairi & Simon costume hint: you can summon him by saying his name three times in a row"
+                  answer="<span class='highlight--transparent-red'>Not for the ceremony.</span> Getting married in costume would be really fun, but we’ve opted to dress like cute ordinary humans for the ceremony and dinner portion of the event. <span class='highlight--transparent-red'>We will be changing into costumes before the party begins.</span><br /><br /> Mhairi & Simon costume hint: you can summon him by <span class='highlight--pink'>saying his name three times in a row</span>"
                 />
                 <FrequentlyAskedQuestion
                   question="if I wanted to change into a costume after the dinner, can I do that?"
-                  answer="Totally! <span class='highlight--transparent-red'>There will be about an hour between dinner ending and the party guests arriving.</span> This is a great time to change into a costume, goth up your outfit, whatever you desire! We’ll be using this time to change as well. <br /> <br /> <span class='highlight--transparent-red'>Heads up:</span> there is one accessible washroom in the brewery, and additional stalls available in the building. If you want to change into a more complicated costume, and would prefer a little more space, you are also welcome to leave and come back for the party reception, <span class='highlight--transparent-red'>you don’t need to be there for 7:30pm exactly.</span> Just keep in mind that bao buns will be dropping at 9PM if you’re interested."
+                  answer="Totally! <span class='highlight--transparent-red'>There will be about an hour between dinner ending and the party beginning.</span> This is a great time to change into a costume, goth up your outfit, whatever you desire! We’ll be using this time to change as well. <br /> <br /> <span class='highlight--transparent-red'>Heads up: there is one accessible washroom in the brewery, and additional stalls available in the building.</span> If you want to change into a more complicated costume, and would prefer a little more space, you are also welcome to leave and come back for the party reception, <span class='highlight--transparent-red'>you don’t need to be there for 7:30pm exactly.</span> Just keep in mind that bao buns will be dropping at 9PM if you’re interested."
                 />
               </>
             )}
@@ -324,15 +324,15 @@ export default function Home() {
           <div className="flex-column">
             <FrequentlyAskedQuestion
               question="where’s the venue?"
-              answer="The party’s at <a href='https://maps.app.goo.gl/5rZwWyGLvvM58WTu9'>Rainhard Brewing</a> (100 Symes Rd, Toronto, M6N 0A8), which is located in the Junction. You can get there via the TTC by taking the 189 bus from Keele station. Uber, Lyft, etc., also good options. <br /> <br /> Please note that there’s two breweries in the building. Rainhard is the one tucked further in from the road, look for our sign out front to make sure you’re in the right place."
+              answer="The party’s at <span class='highlight--transparent-red'>Rainhard Brewing</span> <a href='https://maps.app.goo.gl/5rZwWyGLvvM58WTu9' target='_blank'>(100 Symes Rd, Toronto, M6N 0A8)</a>, which is located in the Junction. You can get there via the TTC by taking the 189 bus from Keele station. Uber, Lyft, etc., also good options. <br /> <br /> Please note that there’s <span class='highlight--transparent-red'>two breweries in the building. Rainhard is the one tucked further in from the road,</span> look for our sign out front to make sure you’re in the right place."
             />
             <FrequentlyAskedQuestion
               question="what’s the parking situation?"
-              answer="There is tons of parking available at the venue for free."
+              answer="There is tons of <span class='highlight--transparent-red'>parking available at the venue for free.</span>"
             />
             <FrequentlyAskedQuestion
               question="is there a hotel block?"
-              answer="There is not!  Since most of our guests are based in Toronto we are not organizing a hotel block. If needed, please feel free to book the accommodations that work best for you. There are tons of Airbnb’s in Toronto, and here’s are a couple of hotels we like:"
+              answer="There is not!  Since most of our guests are based in Toronto <span class='highlight--transparent-red'>we are not organizing a hotel block.</span> If needed, please feel free to book the accommodations that work best for you. There are tons of Airbnb’s in Toronto, and here’s are a couple of hotels we like:"
             >
               <ul>
                 <li>
@@ -360,8 +360,10 @@ export default function Home() {
                     Sonder Slate
                   </a>{" "}
                   is closest to Union Station if you are taking the train.
-                  Please don’t stay at the Liberty, Liberty Village is a garbage
-                  place.
+                  <span className="highlight--transparent-red">
+                    Please don’t stay at the Liberty, Liberty Village is a
+                    garbage place.
+                  </span>
                 </small>
               </p>
             </FrequentlyAskedQuestion>
@@ -469,7 +471,7 @@ export default function Home() {
         </p>
       </BannerSection>
       <FooterSection>
-        <Wrapper justifyContent="space-between">
+        <Wrapper classNames="footer__wrapper" justifyContent="space-between">
           <div className="footer__content-box">
             <Image
               src="/images/FooterSkull.png"
@@ -493,8 +495,8 @@ export default function Home() {
         </Wrapper>
       </FooterSection>
       <FooterSection>
-        <Wrapper>
-          <p>
+        <Wrapper classNames="footer-copyright__wrapper">
+          <p className="footer__copyright">
             <small>Designed by mhairi. ✨ Brought to life by simon. 👽</small>
           </p>
         </Wrapper>

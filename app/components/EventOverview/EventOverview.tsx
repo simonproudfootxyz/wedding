@@ -59,7 +59,7 @@ const EventOverview: React.FC = () => {
                 priority
               />
             </div>
-            <div className="column vertical space-between">
+            <div className="column vertical">
               <h3 className="event-overview__title">when</h3>
               <p>
                 All Hallows Eve <br />
@@ -79,7 +79,7 @@ const EventOverview: React.FC = () => {
                 priority
               />
             </div>
-            <div className="column  vertical space-between">
+            <div className="column  vertical">
               <h3 className="event-overview__title">where</h3>
               <p>
                 Rainhard Brewing <br />
@@ -141,7 +141,7 @@ export const CeremonyEventOverview: React.FC = () => {
                 priority
               />
             </div>
-            <div className="column vertical space-between">
+            <div className="column vertical">
               <h3 className="event-overview__title">when</h3>
               <p>
                 All Hallows Eve <br />
@@ -161,7 +161,7 @@ export const CeremonyEventOverview: React.FC = () => {
                 priority
               />
             </div>
-            <div className="column  vertical space-between">
+            <div className="column  vertical">
               <h3 className="event-overview__title">where</h3>
               <p>
                 Rainhard Brewing <br />

@@ -1,6 +1,5 @@
 "use client";
 import styled from "styled-components";
-import Link from "next/link";
 
 export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   padding: 1rem 2rem;
@@ -16,6 +15,10 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   transition: all 0.3s ease;
   border-bottom: 2px solid transparent;
   gap: 1.5rem;
+
+  @media screen and (max-width: 780px) {
+    top: -10%;
+  }
 
   .navigation--fixed {
     display: none;
@@ -34,8 +37,9 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   // BACKGROUND-FILLED
   // ========================
   &.background-filled {
-    background: var(--canvas);
+    background: var(--white);
     border-bottom: 2px solid var(--70s-green);
+    top: 0;
 
     @media screen and (max-width: 780px) {
       display: flex;
