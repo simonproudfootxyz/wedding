@@ -19,6 +19,10 @@ export const StyledSection = styled.section<StyledSectionProps>`
   }};
   background-size: cover;
 
+  @media screen and (max-width: 780px) {
+    padding: 2.5rem 0;
+  }
+
   &.event-section {
     & + &.event-section {
       border-top: 4px solid var(--transparent-white);
@@ -37,6 +41,10 @@ export const StyledSection = styled.section<StyledSectionProps>`
 
   &.ouija-section {
     background-position-x: 40%;
+  }
+
+  &.rsvp-section {
+    background-position-x: 50%;
   }
 `;
 

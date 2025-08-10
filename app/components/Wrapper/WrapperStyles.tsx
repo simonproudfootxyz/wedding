@@ -15,6 +15,14 @@ const StyledWrapper = styled.div<WrapperProps>`
 
   .flex-column {
     flex: 1;
+
+    @media screen and (max-width: 780px) {
+      flex-basis: 100%;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
   }
 
   &.ouija-wrapper {
@@ -52,6 +60,10 @@ const StyledWrapper = styled.div<WrapperProps>`
 
     .title-wrapper {
       padding-top: 100px;
+
+      @media screen and (max-width: 780px) {
+        padding-right: 100px;
+      }
     }
 
     h1 {
@@ -61,23 +73,41 @@ const StyledWrapper = styled.div<WrapperProps>`
 
     .image-wrapper {
       position: relative;
+
+      @media screen and (max-width: 780px) {
+        height: 320px;
+      }
     }
 
     .devil {
       animation: hover 7s ease-in-out infinite;
       left: 0;
       bottom: -150px;
+
+      @media screen and (max-width: 780px) {
+        top: 0;
+        left: 9%;
+      }
     }
 
     .diablo {
       animation: float 8s linear infinite;
       top: -120px;
       right: 50px;
+
+      @media screen and (max-width: 780px) {
+        top: -300px;
+        right: -30px;
+      }
     }
   }
 `;
 
 export const StyledRSVPWrapper = styled(StyledWrapper)`
   min-height: 500px;
+
+  @media screen and (max-width: 780px) {
+    min-height: 200px;
+  }
 `;
 export default StyledWrapper;

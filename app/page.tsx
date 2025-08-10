@@ -415,7 +415,7 @@ export default function Home() {
           </Wrapper>
         )}
       </Section>
-      <Section backgroundImage={RSVPImage.src}>
+      <Section classNames="rsvp-section" backgroundImage={RSVPImage.src}>
         <StyledRSVPWrapper />
       </Section>
       <BannerSection>

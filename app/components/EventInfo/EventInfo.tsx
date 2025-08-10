@@ -13,6 +13,10 @@ export const EventInfoContainer = styled.div`
   width: 100%;
   gap: 16px;
   justify-content: space-between;
+
+  @media screen and (max-width: 780px) {
+    display: block;
+  }
 `;
 
 export const Column = styled.div`
@@ -21,15 +25,27 @@ export const Column = styled.div`
 
   &:nth-of-type(1) {
     max-width: 550px;
+
+    @media screen and (max-width: 780px) {
+      max-width: none;
+    }
   }
   &:nth-of-type(2) {
     max-width: 350px;
+
+    @media screen and (max-width: 780px) {
+      max-width: none;
+    }
   }
 `;
 
 const Heading = styled.h3`
   font-size: 48px;
   padding-bottom: 40px;
+
+  @media screen and (max-width: 780px) {
+    font-size: 2rem;
+  }
 
   strong {
     font-weight: 900;

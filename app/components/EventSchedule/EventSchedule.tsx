@@ -21,6 +21,10 @@ const RightContainer = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
+
+  @media screen and (max-width: 780px) {
+    display: none;
+  }
 `;
 
 const StyledH3 = styled.h3`
@@ -29,6 +33,11 @@ const StyledH3 = styled.h3`
   font-weight: 200;
   margin: 0;
   letter-spacing: -2px;
+
+  @media screen and (max-width: 780px) {
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
 `;
 
 interface EventScheduleProps {
