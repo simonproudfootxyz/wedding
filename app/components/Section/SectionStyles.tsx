@@ -64,7 +64,7 @@ export const BannerSection = styled(StyledSection)`
     white-space: nowrap;
     font-family: var(--pp-editorial);
     font-weight: 100;
-    animation: marquee 15s infinite alternate linear;
+    animation: marquee 30s infinite alternate linear;
 
     @media screen and (max-width: 780px) {
       font-size: 4rem;

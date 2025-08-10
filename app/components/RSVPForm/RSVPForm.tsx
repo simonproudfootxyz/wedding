@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { StyledRSVPForm } from "./StyledRSVPForm";
 import { useForm } from "react-hook-form";
-import { RSVPLink } from "@/app/layouts/rsvp/RSVPLayout";
 import { StylizedButton } from "../Button/Button";
 import Image from "next/image";
 import ButtonLink from "../ButtonLink/ButtonLink";
@@ -10,6 +9,7 @@ import Modal from "../Modal/Modal";
 import { useRouter } from "next/navigation";
 import { RESERVATION_ID } from "@/app/constants/params";
 import { Guest } from "@/app/utilities/types";
+import Link from "next/link";
 
 type RSVPFormData = {
   guests: {
@@ -94,9 +94,9 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
         <div className="reset-link__container">
           <p>
             Not you?{" "}
-            <RSVPLink className="heading-box__link" href={"/rsvp"}>
+            <Link className="heading-box__link" href={"/rsvp"}>
               Search again
-            </RSVPLink>
+            </Link>
           </p>
         </div>
         <ul className="guest-record__list">

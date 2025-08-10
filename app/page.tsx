@@ -29,6 +29,11 @@ import { RSVPLookupForm } from "./rsvp/RSVPLookupForm";
 import { CEREMONY } from "./utilities/consts";
 import { RESERVATION_ID, RESERVTION_TYPE } from "./constants/params";
 import { SeconaryButtonLink } from "./components/ButtonLink/ButtonLink";
+import styled from "styled-components";
+
+const StyledImageBanner = styled.div`
+  background: var(--black);
+`;
 
 export default function Home() {
   const router = useRouter();
@@ -85,7 +90,7 @@ export default function Home() {
     <div className={styles.page}>
       <Nav slug={reservationId ?? undefined} />
       <TopHero title="mhairi and simon are&nbsp;getting married." />
-      <div>
+      <StyledImageBanner className="image-banner">
         <Image
           src="/images/M+S_CreativeEngagementSession_Toronto_2025-10 1.jpg"
           alt="Creative Engagement Session in Toronto"
@@ -94,7 +99,7 @@ export default function Home() {
           layout="responsive" // Ensures the image is responsive
           priority // Optional: Preloads the image for better performance
         />
-      </div>
+      </StyledImageBanner>
       <Section id="summary" backgroundColor="var(--cream)">
         <Wrapper>
           {isCeremonyInvite ? <CeremonyEventOverview /> : <EventOverview />}

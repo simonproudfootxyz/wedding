@@ -191,6 +191,7 @@ font-style: italic; */
   --white: #ffffff;
   --off-white: rgba(255, 255, 255, 0.5);
   --canvas: #d9d9d9;
+  --lighter-canvas: #eae8e3;
   --grey: rgba(32, 32, 32, 0.2);
   --transparent-white: rgba(255, 255, 255, 0.05);
   --transparent-white-2: rgba(255, 255, 255, 0.2);
@@ -445,6 +446,21 @@ span.highlight--confetti {
 
 .bg-animated {
   animation: bg-color-cycle 6s linear infinite;
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+  color: var(--white);
+  caret-color: var(--orange);
+}
+
+input[type="text"]:hover {
+  cursor: pointer;
+}
+
+input[type="text"]:focus {
+  outline: var(--pink) solid 2px;
 }
 
 button {

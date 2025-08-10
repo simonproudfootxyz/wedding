@@ -6,6 +6,7 @@ export const StyledRSVPLayout = styled.div`
   align-items: center;
   min-height: 100vh;
   padding: 8rem 2rem 6rem;
+  background: black;
 
   h1,
   h2,

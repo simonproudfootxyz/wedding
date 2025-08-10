@@ -3,7 +3,6 @@ import { StyledRSVPLookupForm } from "./StyledRSVPLookupForm";
 import { useEffect, useState } from "react";
 import { Guest } from "../utilities/types";
 import { StylizedButton } from "../components/Button/Button";
-import { RSVPLink } from "../layouts/rsvp/RSVPLayout";
 import styled from "styled-components";
 import { RESERVATION_ID, RESERVTION_TYPE } from "../constants/params";
 import Link from "next/link";
@@ -183,7 +182,7 @@ export const RSVPLookupForm = () => {
         <div className="reset-link__container">
           <p>
             Not you?{" "}
-            <RSVPLink
+            <Link
               className="heading-box__link"
               onClick={(e) => {
                 e.preventDefault();
@@ -192,7 +191,7 @@ export const RSVPLookupForm = () => {
               href={"/rsvp"}
             >
               Search again
-            </RSVPLink>
+            </Link>
           </p>
         </div>
       )}

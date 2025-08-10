@@ -12,16 +12,6 @@ interface RSVPLayoutProps {
   RSVPLinkText?: string;
 }
 
-export const RSVPLink = styled(Link)`
-  &::after {
-    background: var(--yellow);
-  }
-
-  &:hover::after {
-    background: var(--yellow);
-  }
-`;
-
 const RSVPLayout: React.FC<RSVPLayoutProps> = ({
   children,
   loading = true,

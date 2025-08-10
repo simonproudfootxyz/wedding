@@ -89,18 +89,6 @@ export const StyledRSVPForm = styled.form`
     font-size: 1.2rem;
     font-family: var(--pp-editorial);
     background: none;
-    border: none;
-    outline: none;
-    color: var(--white);
-    caret-color: var(--pink);
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:focus {
-      outline: var(--yellow) solid 2px;
-    }
 
     &::placeholder {
       color: var(--off-white);
