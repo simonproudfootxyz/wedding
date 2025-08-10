@@ -91,6 +91,16 @@ export const StyledRSVPForm = styled.form`
     background: none;
     border: none;
     outline: none;
+    color: var(--white);
+    caret-color: var(--pink);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: var(--yellow) solid 2px;
+    }
 
     &::placeholder {
       color: var(--off-white);
