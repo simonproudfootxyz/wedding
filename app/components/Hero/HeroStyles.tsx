@@ -36,18 +36,50 @@ export const StyledTopHero = styled(StyledHero)`
     left: -45px;
     bottom: -185px;
     animation: hover 7s ease-in-out infinite;
+
+    @media screen and (max-width: 1100px) {
+      bottom: -375px;
+    }
+
+    @media screen and (max-width: 780px) {
+      width: 225px;
+      height: auto;
+      bottom: -173px;
+      left: -100px;
+    }
   }
 
   .ring {
     bottom: -126px;
     left: 260px;
     animation: spin 8s linear infinite;
+
+    @media screen and (max-width: 1100px) {
+      // positioning
+    }
+
+    @media screen and (max-width: 780px) {
+      // mobile positioning
+      left: 80%;
+    }
   }
 
   .photo {
     top: -200px;
     right: 38px;
     animation: float 9s ease-in-out infinite;
+
+    @media screen and (max-width: 1100px) {
+      right: -80px;
+      top: -225px;
+    }
+
+    @media screen and (max-width: 780px) {
+      right: -52px;
+      top: -154px;
+      width: 140px;
+      height: auto;
+    }
   }
 
   // TITLE
@@ -56,6 +88,18 @@ export const StyledTopHero = styled(StyledHero)`
     padding-left: 175px;
     text-indent: var(--offest);
     margin-left: 125px;
-  }
+
+    @media screen and (max-width: 1100px) {
+      padding-left: 0;
+      text-indent: 0;
+      margin-left: 0;
+      text-align: center;
+      padding: 0 3rem;
+    }
+
+    @media screen and (max-width: 780px) {
+      font-size: 5rem;
+      padding: 0;
+    }
   }
 `;

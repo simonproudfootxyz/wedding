@@ -15,6 +15,7 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   align-items: center;
   transition: all 0.3s ease;
   border-bottom: 2px solid transparent;
+  gap: 1.5rem;
 
   .navigation--fixed {
     display: none;
@@ -23,6 +24,11 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   h2 {
     color: transparent;
     transition: all 0.3s ease;
+
+    @media screen and (max-width: 780px) {
+      color: var(--black);
+      font-size: 2rem;
+    }
   }
 
   // BACKGROUND-FILLED
@@ -30,6 +36,10 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   &.background-filled {
     background: var(--canvas);
     border-bottom: 2px solid var(--70s-green);
+
+    @media screen and (max-width: 780px) {
+      display: flex;
+    }
 
     h2 {
       color: var(--black);
@@ -50,6 +60,10 @@ export const NavList = styled.div`
   list-style: none;
   margin: 0;
   padding: 0;
+
+  @media screen and (max-width: 780px) {
+    display: none;
+  }
 `;
 
 export const NavItem = styled.li`

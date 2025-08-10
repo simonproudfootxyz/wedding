@@ -41,6 +41,10 @@ export const StyledSection = styled.section<StyledSectionProps>`
 
   &.ouija-section {
     background-position-x: 40%;
+
+    @media screen and (max-width: 780px) {
+      display: none;
+    }
   }
 
   &.rsvp-section {
@@ -52,7 +56,7 @@ export const BannerSection = styled(StyledSection)`
   padding: 30px 0;
   background: var(--yellow);
 
-  p {
+  .marquee-text {
     display: flex;
     align-items: center;
     font-size: 100px;
@@ -61,10 +65,19 @@ export const BannerSection = styled(StyledSection)`
     font-family: var(--pp-editorial);
     font-weight: 100;
     animation: marquee 15s infinite alternate linear;
+
+    @media screen and (max-width: 780px) {
+      font-size: 4rem;
+    }
   }
 
-  img {
+  .marquee-image {
     margin: 0 20px;
+
+    @media screen and (max-width: 780px) {
+      width: 100px;
+      height: auto;
+    }
   }
 
   @keyframes marquee {

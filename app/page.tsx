@@ -422,6 +422,7 @@ export default function Home() {
         <p className="marquee-text">
           <span>attend in the flesh</span>
           <Image
+            className="marquee-image"
             src="/images/Bats.png"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
@@ -430,6 +431,7 @@ export default function Home() {
           />
           <span>rsvp by october 1</span>
           <Image
+            className="marquee-image"
             src="/images/Bats.png"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
@@ -438,6 +440,7 @@ export default function Home() {
           />
           <span>attend in the flesh</span>
           <Image
+            className="marquee-image"
             src="/images/Bats.png"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
@@ -446,6 +449,7 @@ export default function Home() {
           />
           <span>rsvp by october 1</span>
           <Image
+            className="marquee-image"
             src="/images/Bats.png"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
@@ -454,6 +458,7 @@ export default function Home() {
           />
           <span>attend in the flesh</span>
           <Image
+            className="marquee-image"
             src="/images/Bats.png"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image

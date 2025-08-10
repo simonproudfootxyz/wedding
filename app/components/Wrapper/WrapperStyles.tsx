@@ -58,11 +58,15 @@ const StyledWrapper = styled.div<WrapperProps>`
   &.devil-wrapper {
     color: var(--black);
 
+    @media screen and (max-width: 780px) {
+      flex-direction: column-reverse;
+    }
+
     .title-wrapper {
       padding-top: 100px;
 
       @media screen and (max-width: 780px) {
-        padding-right: 100px;
+        padding-right: 150px;
       }
     }
 
@@ -86,7 +90,10 @@ const StyledWrapper = styled.div<WrapperProps>`
 
       @media screen and (max-width: 780px) {
         top: 0;
-        left: 9%;
+        left: unset;
+        right: -30px;
+        width: 200px;
+        height: auto;
       }
     }
 
@@ -96,8 +103,7 @@ const StyledWrapper = styled.div<WrapperProps>`
       right: 50px;
 
       @media screen and (max-width: 780px) {
-        top: -300px;
-        right: -30px;
+        display: none;
       }
     }
   }
