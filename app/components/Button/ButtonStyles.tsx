@@ -28,10 +28,7 @@ export const StyledButton = styled.button`
   &:hover,
   &:focus {
     box-shadow: 4px 5px 0px var(--pink);
-
-    span {
-      transform: translate(1px, 1px);
-    }
+    transform: rotate(5deg) translate(2px, 2px);
   }
 
   &:disabled {

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React, { ReactNode } from "react";
 import { StyledRSVPLayout } from "./StyledRSVPLayout";
+import { CloseLink } from "@/app/components/CloseLink/CloseLink";
 import Link from "next/link";
-import styled from "styled-components";
 
 interface RSVPLayoutProps {
   children?: ReactNode;
@@ -21,6 +21,13 @@ const RSVPLayout: React.FC<RSVPLayoutProps> = ({
 
   return (
     <StyledRSVPLayout>
+      <CloseLink
+        href="/"
+        title="Back to home page"
+        aria-label="Back to home page"
+      >
+        &times;
+      </CloseLink>
       <Image
         src="/images/Upright_Scan_Planchette.png"
         className={`floating planchette`}

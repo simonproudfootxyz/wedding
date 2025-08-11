@@ -416,7 +416,7 @@ export default function Home() {
               />
               <FrequentlyAskedQuestion
                 question="I don’t like beer!"
-                answer="Unfortunate, but Rainhard has you covered. There will be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options</span> available for those who prefer. "
+                answer="Unfortunate, but Rainhard has you covered. There will be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options available</span> for whatever you prefer. "
               />
             </div>
           </Wrapper>

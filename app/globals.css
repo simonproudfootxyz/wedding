@@ -250,6 +250,12 @@ body {
   padding: 0 2rem;
 }
 
+@media screen and (max-width: 780px) {
+  .wrapper--tight {
+    padding: 0 1.5rem;
+  }
+}
+
 ::selection {
   color: var(--black);
   background: var(--yellow);
@@ -414,18 +420,14 @@ p span.highlight--yellow::selection {
 }
 
 p span.highlight--pink {
-  display: inline-block;
   background: var(--pink);
   padding: 0 5px;
-  line-height: 1.4;
   font-weight: 500;
 }
 
 span.highlight--pink {
-  display: inline-block;
   background: var(--pink);
   padding: 0 5px;
-  line-height: 1.4;
   font-weight: 500;
 }
 
@@ -452,7 +454,7 @@ input[type="text"] {
   border: none;
   outline: none;
   color: var(--white);
-  caret-color: var(--orange);
+  caret-color: var(--yellow);
 }
 
 input[type="text"]:hover {

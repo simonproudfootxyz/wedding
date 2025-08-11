@@ -46,6 +46,10 @@ export const StyledRSVPForm = styled.form`
       text-align: center;
       transition: all 0.3s ease;
 
+      @media screen and (max-width: 780px) {
+        padding: 0.75rem 1rem;
+      }
+
       &:hover,
       &:focus {
         cursor: pointer;
@@ -73,6 +77,10 @@ export const StyledRSVPForm = styled.form`
     border: 2px solid var(--off-white);
     padding: 1.5rem;
     margin-top: 4rem;
+
+    @media screen and (max-width: 780px) {
+      padding: 1.5rem 1rem;
+    }
   }
 
   .guest-record__dietary-heading {

@@ -29,8 +29,7 @@ const Answer = styled.div`
   ul,
   li,
   span {
-    font-size: 16px;
-    font-family: "new-spirit", serif;
+    font-family: var(--new-spirit);
     font-weight: 300;
     letter-spacing: -1px;
     line-height: 1.25;

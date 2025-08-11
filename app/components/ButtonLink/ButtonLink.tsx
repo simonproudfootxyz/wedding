@@ -11,6 +11,7 @@ const StyledLink = styled(Link)`
   font-size: 1.2rem;
   color: var(--white);
   box-shadow: 2px 2px 0px var(--pink);
+  transition: all 0.3s ease;
 
   &::after {
     display: none;
@@ -20,7 +21,6 @@ const StyledLink = styled(Link)`
   &:focus {
     box-shadow: 5px 5px 0px var(--pink);
     transform: rotate(5deg) translate(2px, 2px);
-    transition: all 0.3s ease;
   }
 
   .button-link__text {
