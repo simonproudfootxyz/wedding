@@ -27,7 +27,11 @@ const FAQContainer = styled.div`
   }
 
   & + & {
-    margin-top: 65px;
+    margin-top: 5rem;
+
+    @media screen and (max-width: 780px) {
+      margin-top: 2rem;
+    }
   }
 `;
 

@@ -329,7 +329,7 @@ export default function Home() {
           <div className="flex-column">
             <FrequentlyAskedQuestion
               question="where’s the venue?"
-              answer="The party’s at <span class='highlight--transparent-red'>Rainhard Brewing</span> <a href='https://maps.app.goo.gl/5rZwWyGLvvM58WTu9' target='_blank'>(100 Symes Rd, Toronto, M6N 0A8)</a>, which is located in the Junction. You can get there via the TTC by taking the 189 bus from Keele station. Uber, Lyft, etc., also good options. <br /> <br /> Please note that there’s <span class='highlight--transparent-red'>two breweries in the building. Rainhard is the one tucked further in from the road,</span> look for our sign out front to make sure you’re in the right place."
+              answer="The party’s at <span class='highlight--transparent-red'>Rainhard Brewing</span> (<a href='https://maps.app.goo.gl/5rZwWyGLvvM58WTu9' target='_blank'>100 Symes Rd, Toronto</a>, M6N 0A8), which is located in the Junction. You can get there via the TTC by taking the 189 bus from Keele station. Uber, Lyft, etc., also good options. <br /> <br /> Please note that there’s two breweries in the building. Rainhard is the one tucked further in from the road, look for our sign out front to make sure you’re in the right place."
             />
             <FrequentlyAskedQuestion
               question="what’s the parking situation?"
