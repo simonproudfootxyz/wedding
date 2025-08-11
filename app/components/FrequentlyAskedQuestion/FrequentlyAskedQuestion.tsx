@@ -10,6 +10,27 @@ interface FrequentlyAskedQuestionProps {
 
 const FAQContainer = styled.div`
   color: var(--black);
+  position: relative;
+
+  &:hover {
+    @media screen and (max-width: 780px) {
+      cursor: pointer;
+    }
+  }
+
+  &::after {
+    @media screen and (max-width: 780px) {
+      content: "+";
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+      background: var(--pink);
+      padding: 0px 8px;
+      font-size: 2rem;
+      line-height: 1;
+    }
+  }
 
   & + & {
     margin-top: 65px;
@@ -20,11 +41,24 @@ const Question = styled.p`
   font-family: "new-spirit", serif;
   font-size: 24px;
   font-weight: 400;
-  padding-bottom: 6px;
+  padding-bottom: 0.5rem;
   letter-spacing: -1px;
+
+  @media screen and (max-width: 780px) {
+    padding-bottom: 1rem;
+    padding-right: 2.5rem;
+  }
 `;
 
 const Answer = styled.div`
+  @media screen and (max-width: 780px) {
+    display: none;
+
+    &.expanded {
+      display: block;
+    }
+  }
+
   p,
   ul,
   li,
@@ -49,10 +83,14 @@ const Answer = styled.div`
 export const FrequentlyAskedQuestion: React.FC<
   FrequentlyAskedQuestionProps
 > = ({ question, answer, children }) => {
+  const [expanded, setExpanded] = React.useState(false);
   return (
-    <FAQContainer>
+    <FAQContainer
+      className="faq-container"
+      onClick={() => setExpanded(!expanded)}
+    >
       <Question dangerouslySetInnerHTML={{ __html: question }}></Question>
-      <Answer>
+      <Answer className={`faq-answer ${expanded ? "expanded" : ""}`}>
         <p dangerouslySetInnerHTML={{ __html: answer }} />
         {children}
       </Answer>
