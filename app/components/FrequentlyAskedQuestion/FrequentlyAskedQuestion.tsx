@@ -12,12 +12,6 @@ const FAQContainer = styled.div`
   color: var(--black);
   position: relative;
 
-  &:hover {
-    @media screen and (max-width: 780px) {
-      cursor: pointer;
-    }
-  }
-
   &::after {
     @media screen and (max-width: 780px) {
       content: "+";
@@ -47,6 +41,12 @@ const Question = styled.p`
   @media screen and (max-width: 780px) {
     padding-bottom: 1rem;
     padding-right: 2.5rem;
+  }
+
+  &:hover {
+    @media screen and (max-width: 780px) {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -85,11 +85,11 @@ export const FrequentlyAskedQuestion: React.FC<
 > = ({ question, answer, children }) => {
   const [expanded, setExpanded] = React.useState(false);
   return (
-    <FAQContainer
-      className="faq-container"
-      onClick={() => setExpanded(!expanded)}
-    >
-      <Question dangerouslySetInnerHTML={{ __html: question }}></Question>
+    <FAQContainer className="faq-container">
+      <Question
+        dangerouslySetInnerHTML={{ __html: question }}
+        onClick={() => setExpanded(!expanded)}
+      ></Question>
       <Answer className={`faq-answer ${expanded ? "expanded" : ""}`}>
         <p dangerouslySetInnerHTML={{ __html: answer }} />
         {children}
