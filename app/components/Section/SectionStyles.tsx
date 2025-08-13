@@ -126,4 +126,15 @@ export const FooterSection = styled(StyledSection)`
       justify-content: center;
     }
   }
+
+  .footer__copyright {
+    @media screen and (max-width: 780px) {
+      text-align: center;
+    }
+    small {
+      @media screen and (max-width: 780px) {
+        display: block;
+      }
+    }
+  }
 `;

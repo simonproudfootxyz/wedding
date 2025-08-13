@@ -13,6 +13,7 @@ export const StyledRSVPForm = styled.form`
 
     @media screen and (max-width: 780px) {
       display: block;
+      padding: 2rem 0;
     }
   }
 
@@ -70,7 +71,8 @@ export const StyledRSVPForm = styled.form`
   .reset-link__container {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-top: -3rem;
   }
 
   .guest-record__dietary {
@@ -95,7 +97,7 @@ export const StyledRSVPForm = styled.form`
     width: 100%;
     padding: 1rem;
     font-size: 1.2rem;
-    font-family: var(--pp-editorial);
+    font-family: var(--new-spirit);
     background: none;
 
     &::placeholder {

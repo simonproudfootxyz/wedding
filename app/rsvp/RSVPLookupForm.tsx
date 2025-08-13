@@ -20,6 +20,7 @@ const StyledRSVPLookupEntry = styled.div`
 
   @media screen and (max-width: 780px) {
     display: block;
+    padding: 2rem 0;
   }
 
   .lookup-name {
@@ -43,9 +44,9 @@ const StyledRSVPLookupEntry = styled.div`
 
     &:hover,
     &:focus {
-      background: var(--yellow);
+      background: var(--pink);
       color: var(--black);
-      border: 1px solid var(--yellow);
+      border: 1px solid var(--pink);
     }
 
     @media screen and (max-width: 780px) {
@@ -151,7 +152,7 @@ export const RSVPLookupForm = () => {
       {!isSubmitted && (
         <div className="inputs">
           <div className="input-container">
-            <label htmlFor="FirstName">First Name:</label>
+            <label htmlFor="FirstName">First Name</label>
             <input
               id="FirstName"
               type="text"
@@ -165,7 +166,7 @@ export const RSVPLookupForm = () => {
             )}
           </div>
           <div className="input-container">
-            <label htmlFor="LastName">Last Name:</label>
+            <label htmlFor="LastName">Last Name</label>
             <input
               id="LastName"
               type="text"

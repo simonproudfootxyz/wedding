@@ -10,6 +10,10 @@ export const StyledEventOverview = styled.div`
     transform: skew(-0.25deg) rotate(0.5deg);
   }
 
+  .event__heading {
+    padding-top: 1rem;
+  }
+
   .grid-container {
     padding-top: 100px;
     display: grid;

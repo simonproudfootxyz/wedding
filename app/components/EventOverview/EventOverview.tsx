@@ -14,7 +14,7 @@ const EventOverview: React.FC = () => {
           height={33}
           priority
         />
-        <h2>
+        <h2 className="event__heading">
           Help celebrate our commitment to roaming this earthly plane together
         </h2>
       </div>
@@ -97,7 +97,7 @@ const EventOverview: React.FC = () => {
 export const CeremonyEventOverview: React.FC = () => {
   return (
     <StyledEventOverview className="ceremony-event">
-      <div className="text-align-center">
+      <div className="text-align-center ">
         <Image
           src="/images/SunandMoons 1.png"
           alt="We are all made of stars"
@@ -105,7 +105,7 @@ export const CeremonyEventOverview: React.FC = () => {
           height={33}
           priority
         />
-        <h2>
+        <h2 className="event__heading">
           Help celebrate our commitment to roaming this earthly plane together
         </h2>
       </div>

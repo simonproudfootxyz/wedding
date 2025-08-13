@@ -22,14 +22,17 @@ export const StyledRSVPLookupForm = styled.form`
     label {
       display: block;
       margin-bottom: 0.5rem;
-      font-size: 1.5rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--off-white);
     }
 
     input {
       width: 100%;
       padding: 1rem;
       font-size: 1.5rem;
-      font-family: var(--pp-editorial);
+      font-family: var(--new-spirit);
     }
 
     .error {
@@ -40,7 +43,8 @@ export const StyledRSVPLookupForm = styled.form`
 
   .reset-link__container {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-top: -3rem;
   }
 
   .link--no-guests {

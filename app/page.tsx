@@ -204,9 +204,18 @@ export default function Home() {
             </div>
             <div className="content-section">
               <p>
-                <TimeStamps>12:00am</TimeStamps>
+                <TimeStamps>11:45pm</TimeStamps>
               </p>
               <p> Last call! Final opportunity for drinks on us.</p>
+            </div>
+            <div className="content-section">
+              <p>
+                <TimeStamps>12:00am</TimeStamps>
+              </p>
+              <p>
+                Party's over, dude. You don't have to go home, but you can't
+                stay here!
+              </p>
             </div>
           </EventInfo>
         </Wrapper>
@@ -257,7 +266,7 @@ export default function Home() {
               />
               <FrequentlyAskedQuestion
                 question="what should we expect from the ceremony?"
-                answer="We will not be doing traditional seated aisles and are <span class='highlight--transparent-red'>opting for a standing ceremony. The ceremony itself will be short and sweet</span> but we will have some stools set up in the back for those who may need them."
+                answer="We will not be doing traditional seated aisles and are opting for a <span class='highlight--transparent-red'>standing ceremony</span>. The ceremony itself will be <span class='highlight--transparent-red'>short and sweet</span> but we will have some stools set up in the back for those who may need them."
               />
               <FrequentlyAskedQuestion
                 question="can I take photos?"
@@ -299,18 +308,18 @@ export default function Home() {
             ) : (
               <FrequentlyAskedQuestion
                 question="is this a costume party? what’s the dress code?"
-                answer="Truly our most frequently asked question. The answer: it sure can be! <br /> <br /> <span class='highlight--transparent-red'>Costumes are encouraged but most definitely optional.</span>  Wear whatever you feel most comfortable in. Feel free to go ham-town on a costume. Feel free to channel your inner goth. Feel free to wear jeans (we mean it). It’s a night of drinking beer at a brewery on Halloween, there’s no need for a dress code lol. <br /> <br /> <span class='highlight--transparent-red'>Will we be in costume? Yes, of course.</span>"
+                answer="Truly our most frequently asked question. The answer: it sure can be! <br /> <br /> <span class='highlight--transparent-red'>Costumes are encouraged but most definitely optional.</span>  Wear whatever you feel most comfortable in. Feel free to go ham-town on a costume. Feel free to channel your inner goth. Feel free to wear jeans (we mean it). It’s a night of drinking beer at a brewery on Halloween, there’s no need for a dress code lol. <br /> <br /> <span class='highlight--pink'>Will we be in costume? Yes, of course.</span>"
               />
             )}
             {isCeremonyInvite && (
               <>
                 <FrequentlyAskedQuestion
                   question="wait, so are you guys wearing costumes?"
-                  answer="<span class='highlight--transparent-red'>Not for the ceremony.</span> Getting married in costume would be really fun, but we’ve opted to dress like cute ordinary humans for the ceremony and dinner portion of the event. <span class='highlight--transparent-red'>We will be changing into costumes before the party begins.</span><br /><br /> Mhairi & Simon costume hint: you can summon him by <span class='highlight--pink'>saying his name three times in a row</span>"
+                  answer="<span class='highlight--transparent-red'>Not for the ceremony.</span> Getting married in costume would be really fun, but we’ve opted to dress like cute ordinary humans for the ceremony and dinner portion of the event <span class='highlight--transparent-red'>We will be changing into costumes before the party begins.</span><br /><br /> Mhairi & Simon costume hint: you can summon him by <span class='highlight--pink'>saying his name three times in a row</span>"
                 />
                 <FrequentlyAskedQuestion
                   question="if I wanted to change into a costume after the dinner, can I do that?"
-                  answer="Totally! <span class='highlight--transparent-red'>There will be about an hour between dinner ending and the party beginning.</span> This is a great time to change into a costume, goth up your outfit, whatever you desire! We’ll be using this time to change as well. <br /> <br /> <span class='highlight--transparent-red'>Heads up: there is one accessible washroom in the brewery, and additional stalls available in the building.</span> If you want to change into a more complicated costume, and would prefer a little more space, you are also welcome to leave and come back for the party reception, <span class='highlight--transparent-red'>you don’t need to be there for 7:30pm exactly.</span> Just keep in mind that bao buns will be dropping at 9PM if you’re interested."
+                  answer="Totally! <span class='highlight--transparent-red'>There will be about an hour between dinner ending and the party beginning.</span> This is a great time to change into a costume, goth up your outfit, whatever you desire! We’ll be using this time to change as well. <br /> <br /> If you <em>do</em> wish to change, there is one accessible washroom in the brewery and additional stalls available in the building. If you have a more complicated costume, you may need to leave, change, and come back for the party reception. No problemo. <span class='highlight--transparent-red'>We'll be partying from 7:30pm onwards, feel free to join whenever you can.</span> Just keep in mind that bao buns will be dropping at 9PM."
                 />
               </>
             )}
@@ -333,7 +342,7 @@ export default function Home() {
             />
             <FrequentlyAskedQuestion
               question="what’s the parking situation?"
-              answer="There is tons of <span class='highlight--transparent-red'>parking available at the venue for free.</span>"
+              answer="There is tons of parking available at the venue for free."
             />
             <FrequentlyAskedQuestion
               question="is there a hotel block?"
@@ -383,20 +392,16 @@ export default function Home() {
             </div>
             <div className="flex-column">
               <FrequentlyAskedQuestion
-                question="what kind of foods is it?"
-                answer="Dinner will be asian-ish, with lots of comfort classics. <span class='highlight--transparent-red'>Whatever your dietary needs, we’ve got you covered from carnivores to vegans.</span><br /><br /> Will there maybe be a cheeky sambal mac n’ cheese situation? There’s only one way to find out. 👀"
-              />
-              <FrequentlyAskedQuestion
                 question="do I get to pick a meal?"
-                answer="Dinner will be served family style, so there’s <span class='highlight--transparent-red'>no need to pick a specific meal when you RSVP.</span> This also means you’ll get to try everything available—the dream! <br /> <br /> <span class='highlight--transparent-red'>Please let us know of any dietary restrictions, allergies, etc. when you RSVP</span> so we can pass that information along to our caterers."
+                answer="Dinner will be served family style, so there’s no need to pick a specific meal when you RSVP. Whatever your dietary needs, we’ve got you covered from carnivores to vegans. <br /> <br /> <span class='highlight--transparent-red'>Please let us know of any dietary restrictions, allergies, etc. when you RSVP</span> so we can pass that information along to our caterers."
               />
               <FrequentlyAskedQuestion
                 question="should I bring cash for the bar?"
-                answer="Please leave your wallets at home and prepare to party, <span class='highlight--transparent-red'>this is an open bar event. 🎉</span>"
+                answer="Please leave your wallets at home and prepare to party, <span class='highlight--transparent-red'>this is an open bar event! 🎉</span>"
               />
               <FrequentlyAskedQuestion
-                question="I don’t like beer!"
-                answer="Unfortunate, but Rainhard has you covered. There will be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options available</span> for whatever you prefer."
+                question="what about the drinks?"
+                answer="Luckily, Rainhard has you covered. Of course, the <span class='highlight--transparent-red'>Rainhard brews</span> will be flowing in abundance. However, there will also be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options available</span> for whatever you prefer."
               />
             </div>
           </Wrapper>
@@ -412,11 +417,11 @@ export default function Home() {
               />
               <FrequentlyAskedQuestion
                 question="should I bring cash for the bar?"
-                answer="Please leave your wallets at home and prepare to party, <span class='highlight--transparent-red'>this is an open bar event. 🎉</span>"
+                answer="Please leave your wallets at home and prepare to party, <span class='highlight--transparent-red'>this is an open bar event! 🎉</span>"
               />
               <FrequentlyAskedQuestion
-                question="I don’t like beer!"
-                answer="Unfortunate, but Rainhard has you covered. There will be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options available</span> for whatever you prefer. "
+                question="what about the drinks?"
+                answer="Luckily, Rainhard has you covered. Of course, the <span class='highlight--transparent-red'>Rainhard brews</span> will be flowing in abundance. However, there will also be <span class='highlight--transparent-red'>wine, spirits, and non-alcoholic options available</span> for whatever you prefer."
               />
             </div>
           </Wrapper>
@@ -502,7 +507,8 @@ export default function Home() {
       <FooterSection>
         <Wrapper classNames="footer-copyright__wrapper">
           <p className="footer__copyright">
-            <small>Designed by mhairi. ✨ Brought to life by simon. 👽</small>
+            <small>Designed by mhairi. ✨</small>
+            <small>Brought to life by simon. 👽</small>
           </p>
         </Wrapper>
       </FooterSection>

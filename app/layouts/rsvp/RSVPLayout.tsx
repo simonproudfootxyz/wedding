@@ -39,7 +39,7 @@ const RSVPLayout: React.FC<RSVPLayoutProps> = ({
       <div className="background">
         <div className="wrapper--tight">
           <div className="heading-box">
-            <h1>{title}</h1>
+            <h1 className="heading-box__title">{title}</h1>
           </div>
           {children && <div className="page-content">{children}</div>}
         </div>

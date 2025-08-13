@@ -17,7 +17,7 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   gap: 1.5rem;
 
   @media screen and (max-width: 780px) {
-    top: -10%;
+    top: -100%;
   }
 
   .navigation--fixed {

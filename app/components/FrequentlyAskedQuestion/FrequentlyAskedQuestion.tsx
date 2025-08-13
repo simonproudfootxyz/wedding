@@ -23,6 +23,7 @@ const FAQContainer = styled.div`
       padding: 0px 8px;
       font-size: 2rem;
       line-height: 1;
+      transition: all 0.3s ease;
     }
   }
 
@@ -31,6 +32,14 @@ const FAQContainer = styled.div`
 
     @media screen and (max-width: 780px) {
       margin-top: 2rem;
+    }
+  }
+
+  &.expanded {
+    &::after {
+      @media screen and (max-width: 780px) {
+        transform: rotate(45deg);
+      }
     }
   }
 `;
@@ -89,7 +98,7 @@ export const FrequentlyAskedQuestion: React.FC<
 > = ({ question, answer, children }) => {
   const [expanded, setExpanded] = React.useState(false);
   return (
-    <FAQContainer className="faq-container">
+    <FAQContainer className={`faq-container ${expanded && "expanded"}`}>
       <Question
         dangerouslySetInnerHTML={{ __html: question }}
         onClick={() => setExpanded(!expanded)}

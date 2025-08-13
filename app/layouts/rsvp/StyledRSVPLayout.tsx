@@ -31,7 +31,17 @@ export const StyledRSVPLayout = styled.div`
   .heading-box {
     max-width: var(--inner-max-width);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
+
+    @media screen and (max-width: 780px) {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .heading-box__title {
+    @media screen and (max-width: 780px) {
+      font-size: 3.5rem;
+    }
   }
 
   .heading-box__link {

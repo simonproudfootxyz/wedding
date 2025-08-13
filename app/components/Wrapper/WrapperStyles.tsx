@@ -22,6 +22,10 @@ const StyledWrapper = styled.div<WrapperProps>`
 
     h2 {
       margin-bottom: 1.5rem;
+
+      @media screen and (max-width: 780px) {
+        margin-bottom: 2.5rem;
+      }
     }
   }
 
