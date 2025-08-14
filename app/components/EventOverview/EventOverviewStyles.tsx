@@ -34,7 +34,6 @@ export const StyledEventOverview = styled.div`
       }
     }
     .event-overview__image {
-      width: auto;
       max-width: 100%;
       height: auto;
     }
