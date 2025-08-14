@@ -199,7 +199,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
         onClose={handleModalClose}
       >
         <div className="modal__heading-container">
-          <h2 className="modal__heading">party on, people!</h2>
+          <h2 className="modal__heading">party on!</h2>
           <Image
             className="modal__image"
             src="/images/skellycelly.gif"
@@ -229,9 +229,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
             height={295}
             priority
           />
-          <h2 className="modal__heading">
-            catch you on the flippity flip, people!
-          </h2>
+          <h2 className="modal__heading">catch you on the flippity flip!</h2>
         </div>
         <p className="modal__content">
           Thanks for letting us know. We’re sorry to miss you but we’ll see you
