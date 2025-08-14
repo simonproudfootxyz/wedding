@@ -267,7 +267,7 @@ export default function Home() {
               />
               <FrequentlyAskedQuestion
                 question="can I take photos?"
-                answer="We kindly ask that you <span class='highlight--transparent-red'>don’t take your own photos or have your phone out during the ceremony.</span> We’d love for everyone to be fully present with us. Our amazing photographer will be there to capture the moment."
+                answer="We kindly ask that you <span class='highlight--transparent-red'>don’t take your own photos or have your phone out during the ceremony.</span> We’d love for everyone to be fully present with us. Our <a href='https://justthedaisies.ca/' target='_blank'>amazing photographer</a> will be there to capture the moment."
               />
             </div>
           </Wrapper>

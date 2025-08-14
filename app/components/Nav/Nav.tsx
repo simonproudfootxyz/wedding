@@ -44,7 +44,7 @@ const Nav: React.FC<NavProps> = ({ slug }) => {
 
   return (
     <StyledNav id="nav">
-      <NavList className="navigation--non-fixed">
+      <NavList className="navigation--links">
         <NavItem>
           <NavLink href="#schedule" rel="noopener noreferrer">
             october&nbsp;31&nbsp;2025 {date}
@@ -56,30 +56,27 @@ const Nav: React.FC<NavProps> = ({ slug }) => {
           </NavLink>
         </NavItem>
       </NavList>
-      <div>
+      <div className="navigation--logo">
         <Logo>m+s get married</Logo>
       </div>
-      <NavList>
-        <NavList className="navigation--fixed">
-          <NavItem>
-            <InnerNavLink href="#summary" rel="noopener noreferrer">
-              Summary
-            </InnerNavLink>
-          </NavItem>
-          <NavItem>
-            <InnerNavLink href="#schedule" rel="noopener noreferrer">
-              Schedule
-            </InnerNavLink>
-          </NavItem>
-          <NavItem>
-            <InnerNavLink href="#FAQ" rel="noopener noreferrer">
-              FAQs
-            </InnerNavLink>
-          </NavItem>
-        </NavList>
+      <NavList className="navigation--app">
+        <NavItem>
+          <InnerNavLink href="#summary" rel="noopener noreferrer">
+            Summary
+          </InnerNavLink>
+        </NavItem>
+        <NavItem>
+          <InnerNavLink href="#schedule" rel="noopener noreferrer">
+            Schedule
+          </InnerNavLink>
+        </NavItem>
+        <NavItem>
+          <InnerNavLink href="#FAQ" rel="noopener noreferrer">
+            FAQs
+          </InnerNavLink>
+        </NavItem>
       </NavList>
-
-      <div>
+      <div className="navigation--rsvp">
         <ButtonLink href={slug ? `/rsvp/${slug}` : "/rsvp"}>rsvp</ButtonLink>
       </div>
     </StyledNav>

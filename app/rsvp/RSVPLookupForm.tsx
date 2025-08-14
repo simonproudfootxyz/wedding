@@ -93,7 +93,7 @@ export const RSVPLookupForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitted, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<RSVPLookupFormData>();
 
   const [allGuests, setAllGuests] = useState<Guest[] | null>(null);
@@ -149,7 +149,7 @@ export const RSVPLookupForm = () => {
 
   return (
     <StyledRSVPLookupForm action="" onSubmit={handleSubmit(handleFormSubmit)}>
-      {!isSubmitted && (
+      {!possibleGuests && (
         <div className="inputs">
           <div className="input-container">
             <label htmlFor="FirstName">First Name</label>
@@ -179,7 +179,7 @@ export const RSVPLookupForm = () => {
           </div>
         </div>
       )}
-      {isSubmitted && hasGuestMatches && (
+      {hasGuestMatches && (
         <div className="reset-link__container">
           <p>
             Not you?{" "}
@@ -196,7 +196,7 @@ export const RSVPLookupForm = () => {
           </p>
         </div>
       )}
-      {!isSubmitted && (
+      {!possibleGuests && (
         <div className="buttons-container">
           <div>
             <StylizedButton type="submit" disabled={!allGuests || isSubmitting}>
@@ -205,7 +205,7 @@ export const RSVPLookupForm = () => {
           </div>
         </div>
       )}
-      {isSubmitted && hasGuestMatches && (
+      {hasGuestMatches && (
         <div className="lookup-list__container">
           <ul className="lookup-list">
             {possibleGuests.map((lookup) => {
@@ -218,7 +218,7 @@ export const RSVPLookupForm = () => {
           </ul>
         </div>
       )}
-      {isSubmitted && !hasGuestMatches && (
+      {possibleGuests && possibleGuests.length === 0 && (
         <div className="reset-link__container--no-results">
           <p>We couldn&apos;t find any invites under that name</p>
           <p>

@@ -8,7 +8,7 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,12 +16,14 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
   border-bottom: 2px solid transparent;
   gap: 1.5rem;
 
-  @media screen and (max-width: 780px) {
-    top: -100%;
+  .navigation--app {
+    display: none;
   }
 
-  .navigation--fixed {
-    display: none;
+  .navigation--logo {
+    @media screen and (max-width: 780px) {
+      display: none;
+    }
   }
 
   h2 {
@@ -33,6 +35,12 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
       font-size: 2rem;
     }
   }
+
+  // .navigation--rsvp {
+  //   @media screen and (max-width: 780px) {
+  //     display: none;
+  //   }
+  // }
 
   // BACKGROUND-FILLED
   // ========================
@@ -49,13 +57,29 @@ export const StyledNav = styled.nav<{ isNearTopOfPage?: boolean }>`
       color: var(--black);
     }
 
-    .navigation--non-fixed {
+    .navigation--links {
       display: none;
     }
 
-    .navigation--fixed {
-      display: flex;
+    .navigation--logo {
+      @media screen and (max-width: 780px) {
+        display: block;
+      }
     }
+
+    .navigation--app {
+      display: flex;
+
+      @media screen and (max-width: 780px) {
+        display: none;
+      }
+    }
+
+    // .navigation--rsvp {
+    //   @media screen and (max-width: 780px) {
+    //     display: block;
+    //   }
+    // }
   }
 `;
 
@@ -66,7 +90,7 @@ export const NavList = styled.div`
   padding: 0;
 
   @media screen and (max-width: 780px) {
-    display: none;
+    // display: none;
   }
 `;
 
@@ -75,6 +99,12 @@ export const NavItem = styled.li`
   padding-right: 40px;
   max-width: 180px;
   line-height: 0.9;
+
+  &:nth-of-type(2) {
+    @media screen and (max-width: 780px) {
+      display: none;
+    }
+  }
 `;
 
 export const NavLink = styled.a`
