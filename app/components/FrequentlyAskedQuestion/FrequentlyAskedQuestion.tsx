@@ -24,6 +24,7 @@ const FAQContainer = styled.div`
       font-size: 2rem;
       line-height: 1;
       transition: all 0.3s ease;
+      z-index: 5;
     }
   }
 
@@ -50,6 +51,8 @@ const Question = styled.p`
   font-weight: 400;
   padding-bottom: 0.5rem;
   letter-spacing: -1px;
+  position: relative;
+  z-index: 10;
 
   @media screen and (max-width: 780px) {
     padding-bottom: 1rem;
