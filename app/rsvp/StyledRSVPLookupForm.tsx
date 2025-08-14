@@ -33,6 +33,8 @@ export const StyledRSVPLookupForm = styled.form`
       padding: 1rem;
       font-size: 1.5rem;
       font-family: var(--new-spirit);
+      background: none;
+      border: 2px solid var(--off-white);
     }
 
     .error {
