@@ -219,9 +219,9 @@ export const RSVPLookupForm = () => {
         </div>
       )}
       {isSubmitted && !hasGuestMatches && (
-        <div className="reset-link__container">
-          <h3>We couldn&apos;t find any invites under that name</h3>
-          <h3>
+        <div className="reset-link__container--no-results">
+          <p>We couldn&apos;t find any invites under that name</p>
+          <p>
             Try{" "}
             <Link
               className="link--no-guests"
@@ -232,9 +232,9 @@ export const RSVPLookupForm = () => {
               href={"/rsvp"}
             >
               searching again
-            </Link>
+            </Link>{" "}
             or contact us
-          </h3>
+          </p>
         </div>
       )}
     </StyledRSVPLookupForm>

@@ -123,18 +123,18 @@ export const StyledEventOverview = styled.div`
     }
 
     .star {
-      animation: spin 240s linear infinite;
+      animation: spin 120s linear infinite;
     }
 
     .chalice {
-      animation: float 9.5s ease-in-out infinite;
+      animation: mini-float 9.5s ease-in-out infinite;
     }
   }
 
   // CEREMONY EVENT
   &.ceremony-event {
     .horn-hand {
-      animation: hover 5s ease-in-out infinite;
+      // animation: hover 5s ease-in-out infinite;
     }
   }
 `;

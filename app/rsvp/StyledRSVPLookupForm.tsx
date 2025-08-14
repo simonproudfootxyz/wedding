@@ -35,6 +35,10 @@ export const StyledRSVPLookupForm = styled.form`
       font-family: var(--new-spirit);
       background: none;
       border: 2px solid var(--off-white);
+
+      &:focus {
+        border: 2px solid transparent;
+      }
     }
 
     .error {
@@ -47,6 +51,11 @@ export const StyledRSVPLookupForm = styled.form`
     text-align: center;
     margin-bottom: 3rem;
     margin-top: -3rem;
+  }
+
+  .reset-link__container--no-results {
+    text-align: center;
+    margin-bottom: 3rem;
   }
 
   .link--no-guests {

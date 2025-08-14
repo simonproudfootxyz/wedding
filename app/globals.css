@@ -592,28 +592,26 @@ button {
 
 @keyframes spin {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  25% {
-    transform: rotate(180deg) translatey(5px);
-    -webkit-transform: rotate(180deg) translatey(5px);
+  100% {
+    transform: rotate(360deg);
   }
-  33% {
-    transform: rotate(270deg) translatey(-0px);
-    -webkit-transform: rotate(270deg) translatey(-5px);
+}
+
+/* ====================== */
+/* // MINI FLOAT */
+/* ====================== */
+
+@keyframes mini-float {
+  0% {
+    transform: translatey(0.5rem);
   }
   50% {
-    -webkit-transform: rotate(360deg) translatey(-5px);
-    transform: rotate(360deg) translatey(-5px);
-  }
-  75% {
-    transform: rotate(540deg) translatey(0px);
-    -webkit-transform: rotate(540deg) translatey(0px);
+    transform: translatey(-0.5rem);
   }
   100% {
-    -webkit-transform: rotate(720deg) translatey(5px);
-    transform: rotate(720deg) translatey(5px);
+    transform: translatey(0.5rem);
   }
 }
 

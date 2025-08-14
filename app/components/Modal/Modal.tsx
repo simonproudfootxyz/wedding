@@ -70,7 +70,6 @@ const ModalBox = styled.div`
   .modal__image {
     max-width: 100%;
     height: auto;
-    animation: hover 5s ease-in-out infinite;
   }
 
   .modal__content {

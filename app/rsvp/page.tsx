@@ -5,7 +5,7 @@ import { RSVPLookupForm } from "./RSVPLookupForm";
 
 export default function RSVP() {
   return (
-    <RSVPLayout loading={false}>
+    <RSVPLayout loading={false} exitLink={false}>
       <RSVPLookupForm />
     </RSVPLayout>
   );

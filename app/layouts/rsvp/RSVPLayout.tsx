@@ -2,7 +2,6 @@ import Image from "next/image";
 import React, { ReactNode } from "react";
 import { StyledRSVPLayout } from "./StyledRSVPLayout";
 import { CloseLink } from "@/app/components/CloseLink/CloseLink";
-import Link from "next/link";
 
 interface RSVPLayoutProps {
   children?: ReactNode;
@@ -10,24 +9,28 @@ interface RSVPLayoutProps {
   titleText?: string;
   showRSVPLink?: boolean;
   RSVPLinkText?: string;
+  exitLink?: boolean;
 }
 
 const RSVPLayout: React.FC<RSVPLayoutProps> = ({
   children,
   loading = true,
   titleText = "With which spirit are we speaking?",
+  exitLink = true,
 }) => {
   const title = loading ? "Loading..." : titleText;
 
   return (
     <StyledRSVPLayout>
-      <CloseLink
-        href="/"
-        title="Back to home page"
-        aria-label="Back to home page"
-      >
-        &times;
-      </CloseLink>
+      {exitLink && (
+        <CloseLink
+          href="/"
+          title="Back to home page"
+          aria-label="Back to home page"
+        >
+          &times;
+        </CloseLink>
+      )}
       <Image
         src="/images/Upright_Scan_Planchette.png"
         className={`floating planchette`}

@@ -23,19 +23,11 @@ const EventOverview: React.FC = () => {
           <h3 className="event-overview__title">what</h3>
           <div>
             <Image
-              className="event-overview__image--half skeleton-dance"
-              src="/images/SkeletonDance_Clip.png"
-              alt="Skeleton Dance Clip"
-              width={202}
-              height={331}
-              priority
-            />
-            <Image
-              className="event-overview__image--half demon-dance"
-              src="/images/Demon.png"
-              alt="Demon"
-              width={183}
-              height={336}
+              className="event-overview__image"
+              src="/images/PartyDance.gif"
+              alt="Party Dance Clip"
+              width={483}
+              height={362}
               priority
             />
           </div>
@@ -115,7 +107,7 @@ export const CeremonyEventOverview: React.FC = () => {
           <div>
             <Image
               className="event-overview__image horn-hand"
-              src="/images/HornHand.png"
+              src="/images/HornHand.gif"
               alt="a hand doing the 'horns' gesture"
               width={290}
               height={461}

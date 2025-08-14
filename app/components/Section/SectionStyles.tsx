@@ -113,10 +113,10 @@ export const FooterSection = styled(StyledSection)`
   .footer__content-box {
     display: flex;
     align-items: center;
+    gap: 1rem;
 
     @media screen and (max-width: 780px) {
       flex-direction: column;
-      gap: 1rem;
       margin-bottom: 1.5rem;
     }
   }

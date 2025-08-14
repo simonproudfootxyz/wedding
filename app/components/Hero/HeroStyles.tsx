@@ -52,7 +52,7 @@ export const StyledTopHero = styled(StyledHero)`
   .ring {
     bottom: -126px;
     left: 260px;
-    animation: spin 8s linear infinite;
+    animation: spin 4s linear infinite;
 
     @media screen and (max-width: 1100px) {
       // positioning

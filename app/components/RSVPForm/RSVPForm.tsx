@@ -202,7 +202,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
           <h2 className="modal__heading">party on, people!</h2>
           <Image
             className="modal__image"
-            src="/images/CheersAnimation.png"
+            src="/images/skellycelly.gif"
             alt="Cheers"
             width={407}
             height={342}
@@ -223,7 +223,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
         <div className="modal__heading-container">
           <Image
             className="modal__image"
-            src="/images/DogAnimation.png"
+            src="/images/DogAnimation.gif"
             alt="Cheers"
             width={365}
             height={295}

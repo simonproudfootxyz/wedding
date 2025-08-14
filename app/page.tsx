@@ -108,19 +108,19 @@ export default function Home() {
       <Section classNames="ouija-section" backgroundImage={OuijaBackground.src}>
         <Wrapper classNames="ouija-wrapper">
           <Image
-            className="ouija-wrapper__photo chair-photo"
-            src={ChairPhoto.src}
-            alt="Devil"
-            width={2048 / 6}
-            height={3072 / 6}
-            priority
-          />
-          <Image
             className="ouija-wrapper__photo "
             src={Scrabble.src}
             alt="Devil"
             width={231}
             height={288}
+            priority
+          />
+          <Image
+            className="ouija-wrapper__photo chair-photo"
+            src={ChairPhoto.src}
+            alt="Devil"
+            width={2048 / 8}
+            height={3072 / 8}
             priority
           />
         </Wrapper>
@@ -154,9 +154,9 @@ export default function Home() {
                   </span>
                 </p>
                 <p>
-                  Sick nuptials! Don’t worry—they’ll be short and sweet. Start
-                  time is firm, don’t be late, and yes we know that’s rich
-                  coming from us.
+                  Sick nuptuals. Don't worry, it'll be short and sweet. We're
+                  starting promply, so please don't be late (and yes, we know
+                  that’s rich coming from us).
                 </p>
                 <p>
                   <strong>
@@ -169,10 +169,7 @@ export default function Home() {
                 <p>
                   <TimeStamps>5:00pm</TimeStamps>
                 </p>
-                <p>
-                  Dinner for the recently deceased. Family style meal with Asian
-                  flair.
-                </p>
+                <p>Family-style dinner for the recently deceased.</p>
               </div>
             </EventInfo>
           </Wrapper>
@@ -435,7 +432,7 @@ export default function Home() {
           <span>attend in the flesh</span>
           <Image
             className="marquee-image"
-            src="/images/Bats.png"
+            src="/images/Bats.gif"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
             height={144} // Replace with the actual height of the image
@@ -444,7 +441,7 @@ export default function Home() {
           <span>rsvp by october 1</span>
           <Image
             className="marquee-image"
-            src="/images/Bats.png"
+            src="/images/Bats.gif"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
             height={144} // Replace with the actual height of the image
@@ -453,7 +450,7 @@ export default function Home() {
           <span>attend in the flesh</span>
           <Image
             className="marquee-image"
-            src="/images/Bats.png"
+            src="/images/Bats.gif"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
             height={144} // Replace with the actual height of the image
@@ -462,7 +459,7 @@ export default function Home() {
           <span>rsvp by october 1</span>
           <Image
             className="marquee-image"
-            src="/images/Bats.png"
+            src="/images/Bats.gif"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
             height={144} // Replace with the actual height of the image
@@ -471,7 +468,7 @@ export default function Home() {
           <span>attend in the flesh</span>
           <Image
             className="marquee-image"
-            src="/images/Bats.png"
+            src="/images/Bats.gif"
             alt="Creative Engagement Session in Toronto"
             width={205} // Replace with the actual width of the image
             height={144} // Replace with the actual height of the image
@@ -484,10 +481,10 @@ export default function Home() {
         <Wrapper classNames="footer__wrapper" justifyContent="space-between">
           <div className="footer__content-box">
             <Image
-              src="/images/FooterSkull.png"
+              src="/images/FooterSkull.gif"
               alt="Creative Engagement Session in Toronto"
-              width={110} // Replace with the actual width of the image
-              height={108} // Replace with the actual height of the image
+              width={79} // Replace with the actual width of the image
+              height={115} // Replace with the actual height of the image
               priority // Optional: Preloads the image for better performance
             />
             <h3>

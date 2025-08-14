@@ -20,7 +20,7 @@ const FAQContainer = styled.div`
       right: 0;
       border-radius: 50%;
       background: var(--pink);
-      padding: 0px 8px;
+      padding: 0px 8px 1px 9px;
       font-size: 2rem;
       line-height: 1;
       transition: all 0.3s ease;
