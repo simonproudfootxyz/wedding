@@ -136,8 +136,13 @@ export const RSVPLookupForm = () => {
           )
           .map((g) => ({ guest: g }))
       : [];
-
-    setPossibleGuests(possibleGuests);
+    const exactMatch = possibleGuests.find(
+      (g) =>
+        format(g.guest.fields.FirstName) === format(FirstName) &&
+        format(g.guest.fields.LastName) === format(LastName)
+    );
+    const guestsToDisplay = exactMatch ? [exactMatch] : possibleGuests;
+    setPossibleGuests(guestsToDisplay);
   };
   const hasGuestMatches = possibleGuests && possibleGuests.length > 0;
 
