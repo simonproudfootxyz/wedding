@@ -51,7 +51,6 @@ export default function Home() {
     const searchParams = new URLSearchParams(window.location.search);
     const URLParam = searchParams.get("reservationId");
     if (URLParam) {
-      console.log("has url param");
       // Save the reservationId to local storage
       if (typeof window !== "undefined") {
         // Safe to use localStorage here
