@@ -2,12 +2,12 @@
 import styled from "styled-components";
 
 export const ButtonContainer = styled.div`
-  &:hover,
-  &:focus {
-    box-shadow: 5px 5px 0px #d8cc34;
-    transform: rotate(5deg) translate(2px, 2px);
-    transition: all 0.3s ease;
-  }
+  // &:hover,
+  // &:focus {
+  //   box-shadow: 5px 5px 0px #d8cc34;
+  //   transform: rotate(5deg) translate(2px, 2px);
+  //   transition: all 0.3s ease;
+  // }
 `;
 
 export const StyledButton = styled.button`
@@ -25,11 +25,11 @@ export const StyledButton = styled.button`
     transition: all 0.3s ease;
   }
 
-  &:hover,
-  &:focus {
-    box-shadow: 4px 5px 0px var(--pink);
-    transform: rotate(5deg) translate(2px, 2px);
-  }
+  // &:hover,
+  // &:focus {
+  //   box-shadow: 4px 5px 0px var(--pink);
+  //   transform: rotate(5deg) translate(2px, 2px);
+  // }
 
   &:disabled {
     background: var(--off-white);
