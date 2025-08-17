@@ -113,7 +113,9 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
                       <input
                         id={`guests.${record.id}.fields.Attending.Yes`}
                         type="radio"
-                        {...register(`guests.${record.id}.fields.Attending`)}
+                        {...register(`guests.${record.id}.fields.Attending`, {
+                          required: "Please select Accept or Decline",
+                        })}
                         value="Yes"
                         defaultChecked={
                           String(record.fields.Attending) === "Yes"
@@ -129,7 +131,9 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
                       <input
                         type="radio"
                         id={`guests.${record.id}.fields.Attending.No`}
-                        {...register(`guests.${record.id}.fields.Attending`)}
+                        {...register(`guests.${record.id}.fields.Attending`, {
+                          required: "Please select Accept or Decline",
+                        })}
                         value="No"
                         defaultChecked={
                           String(record.fields.Attending) === "No"
@@ -142,6 +146,11 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
                       </label>
                     </div>
                   </div>
+                  {errors?.guests?.[record.id]?.fields?.Attending && (
+                    <p className="error">
+                      {errors.guests?.[record.id]?.fields?.Attending?.message}
+                    </p>
+                  )}
                 </div>
 
                 <input
