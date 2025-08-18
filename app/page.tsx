@@ -91,7 +91,7 @@ export default function Home() {
       <TopHero title="mhairi and simon are&nbsp;getting married." />
       <StyledImageBanner className="image-banner">
         <Image
-          src="/images/M+S_CreativeEngagementSession_Toronto_2025-10 1.jpg"
+          src="/images/Hero.jpg"
           alt="Creative Engagement Session in Toronto"
           width={1152} // Replace with the actual width of the image
           height={768} // Replace with the actual height of the image
@@ -284,7 +284,7 @@ export default function Home() {
             />
             <FrequentlyAskedQuestion
               question="can I bring a plus one?"
-              answer="We kindly ask that you don’t bring anyone other than named invitees with you on the day. The name of every guest included in your party will be listed in your email invitation and when you click to RSVP."
+              answer="We kindly ask that you don’t bring anyone other than named invitees with you on the day. The name of every guest included in your party will be listed when you click to RSVP."
             />
             <FrequentlyAskedQuestion
               question="do you have a gift registry?"
