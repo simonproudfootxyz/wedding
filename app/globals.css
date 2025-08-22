@@ -213,6 +213,7 @@ font-style: italic; */
   --standard-clip: polygon(0% 0, 96% 0%, 100% 100%, 0 100%);
   --secondary-clip: polygon(0% 0%, 100% 0%, 96% 100%, 0 100%);
   --modal-clip: polygon(0% 0%, 103% 1%, 99% 99%, 1% 100%);
+  --modal-clip--reverse: polygon(0% 0%, 103% 1%, 99% 99%, 1% 100%);
 }
 
 @media (prefers-color-scheme: dark) {

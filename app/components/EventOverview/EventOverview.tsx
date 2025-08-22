@@ -60,7 +60,7 @@ const EventOverview: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="half-height-item background-effect--slant">
+          <div className="half-height-item">
             <div className="column">
               <Image
                 className="event-overview__image chalice"
@@ -142,7 +142,7 @@ export const CeremonyEventOverview: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="half-height-item background-effect--slant">
+          <div className="half-height-item">
             <div className="column">
               <Image
                 className="event-overview__image chalice"

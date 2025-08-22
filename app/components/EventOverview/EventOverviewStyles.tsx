@@ -2,9 +2,9 @@
 import styled from "styled-components";
 
 export const StyledEventOverview = styled.div`
-  .background-effect--slant {
-    transform: skew(-0.5deg) rotate(-1deg);
-  }
+  // .background-effect--slant {
+  //   transform: skew(-0.5deg) rotate(-1deg);
+  // }
 
   .background-effect--reverse-slant {
     transform: skew(-0.25deg) rotate(0.5deg);
@@ -95,6 +95,7 @@ export const StyledEventOverview = styled.div`
 
     &:nth-of-type(2) {
       background: var(--yellow);
+      transform: skew(-0.5deg) rotate(-1deg);
     }
 
     .column {
