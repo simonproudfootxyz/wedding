@@ -120,6 +120,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
                         defaultChecked={
                           String(record.fields.Attending) === "Yes"
                         }
+                        disabled
                       />{" "}
                       <label
                         htmlFor={`guests.${record.id}.fields.Attending.Yes`}
@@ -138,6 +139,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
                         defaultChecked={
                           String(record.fields.Attending) === "No"
                         }
+                        disabled
                       />{" "}
                       <label
                         htmlFor={`guests.${record.id}.fields.Attending.No`}
@@ -157,6 +159,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
                   type="hidden"
                   {...register(`guests.${record.id}.id`)}
                   value={record.id}
+                  disabled
                 />
               </li>
             );
@@ -182,6 +185,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
                       `guests.${record.id}.fields.OtherDietaryNotes`
                     )}
                     defaultValue={record.fields.OtherDietaryNotes || ""}
+                    disabled
                   />
                 </div>
               );
