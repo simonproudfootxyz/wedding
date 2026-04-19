@@ -125,21 +125,31 @@ export const RSVPLookupForm = () => {
   // Form submission
   const handleFormSubmit = async (formData: RSVPLookupFormData) => {
     const { FirstName, LastName } = formData;
-    const format = (s: string) => s.trim().toLowerCase();
+    const format = (value?: string | null) =>
+      (value ?? "").trim().toLowerCase();
+
+    const formattedFirstName = format(FirstName);
+    const formattedLastName = format(LastName);
 
     const possibleGuests = allGuests
       ? allGuests
-          .filter(
-            (g) =>
-              format(g.fields.FirstName).includes(format(FirstName)) ||
-              format(g.fields.LastName).includes(format(LastName))
-          )
+          .filter((g) => {
+            const guestFirstName = format(g.fields.FirstName);
+            const guestLastName = format(g.fields.LastName);
+            if (!guestFirstName && !guestLastName) return false;
+            return (
+              (formattedFirstName !== "" &&
+                guestFirstName.includes(formattedFirstName)) ||
+              (formattedLastName !== "" &&
+                guestLastName.includes(formattedLastName))
+            );
+          })
           .map((g) => ({ guest: g }))
       : [];
     const exactMatch = possibleGuests.find(
       (g) =>
-        format(g.guest.fields.FirstName) === format(FirstName) &&
-        format(g.guest.fields.LastName) === format(LastName)
+        format(g.guest.fields.FirstName) === formattedFirstName &&
+        format(g.guest.fields.LastName) === formattedLastName
     );
     const guestsToDisplay = exactMatch ? [exactMatch] : possibleGuests;
     setPossibleGuests(guestsToDisplay);
