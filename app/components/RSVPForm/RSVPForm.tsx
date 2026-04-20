@@ -67,7 +67,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<RSVPFormData>();
 
   const hasCeremonyGuests = guests.some((guest) => {
@@ -85,7 +85,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
   const handleModalClose = () => {
     setModalConfirmOpen(false);
     setModalDeclineOpen(false);
-    router.push(`/?${RESERVATION_ID}=${rsvpId}`);
+    router.push(`/`);
   };
 
   return (
@@ -190,7 +190,9 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
         )}
 
         <div className="buttons-container">
-          <StylizedButton type="submit">submit</StylizedButton>
+          <StylizedButton type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "submit"}
+          </StylizedButton>
         </div>
       </StyledRSVPForm>
       <Modal
@@ -213,7 +215,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
           Thanks for your RSVP, we look forward to sharing our special day with
           you this halloween.{" "}
         </p>
-        <ButtonLink href={`/?reservationId=${rsvpId}`}>back to site</ButtonLink>
+        <ButtonLink href={`/`}>back to site</ButtonLink>
       </Modal>
       <Modal
         classNames="decline-modal"
@@ -235,7 +237,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
           Thanks for letting us know. We’re sorry to miss you but we’ll see you
           next time!
         </p>
-        <ButtonLink href={`/?reservationId=${rsvpId}`}>back to site</ButtonLink>
+        <ButtonLink href={`/`}>back to site</ButtonLink>
       </Modal>
     </>
   );
