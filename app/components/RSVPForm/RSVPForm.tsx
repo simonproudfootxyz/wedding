@@ -191,7 +191,7 @@ export const RSVPForm = ({ guests }: RSVPFormProps) => {
 
         <div className="buttons-container">
           <StylizedButton type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Submitting..." : "submit"}
+            {isSubmitting ? "submitting..." : "submit"}
           </StylizedButton>
         </div>
       </StyledRSVPForm>
